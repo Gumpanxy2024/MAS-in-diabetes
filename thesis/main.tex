@@ -1,0 +1,94 @@
+% ==============================================================
+% 基于多智能体系统的社区老年糖尿病智能随访管理平台设计与实现
+% Overleaf兼容 · XeLaTeX编译
+% ==============================================================
+\documentclass[12pt, a4paper, oneside]{ctexbook}
+
+% ---- 页面设置 ----
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+
+% ---- 字体与编码 ----
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% ---- 数学与符号 ----
+\usepackage{amsmath, amssymb}
+
+% ---- 图表 ----
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+
+% ---- 代码 ----
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+}
+
+% ---- 引用与超链接 ----
+\usepackage[backend=biber, style=gb7714-2015, gbpub=false]{biblatex}
+\addbibresource{references.bib}
+\usepackage[hidelinks]{hyperref}
+
+% ---- 行距 ----
+\usepackage{setspace}
+\onehalfspacing
+
+% ---- 页眉页脚 ----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small 基于多智能体系统的社区老年糖尿病智能随访管理平台设计与实现}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- 自定义命令 ----
+\newcommand{\todocite}{\textsuperscript{\textcolor{red}{[TODO-CITE]}}}
+\newcommand{\todofig}{\textcolor{red}{[TODO-FIGURE]}}
+
+% ==============================================================
+\begin{document}
+
+% ---- 前置部分 ----
+\frontmatter
+\input{chapters/cover}
+\input{chapters/abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% ---- 正文部分 ----
+\mainmatter
+\input{chapters/ch01_introduction}
+\input{chapters/ch02_technology}
+\input{chapters/ch03_analysis}
+\input{chapters/ch04_design}
+\input{chapters/ch05_implementation}
+\input{chapters/ch06_testing}
+\input{chapters/ch07_conclusion}
+
+% ---- 参考文献 ----
+\printbibliography[heading=bibintoc, title={参考文献}]
+
+% ---- 附录 ----
+\appendix
+\input{chapters/appendix}
+
+% ---- 致谢 ----
+\input{chapters/acknowledgement}
+
+\end{document}
