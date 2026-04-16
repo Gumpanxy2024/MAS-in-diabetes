@@ -471,3 +471,42 @@ MasInDiabetes/
    - `.gitignore` — 忽略 `.env`、`__pycache__`、`db.sqlite3`、IDE 文件、LaTeX 编译产物等
 3. **requirements.txt** 新增 `python-dotenv==1.0.1`
 4. **Git 仓库初始化**：首次提交并推送到 `https://github.com/Gumpanxy2024/MAS-in-diabetes.git`
+
+---
+
+## 2026-04-16 基础功能测试 + Bug 修复
+
+### 测试结果：10/10 通过（100%）
+
+| 编号 | 测试项 | 耗时 | 说明 |
+|------|--------|------|------|
+| T-01 | Django 启动 + .env 加载 | 387ms | 配置读取正常 |
+| T-02 | 数据库迁移 & ORM | 494ms | CRUD 正常 |
+| T-03 | LLM API (Qwen3.5) | 25s | 基础对话正常 |
+| T-04 | LLM 语音文本解析 | 29s | 口语→JSON 正确解析 |
+| T-05 | 风险评估算法 | 1ms | 绿/红分级准确 |
+| T-06 | RAG 知识库 | 1s | 16段落，语义检索正常 |
+| T-07 | TTS (DashScope CosyVoice) | 5.5s | 56KB MP3 生成成功 |
+| T-08 | TTS (Edge TTS 备选) | 2s | 免费方案可用 |
+| T-09 | RAG + LLM 健康反馈 | 79s | 完整链路生成合理建议 |
+| T-10 | Seed 数据脚本 | 6s | 1医生/5患者/75条记录 |
+
+### 测试中发现并修复的 Bug
+
+1. **settings.py: `LLM_API_KEY` 为空导致 LLM 调用 401**
+   - 原因：`LLM_API_KEY` 默认为空，但 `patient_agent.py` 和 `rag_service.py` 读的是 `LLM_API_KEY` 而非 `DASHSCOPE_API_KEY`
+   - 修复：`DASHSCOPE_API_KEY` 提前声明，`LLM_API_KEY` fallback 到 `DASHSCOPE_API_KEY`
+2. **DashScope TTS API 格式错误（400 Bad Request）**
+   - 原因 1：旧 URL (`/aigc/text2audio/generation`) 已废弃，需用新端点 (`/audio/tts/SpeechSynthesizer`)
+   - 原因 2：`voice` 和 `format` 参数应放在 `input` 对象内，而非 `parameters`
+   - 原因 3：非流式模式返回 JSON（含音频 URL），不是直接返回二进制音频
+   - 修复：重写 `_tts_dashscope()` 函数，两步获取（调 API → 下载音频）
+3. **CosyVoice 音色版本不匹配**
+   - 原因：`cosyvoice-v2` 模型在当前 API 已不可用；`cosyvoice-v3-flash` 的音色需要 `_v3` 后缀
+   - 修复：模型改为 `cosyvoice-v3-flash`，音色改为 `longxiaochun_v3`（温和女声）
+
+### 新增文件
+- `test/basefunction/test_plan.md` — 测试方案
+- `test/basefunction/run_tests.py` — 自动化测试脚本（10 个用例）
+- `test/basefunction/report.md` — 测试报告（自动生成）
+- `test/basefunction/results.json` — 原始数据

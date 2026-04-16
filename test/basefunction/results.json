@@ -1,0 +1,72 @@
+[
+  {
+    "id": "T-01",
+    "name": "Django 启动 + .env 加载",
+    "status": "pass",
+    "detail": "LLM_MODEL=qwen3.5-plus, ASR=dashscope/paraformer-v2, TTS=dashscope/cosyvoice-v3-flash",
+    "duration_ms": 387
+  },
+  {
+    "id": "T-02",
+    "name": "数据库迁移 & ORM",
+    "status": "pass",
+    "detail": "User/Patient/HealthRecord CRUD 正常, migrate 成功",
+    "duration_ms": 494
+  },
+  {
+    "id": "T-03",
+    "name": "LLM API (Qwen)",
+    "status": "pass",
+    "detail": "model=qwen3.5-plus, response=空腹血糖是指至少禁食 8 小时后测得的血液中葡萄糖浓度。...",
+    "duration_ms": 25137
+  },
+  {
+    "id": "T-04",
+    "name": "LLM 语音文本解析",
+    "status": "pass",
+    "detail": "input='今天早上空腹血糖7.8，血压有点高，上面的140下面的90，...', parsed={\"fasting_glucose\": 7.8, \"postmeal_glucose\": null, \"systolic_bp\": 140, \"diastolic_bp\": 90, \"weight\": 72}",
+    "duration_ms": 29332
+  },
+  {
+    "id": "T-05",
+    "name": "风险评估算法",
+    "status": "pass",
+    "detail": "green=1.0/green, red=3.0/red, triggers_red=4",
+    "duration_ms": 1
+  },
+  {
+    "id": "T-06",
+    "name": "RAG 知识库初始化 & 检索",
+    "status": "pass",
+    "detail": "知识库 16 段落, 检索到 3 条, top1=低血糖的识别与处理：低血糖是指血糖低于3.9 mmol/L，常见症状包括心慌、手...",
+    "duration_ms": 1009
+  },
+  {
+    "id": "T-07",
+    "name": "TTS (DashScope CosyVoice)",
+    "status": "pass",
+    "detail": "provider=dashscope, path=media\\tts_cache\\d048d7707a00.mp3, size=56933B, latency=5494ms",
+    "duration_ms": 5495
+  },
+  {
+    "id": "T-08",
+    "name": "TTS 备选 (Edge TTS)",
+    "status": "pass",
+    "detail": "voice=zh-CN-XiaoxiaoNeural, path=media\\tts_cache\\5611f1f3313c.mp3, size=20880B",
+    "duration_ms": 2008
+  },
+  {
+    "id": "T-09",
+    "name": "RAG + LLM 健康反馈",
+    "status": "pass",
+    "detail": "feedback=您好呀，叔叔/阿姨！看到您今天的健康数据了，咱们一起来瞧瞧，别着急，这个“黄色”风险等级就是提醒咱们要多留点心，但并不是说情况很危险，咱们慢慢调整就好。\n\n首先...",
+    "duration_ms": 78829
+  },
+  {
+    "id": "T-10",
+    "name": "Seed 数据脚本",
+    "status": "pass",
+    "detail": "doctors=1, patients=5, health_records=75",
+    "duration_ms": 5429
+  }
+]

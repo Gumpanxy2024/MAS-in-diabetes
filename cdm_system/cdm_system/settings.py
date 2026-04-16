@@ -134,11 +134,14 @@ LOGOUT_REDIRECT_URL = "/accounts/login/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# ─────────────────── 通义千问（阿里云 DashScope）───────────────────
+DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+
 # ─────────────────── LLM 配置 ───────────────────
 # 当前默认使用阿里云 DashScope（通义千问），通过 OpenAI 兼容协议调用。
 # 如需切换为 OpenAI / 智谱GLM，修改 MODEL + BASE_URL 即可。
 LLM_MODEL = os.getenv("LLM_MODEL", "qwen3.5-plus")
-LLM_API_KEY = os.getenv("LLM_API_KEY", "")
+LLM_API_KEY = os.getenv("LLM_API_KEY", "") or DASHSCOPE_API_KEY
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
 
 # ─────────────────── ASR 语音识别配置 ───────────────────
@@ -148,11 +151,8 @@ ASR_BASE_URL = os.getenv("ASR_BASE_URL", None)
 
 # ─────────────────── TTS 语音合成配置 ───────────────────
 TTS_PROVIDER = os.getenv("TTS_PROVIDER", "dashscope")
-TTS_MODEL = os.getenv("TTS_MODEL", "cosyvoice-v2")
-TTS_VOICE = os.getenv("TTS_VOICE", "longxiaochun")
-
-# ─────────────────── 通义千问（阿里云 DashScope）───────────────────
-DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+TTS_MODEL = os.getenv("TTS_MODEL", "cosyvoice-v3-flash")
+TTS_VOICE = os.getenv("TTS_VOICE", "longxiaochun_v3")
 
 # ─────────────────── 备选供应商配置（按需启用，在 .env 中配置）───────────────────
 VOLCANO_APP_ID = os.getenv("VOLCANO_APP_ID", "")

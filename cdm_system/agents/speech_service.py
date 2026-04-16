@@ -260,6 +260,8 @@ def _tts_dashscope(text: str, voice: str) -> str:
     需要 settings 中配置 DASHSCOPE_API_KEY（或 LLM_API_KEY）。
     模型通过 settings.TTS_MODEL 指定，默认 cosyvoice-v2。
     voice 参数对应 CosyVoice 音色 ID，如 "longxiaochun"（温和女声）。
+    API 文档：https://help.aliyun.com/zh/model-studio/non-realtime-cosyvoice-api
+    非流式模式：API 返回 JSON，其中 output.audio.url 为音频下载地址（24h 有效）。
     """
     import json
     import urllib.request
@@ -273,23 +275,31 @@ def _tts_dashscope(text: str, voice: str) -> str:
 
     payload = {
         "model": tts_model,
-        "input": {"text": text},
-        "parameters": {"voice": voice, "format": "mp3", "rate": 22050},
+        "input": {
+            "text": text,
+            "voice": voice,
+            "format": "mp3",
+            "sample_rate": 22050,
+        },
     }
 
-    url = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text2audio/generation"
+    url = "https://dashscope.aliyuncs.com/api/v1/services/audio/tts/SpeechSynthesizer"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
     }
     req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        content_type = resp.headers.get("Content-Type", "")
-        if "audio" in content_type:
-            output_file.write_bytes(resp.read())
-            return str(output_file.relative_to(settings.BASE_DIR))
+    with urllib.request.urlopen(req, timeout=30) as resp:
         result = json.loads(resp.read().decode("utf-8"))
-        raise RuntimeError(f"通义 TTS 返回错误: {result}")
+
+    audio_url = result.get("output", {}).get("audio", {}).get("url")
+    if not audio_url:
+        raise RuntimeError(f"通义 TTS 未返回音频 URL: {result}")
+
+    with urllib.request.urlopen(audio_url, timeout=30) as audio_resp:
+        output_file.write_bytes(audio_resp.read())
+
+    return str(output_file.relative_to(settings.BASE_DIR))
 
 
 # ═══════════════════════ 供应商配置参考 ═══════════════════════
@@ -301,8 +311,8 @@ PROVIDER_CONFIGS = {
         "ASR_PROVIDER": "dashscope",
         "ASR_MODEL": "paraformer-v2",
         "TTS_PROVIDER": "dashscope",
-        "TTS_MODEL": "cosyvoice-v2",
-        "TTS_VOICE": "longxiaochun",
+        "TTS_MODEL": "cosyvoice-v3-flash",
+        "TTS_VOICE": "longxiaochun_v3",
         "desc": "通义千问全家桶（阿里云 DashScope），LLM/ASR/TTS 共用一个 DASHSCOPE_API_KEY",
     },
     "whisper_api": {
@@ -325,8 +335,9 @@ PROVIDER_CONFIGS = {
 
 RECOMMENDED_VOICES = {
     "dashscope": {
-        "female_gentle": "longxiaochun",
-        "male_calm": "longshu",
+        "female_gentle": "longxiaochun_v3",
+        "male_calm": "longshu_v3",
+        "female_warm": "longanrou_v3",
     },
     "edge_tts": {
         "female_gentle": "zh-CN-XiaoxiaoNeural",
