@@ -34,6 +34,20 @@ def _get_or_create_collection():
 # ─────────────────── 知识库初始化 ───────────────────
 
 
+def reset_knowledge_base():
+    """清空向量库，重建空集合。更新知识库文件后调用此函数再重新导入。"""
+    client = _get_chroma_client()
+    try:
+        client.delete_collection(COLLECTION_NAME)
+        logger.info("已删除向量库集合 %s", COLLECTION_NAME)
+    except Exception as e:
+        logger.warning("删除集合时出错（可能原本不存在）: %s", e)
+    client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
+
+
 def init_knowledge_base():
     """
     扫描 knowledge_base/ 目录下的 .txt 文件，按段落切分后写入 ChromaDB。

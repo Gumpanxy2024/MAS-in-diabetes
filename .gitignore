@@ -56,3 +56,7 @@ cdm_system/chroma_db/
 _ref_thesis.txt
 *.tmp
 210750110*.docx
+
+# ─── 知识库原始文件（体积大，不提交）───
+cdm_system/knowledge_base/raw/*.pdf
+cdm_system/knowledge_base/raw/*.docx

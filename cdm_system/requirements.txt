@@ -1,5 +1,6 @@
 Django==5.2.13
 python-dotenv==1.0.1
+pymupdf>=1.24.0
 langgraph==1.1.6
 langchain==1.2.15
 langchain-openai==1.1.13
