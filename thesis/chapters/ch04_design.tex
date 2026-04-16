@@ -1,50 +1,884 @@
 % ==============================================================
 % 第4章 系统设计
+% 图表源文件存放于 diagrams/ch04/，文件名与文中标记对应
 % ==============================================================
 \chapter{系统设计}
 
-\textcolor{red}{[TODO: 基于 DESIGN\_CONTEXT.md 扩写本章内容]}
+本章基于第三章系统分析所确立的功能边界与逻辑架构，从技术实现视角对系统进行全面设计。首先确立系统的总体技术架构，明确各层次的职责划分与技术选型；继而对多智能体系统的编排机制与各Agent的内部逻辑进行详细设计；在此基础上完成各功能模块的详细设计、数据库表结构设计，为后续系统实现提供完整的设计依据。
 
+
+% ------------------------------------------------------------------
 \section{系统总体架构设计}
 
-\textcolor{red}{[TODO: 描述系统的分层架构（表示层、业务逻辑层、数据层、AI服务层），插入总体架构图]}
+\subsection{三层技术架构}
 
-\section{多智能体协同架构设计}
+系统总体技术架构遵循从逻辑分层到技术实现的演进路径：在第三章系统分析阶段确立的B-C-E三层逻辑架构明确了边界层、控制层与实体层的职责分工，经过本章的技术选型与框架映射后，最终演化为基于Django MVT的三层技术实现方案。系统自上而下划分为表现层、业务逻辑层与数据支撑层，如图~\ref{fig:bce-tech-mapping}所示。三层之间职责清晰、边界明确，上层通过接口调用下层服务，层间依赖单向传递，有效保证了系统的低耦合性与可维护性。表~\ref{tab:bce-tech-mapping}展示了B-C-E逻辑架构向技术架构的对应映射关系。
 
-\textcolor{red}{[TODO: 描述五个Agent的职责划分、LangGraph有向图结构、Agent间通信机制，插入Agent协同流程图]}
+\begin{table}[H]
+\centering
+\caption{B-C-E逻辑架构与技术架构映射}
+\label{tab:bce-tech-mapping}
+\begin{tabularx}{\textwidth}{|c|c|c|X|}
+\hline
+\textbf{B-C-E逻辑层} & \textbf{技术架构层} & \textbf{Django MVT} & \textbf{核心技术组件} \\
+\hline
+边界层（Boundary） & 表现层 & Template & HTML模板 + CSS + JavaScript \\
+\hline
+控制层（Control） & 业务逻辑层 & View & Django View + 五个核心Agent + LangGraph \\
+\hline
+实体层（Entity） & 数据支撑层 & Model & Django ORM + SQLite/MySQL \\
+\hline
+\end{tabularx}
+\end{table}
 
-\subsection{系统状态定义}
+这一映射关系确保了分析阶段的逻辑抽象与设计阶段的技术实现之间保持严格对应，使后续的编码开发能够直接依据B-C-E架构中的类划分进行组织。
 
-\textcolor{red}{[TODO: 描述SystemState的字段设计与数据流转]}
+\textbf{表现层（Presentation Layer）}
 
-\subsection{PatientAgent设计}
+表现层负责与用户直接交互，基于Django Template引擎渲染HTML页面，结合CSS与JavaScript实现响应式界面布局。表现层划分为患者端与医生端两个子系统：患者端提供健康数据录入（语音/文字）、个人健康记录查看与用药打卡等交互界面；医生端提供风险预警看板、随访任务管理、用药依从性统计与患者档案管理等工作台界面。表现层不包含任何业务逻辑，所有数据均通过HTTP请求与业务逻辑层进行交互。
 
-\textcolor{red}{[TODO: 语音解析流程、LLM调用策略]}
+\textbf{业务逻辑层（Business Logic Layer）}
 
-\subsection{TriageAgent设计}
+业务逻辑层是系统的核心处理中枢，由Django View函数与五个核心Agent共同构成。Django View负责接收来自表现层的HTTP请求，完成参数校验与权限验证后，调度相应Agent执行业务逻辑，并将处理结果封装为HTTP响应返回表现层。五个Agent（PatientAgent、TriageAgent、SchedulerAgent、DoctorAgent、MedicationAgent）以LangGraph进行状态流转编排，在业务逻辑层内部协同工作，分别承担语音解析、风险评估、随访调度、工作台协同与用药管理等核心职责。
 
-\textcolor{red}{[TODO: 加权风险评分模型、三色等级映射规则]}
+\textbf{数据支撑层（Data Layer）}
 
-\subsection{SchedulerAgent设计}
+数据支撑层负责系统所有持久化数据的存储与访问管理，基于Django ORM与关系型数据库实现。开发环境使用SQLite，生产环境可平滑迁移至MySQL。此外，数据支撑层还包含基于ChromaDB的向量知识库，存储糖尿病诊疗指南与患者教育文档的嵌入向量，为RAG（检索增强生成）知识服务提供语义检索能力。数据支撑层对业务逻辑层屏蔽底层数据库操作细节，业务逻辑层通过统一的ORM接口进行结构化数据读写，通过RAGService接口进行知识检索，保证了数据访问逻辑的一致性与可移植性。
 
-\textcolor{red}{[TODO: 随访周期规则表、任务生成逻辑]}
 
-\subsection{MedicationAgent设计}
+\subsection{Django MVT架构映射}
 
-\textcolor{red}{[TODO: 用药提醒机制、依从率计算、续方预警]}
+在三层架构的基础上，业务逻辑层与表现层的具体实现遵循Django框架原生的MVT（Model-View-Template）架构模式。三层架构与MVT的对应关系如表~\ref{tab:mvt-mapping}所示。
 
-\subsection{DoctorAgent设计}
+\begin{table}[H]
+\centering
+\caption{三层架构与Django MVT对应关系}
+\label{tab:mvt-mapping}
+\begin{tabularx}{\textwidth}{|c|c|X|}
+\hline
+\textbf{三层架构} & \textbf{Django MVT} & \textbf{系统组件} \\
+\hline
+表现层 & Template & 患者端页面模板、医生工作台页面模板 \\
+\hline
+业务逻辑层 & View & Django View函数 + 五个核心Agent \\
+\hline
+数据支撑层 & Model & Django ORM数据模型 + 关系型数据库 \\
+\hline
+\end{tabularx}
+\end{table}
 
-\textcolor{red}{[TODO: 工作台数据汇聚逻辑、RAG辅助的患者摘要生成]}
+\textbf{Model层}对应系统实体类，通过Django ORM定义Patient、HealthRecord、RiskRecord、VisitTask、MedicationPlan、MedicationRecord、Doctor等核心数据模型，负责与底层数据库交互，承载数据支撑层的全部数据管理功能。
 
-\section{RAG知识服务设计}
+\textbf{View层}承载系统的核心业务处理逻辑。Django View函数接收HTTP请求后，根据请求类型调用对应Agent完成业务处理，并将结果序列化后传递至Template层渲染，或以JSON格式直接返回前端。五个Agent的实例化与调度均在View层完成。
 
-\textcolor{red}{[TODO: 知识库构建方案、向量检索流程、RAG作为共享服务层的架构定位]}
+\textbf{Template层}负责将View层传递的上下文数据渲染为最终的HTML页面，提供给患者端与医生端用户进行浏览与交互。Template层仅负责数据展示，不包含业务计算逻辑。
 
+
+\subsection{系统技术架构图}
+
+% >>> 图：系统总体技术架构图 <<<
+% 源文件：diagrams/ch04/architecture.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 系统总体技术架构图 $\rightarrow$ diagrams/ch04/architecture.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=\textwidth]{figures/ch04/architecture.png}
+\caption{系统总体技术架构图}
+\label{fig:bce-tech-mapping}
+\end{figure}
+
+图中以实线箭头标注主业务流程的链式调用路径（PatientAgent $\rightarrow$ TriageAgent $\rightarrow$ SchedulerAgent $\rightarrow$ DoctorAgent），以虚线箭头标注MedicationAgent独立定时任务路径向DoctorAgent发送续方预警的单向通知关系，两条路径在图中清晰区分，与4.2.3节的状态流转图保持一致。
+
+
+% ------------------------------------------------------------------
+\section{多智能体系统设计}
+
+\subsection{MAS整体设计思路}
+
+本系统的多智能体系统（Multi-Agent System，MAS）以LangGraph作为Agent编排框架，将复杂的慢病管理业务流程分解为五个职责单一的Agent节点，通过定义统一的系统状态对象（SystemState）与有向图结构实现Agent之间的状态驱动协同。
+
+相较于传统的单体业务逻辑实现，MAS设计具有以下三方面优势：第一，各Agent职责边界清晰，内部逻辑独立封装，便于单独维护与迭代；第二，LangGraph以有向图描述Agent间的协作流程，业务流转逻辑直观可视，易于扩展新的Agent节点；第三，各Agent可根据业务需要灵活组合，例如MedicationAgent可独立运行定时检查任务，无需依赖其他Agent的触发。
+
+系统MAS的整体运行机制如下：患者录入健康数据后，PatientAgent完成数据解析与存储，随即触发TriageAgent执行风险评估；TriageAgent根据评估结果通知SchedulerAgent调整随访计划；SchedulerAgent创建随访任务后推送至DoctorAgent更新医生工作台；MedicationAgent则以独立的定时任务并行运行，负责用药提醒推送与续方预警。此外，系统引入RAG知识服务作为共享基础设施，PatientAgent与DoctorAgent可按需调用该服务，分别为患者生成基于指南的健康反馈建议、为医生生成患者诊疗辅助摘要，使Agent的输出从纯规则计算扩展为"规则+知识"的混合增强模式。
+
+
+\subsection{LangGraph状态设计}
+
+LangGraph以共享状态对象驱动Agent节点之间的信息传递。系统定义统一的\texttt{SystemState}作为全局状态对象，各Agent节点从状态中读取所需输入数据，并将处理结果写回状态，供后续节点使用。\texttt{SystemState}的核心字段设计如表~\ref{tab:system-state}所示。
+
+\begin{table}[H]
+\centering
+\caption{SystemState状态字段设计}
+\label{tab:system-state}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{类型} & \textbf{说明} \\
+\hline
+\texttt{patient\_id} & int & 当前业务流程涉及的患者ID \\
+\hline
+\texttt{patient\_name} & str & 患者姓名（冗余缓存，避免Agent内重复查库） \\
+\hline
+\texttt{health\_record} & dict & PatientAgent解析后的结构化体征数据 \\
+\hline
+\texttt{risk\_level} & str & TriageAgent评估结果（green/yellow/red） \\
+\hline
+\texttt{risk\_score} & float & 风险加权评分值 \\
+\hline
+\texttt{trigger\_indicators} & list & 触发当前风险等级的异常指标列表 \\
+\hline
+\texttt{visit\_task\_id} & int & SchedulerAgent创建或更新的随访任务ID \\
+\hline
+\texttt{next\_visit\_date} & date & 下次随访计划日期 \\
+\hline
+\texttt{medication\_alert} & bool & 是否触发续方提醒 \\
+\hline
+\texttt{flow\_log} & list & 各Agent节点的执行日志，用于追踪与调试 \\
+\hline
+\end{tabularx}
+\end{table}
+
+上表仅列出与Agent链式调用直接相关的核心状态字段。\texttt{patient\_name}字段在PatientAgent初始化阶段从Patient数据表一次性读取并写入SystemState，供后续DoctorAgent在生成预警通知与随访任务时直接引用，避免多个Agent在执行过程中重复查询Patient表。各Agent在实际运行过程中若需获取责任医生姓名等其他基础档案信息，可通过\texttt{patient\_id}经Django ORM关联查询Patient与Doctor数据模型获取，此类可查询的关联信息不纳入SystemState，以保持状态对象的轻量化与职责聚焦。
+
+
+\subsection{LangGraph状态流转图}
+
+系统的LangGraph有向图结构包含五个Agent节点与两条独立执行路径：
+
+\textbf{主流程路径}（由健康数据录入触发）：PatientAgent $\rightarrow$ TriageAgent $\rightarrow$ SchedulerAgent $\rightarrow$ DoctorAgent $\rightarrow$ END
+
+\textbf{用药管理路径}（由定时任务触发）：MedicationAgent $\rightarrow$（续方预警时）DoctorAgent $\rightarrow$ END
+
+% >>> 图：主业务流程Agent状态流转图 <<<
+% 源文件：diagrams/ch04/langgraph-main-flow.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 主业务流程Agent状态流转图 $\rightarrow$ diagrams/ch04/langgraph-main-flow.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.75\textwidth]{figures/ch04/langgraph-main-flow.png}
+\caption{主业务流程Agent状态流转图}
+\label{fig:langgraph-main-flow}
+\end{figure}
+
+图~\ref{fig:langgraph-main-flow}展示了主业务流程的状态流转过程：PatientAgent解析并存储健康数据后触发TriageAgent执行风险评分，若风险等级较上次发生变更，则经由SchedulerAgent调整随访周期并由DoctorAgent更新医生工作台；若等级未变化，则由DoctorAgent仅更新患者风险状态展示。
+
+% >>> 图：用药管理定时任务Agent状态流转图 <<<
+% 源文件：diagrams/ch04/langgraph-medication-flow.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 用药管理定时任务Agent状态流转图 $\rightarrow$ diagrams/ch04/langgraph-medication-flow.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.6\textwidth]{figures/ch04/langgraph-medication-flow.png}
+\caption{用药管理定时任务Agent状态流转图}
+\label{fig:langgraph-medication-flow}
+\end{figure}
+
+图~\ref{fig:langgraph-medication-flow}展示了用药管理的独立定时任务路径：MedicationAgent推送服药提醒并记录打卡状态后估算剩余药量，若剩余药量低于预设阈值，则触发DoctorAgent推送续方待办通知。两条路径彼此独立运行，主流程由患者数据录入事件驱动，用药管理路径由系统定时任务驱动，共同构成完整的多智能体协作体系。
+
+
+\subsection{各Agent详细设计}
+
+\subsubsection{患者代理（PatientAgent）}
+
+PatientAgent是健康数据流入系统的第一个处理节点，负责接收患者录入的原始数据并完成结构化转换。
+
+\textbf{输入}：患者提交的语音转文字文本或表单原始数据。
+
+\textbf{处理逻辑}：若输入类型为语音文本，调用大语言模型（LLM）API，以预设的Prompt模板提取血糖值、血压值、体重等结构化字段，返回JSON格式数据；对解析结果进行数值范围校验（如空腹血糖正常参考范围为3.9$\sim$6.1 mmol/L），标记超范围字段；将结构化数据写入HealthRecord数据表，并将记录ID写入SystemState。
+
+\textbf{健康反馈生成}：数据存储并完成风险评估后，PatientAgent调用RAG知识服务，以当前体征数据与风险等级为查询上下文，从患者教育知识库中检索相关指南建议条目，经LLM整合生成适老化的自然语言健康反馈，呈现于评估结果页面。所有反馈均附有免责提示，确保系统定位于辅助工具而非医疗诊断工具。
+
+\textbf{输出}：完成数据存储，更新SystemState中的\texttt{health\_record}字段，触发TriageAgent。
+
+\textbf{LLM Prompt设计要点}：Prompt明确要求模型从口语化描述中提取指定字段，输出严格遵循JSON格式，不得添加额外解释文字，示例如下：
+
+\begin{lstlisting}[language={}, caption={PatientAgent LLM Prompt模板}]
+你是一个医疗数据解析助手。请从以下患者口述文字中提取体征数据，
+以JSON格式输出，字段包括：fasting_glucose（空腹血糖，单位mmol/L）、
+postmeal_glucose（餐后血糖）、systolic_bp（收缩压）、
+diastolic_bp（舒张压）、weight（体重，单位kg）。
+若某字段未提及，值填null。
+患者描述：{input_text}
+\end{lstlisting}
+
+
+\subsubsection{风险评估代理（TriageAgent）}
+
+TriageAgent基于医学参考指南，对患者最新体征数据进行加权风险评分，输出红/黄/绿三色风险等级。
+
+\textbf{输入}：SystemState中的\texttt{health\_record}字段。
+
+\textbf{处理逻辑}：系统参照《中国2型糖尿病防治指南》设定各项指标的评分权重与阈值，如表~\ref{tab:risk-weights}所示。
+
+\begin{table}[H]
+\centering
+\caption{风险评分指标权重表}
+\label{tab:risk-weights}
+\begin{tabularx}{\textwidth}{|l|c|c|c|c|}
+\hline
+\textbf{评估指标} & \textbf{绿色（正常）} & \textbf{黄色（警示）} & \textbf{红色（危险）} & \textbf{权重} \\
+\hline
+空腹血糖（mmol/L） & $<$7.0 & 7.0$\sim$13.9 & $\geq$13.9 & 0.35 \\
+\hline
+餐后2h血糖（mmol/L） & $<$10.0 & 10.0$\sim$16.7 & $\geq$16.7 & 0.25 \\
+\hline
+收缩压（mmHg） & $<$130 & 130$\sim$160 & $\geq$160 & 0.20 \\
+\hline
+舒张压（mmHg） & $<$80 & 80$\sim$100 & $\geq$100 & 0.10 \\
+\hline
+体重指数BMI & $<$24 & 24$\sim$28 & $\geq$28 & 0.10 \\
+\hline
+\end{tabularx}
+\end{table}
+
+各指标按绿/黄/红分别赋分1/2/3，加权求和后映射至最终等级：总分$<$1.5为绿码，1.5$\sim$2.2为黄码，$>$2.2为红码。
+
+\textbf{输出}：将\texttt{risk\_level}、\texttt{risk\_score}、\texttt{trigger\_indicators}写入SystemState，并将评估结果持久化至RiskRecord数据表，通知SchedulerAgent。
+
+
+\subsubsection{调度代理（SchedulerAgent）}
+
+SchedulerAgent根据患者当前风险等级，动态调整随访周期，自动创建或更新随访任务。
+
+\textbf{输入}：SystemState中的\texttt{risk\_level}与\texttt{patient\_id}。
+
+\textbf{处理逻辑}：随访周期规则如表~\ref{tab:visit-schedule}所示。
+
+\begin{table}[H]
+\centering
+\caption{随访周期规则表}
+\label{tab:visit-schedule}
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{风险等级} & \textbf{随访方式} & \textbf{随访周期} \\
+\hline
+绿码 & 线上轻问诊 & 每30天一次 \\
+\hline
+黄码 & 线上轻问诊 & 每14天一次 \\
+\hline
+红码 & 线下门诊或上门巡诊 & 立即生成紧急随访任务 \\
+\hline
+\end{tabularx}
+\end{table}
+
+查询该患者当前最新未完成随访任务，若已存在则更新截止日期；若不存在则新建任务。红码情况下将任务优先级标记为"紧急"，并触发DoctorAgent推送实时预警通知。
+
+\textbf{输出}：创建或更新VisitTask记录，更新SystemState中的\texttt{visit\_task\_id}与\texttt{next\_visit\_date}，通知DoctorAgent。
+
+
+\subsubsection{医生代理（DoctorAgent）}
+
+DoctorAgent作为医生工作台的数据汇聚节点，负责接收来自TriageAgent与SchedulerAgent的推送信息，更新医生端看板展示数据，并处理医生对随访任务的操作请求。
+
+\textbf{输入}：风险预警通知、随访任务更新通知、医生端操作请求。
+
+\textbf{处理逻辑}：接收红码预警时，将该患者条目置顶显示于风险预警看板，并标注触发预警的具体指标；接收随访任务更新时，刷新随访任务看板对应条目的状态与截止日期；接收医生"完成随访"操作时，更新VisitTask状态，并调用SchedulerAgent触发下一随访周期规划；接收续方待办通知时，在工作台待办列表中新增续方提醒条目。
+
+\textbf{患者智能摘要生成}：当医生打开某患者详情页时，DoctorAgent调用RAG知识服务，以该患者的当前风险等级、异常指标、近期体征趋势与用药依从率为查询上下文，从临床指南知识库中检索相关诊疗建议条目，经LLM整合生成结构化的诊疗辅助摘要，内容涵盖风险分析、管理建议与随访要点，为医生临床决策提供有依据的参考。
+
+\textbf{输出}：更新相关数据库记录，向前端返回更新后的看板数据与AI辅助摘要。
+
+
+\subsubsection{用药代理（MedicationAgent）}
+
+MedicationAgent以独立的定时任务形式运行，负责用药提醒推送、打卡记录管理与剩余药量监控。
+
+\textbf{输入}：用药方案配置（MedicationPlan）、患者打卡操作请求。
+
+\textbf{处理逻辑}：每日按用药方案中设定的服药时间向患者推送提醒通知；接收患者打卡操作后，将打卡状态（已服药/漏服）写入MedicationRecord，并重新计算用药依从率；依从率计算公式如下：
+
+\[
+\text{依从率} = \frac{\text{实际打卡次数}}{\text{应打卡总次数}} \times 100\%
+\]
+
+每次打卡完成后，根据已打卡天数估算剩余药量：剩余天数 = 处方总天数 $-$ 已用药天数。当剩余天数 $\leq$ 3天时，向患者端推送续方提醒，同时触发DoctorAgent生成续方待办通知。
+
+\textbf{输出}：更新MedicationRecord，计算并更新依从率，按需触发续方预警。
+
+
+% ------------------------------------------------------------------
+\section{功能模块详细设计}
+
+\subsection{系统功能模块划分}
+
+基于第三章需求分析所确定的功能边界，系统按照"高内聚、低耦合"原则，将全部功能划分为六个核心模块，各模块与五个Agent之间形成清晰的职责映射关系。系统功能模块结构如图~\ref{fig:function-modules}所示。
+
+% >>> 图：系统功能模块图（WBS） <<<
+% 源文件：diagrams/ch04/function-modules-wbs.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 系统功能模块图 $\rightarrow$ diagrams/ch04/function-modules-wbs.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=\textwidth]{figures/ch04/function-modules-wbs.png}
+\caption{系统功能模块图}
+\label{fig:function-modules}
+\end{figure}
+
+系统功能模块与Agent及Django View之间的对应关系如表~\ref{tab:module-agent-mapping}所示，每个Agent承载一至两个功能模块的核心业务逻辑，模块之间通过LangGraph状态流转机制实现协同。
+
+\begin{table}[H]
+\centering
+\caption{功能模块与Agent/组件对应关系}
+\label{tab:module-agent-mapping}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{功能模块} & \textbf{对应Agent/组件} & \textbf{协作关系} \\
+\hline
+用户认证模块 & Django View（无Agent） & 认证完成后路由至对应端 \\
+\hline
+健康数据管理模块 & PatientAgent & 数据存储后触发风险评估与预警模块 \\
+\hline
+风险评估与预警模块 & TriageAgent & 评估完成后触发随访调度管理模块 \\
+\hline
+随访调度管理模块 & SchedulerAgent & 任务生成后推送至医生工作台 \\
+\hline
+用药管理模块 & MedicationAgent & 独立定时运行，续方预警时通知DoctorAgent \\
+\hline
+医生工作台（预警/随访/用药） & DoctorAgent & 汇聚多模块推送，响应医生操作 \\
+\hline
+患者档案管理模块 & Django View（无Agent） & 建档/编辑后同步更新MedicationAgent配置 \\
+\hline
+RAG知识辅助服务 & RAGService（共享组件） & 供PatientAgent与DoctorAgent按需调用 \\
+\hline
+\end{tabularx}
+\end{table}
+
+
+\subsection{用户认证模块}
+
+用户认证模块是系统所有功能的入口，承担身份验证与角色分流两项核心职责。患者与社区医生共享同一登录入口页面，用户输入账号与密码后，系统在后端通过Django内置的认证框架对密码哈希值进行比对验证。验证通过后，系统根据数据库中存储的角色标识判断当前用户身份，将患者路由至患者端首页，将社区医生路由至医生工作台首页。认证信息通过Django Session机制维持登录状态，用户在会话有效期内无需重复登录。为保障账号安全，系统在同一会话内对连续登录失败次数进行累计，达到上限后临时锁定该账号并提示用户稍后重试。
+
+该模块的设计较为轻量，未引入独立的Agent处理，由Django View直接完成认证逻辑与路由跳转，符合模块本身职责简单、不涉及多步业务协同的特点。
+
+
+\subsection{健康数据管理模块}
+
+健康数据管理模块由PatientAgent驱动，面向患者提供体征数据的录入、解析、存储与历史查看功能，是整条业务链路的数据源头。
+
+在数据录入环节，模块提供语音录入与文字录入两种方式供患者选择。语音录入场景下，患者按住录音按钮以自然口语描述当日测量结果，前端通过浏览器MediaRecorder API录制音频，录音结束后将音频文件上传至服务端，由语音交互服务模块调用ASR（自动语音识别）服务将音频转写为文本。转写文本显示于前端供患者核查后，患者点击"AI解析"触发PatientAgent调用大语言模型对口语化文本进行语义解析，从中提取空腹血糖、餐后血糖、收缩压、舒张压及体重等指标字段，输出为标准化的JSON结构。解析完成后，系统将结果回填至前端表单供患者最终确认。文字录入场景下，患者直接在前端表单中逐字段输入数值，系统在提交时对数据格式与数值合理性进行校验，例如空腹血糖的合理输入范围设定为1.0至35.0 mmol/L，超出此范围的数值将被标记为异常并提示患者检查。两种录入方式最终均生成同一结构的HealthRecord记录写入数据库，确保后续风险评估环节的数据格式统一。
+
+在评估结果呈现环节，系统完成风险评估并生成RAG健康反馈建议后，在结果页面提供语音播报功能。患者点击播报按钮，系统调用TTS（文本转语音）服务将反馈文本合成为音频并在前端播放，使视力不便或阅读困难的老年患者也能通过听觉获取健康指导信息。
+
+上述语音录入与语音播报过程中的全部中间数据（ASR原始转写文本、LLM解析的输入与输出、RAG健康反馈内容）均自动持久化至Agent交互日志表（AgentLog），确保AI辅助决策过程的完整可追溯。
+
+在健康记录查看环节，患者可在个人健康记录页面浏览历史体征数据的变化趋势。系统以折线图形式展示近7日或近30日的血糖波动曲线与血压变化趋势，页面顶部同步展示患者当前风险等级标识与最近一次评估时间，使患者能够直观感知自身血糖管理状况。此外，页面下方以列表形式展示每日用药打卡记录，方便患者回顾近期服药情况。
+
+数据存储完成后，PatientAgent自动将本次新增记录的ID写入LangGraph全局状态对象SystemState，触发下游TriageAgent执行风险评估，实现数据录入与风险评估环节的无缝衔接。
+
+
+\subsection{风险评估与预警模块}
+
+风险评估与预警模块由TriageAgent驱动，是系统智能化管理的核心环节，负责将患者的原始体征数据转化为可量化的风险等级与预警信息。
+
+TriageAgent在接收到PatientAgent写入SystemState的最新健康记录后启动评估流程。评估模型采用加权评分法，将空腹血糖、餐后2小时血糖、收缩压、舒张压及体重指数BMI共五项指标纳入评估体系，各项指标的权重配置与阈值划分详见4.2.4节TriageAgent详细设计中的风险评分指标权重表（表~\ref{tab:risk-weights}）。每项指标按照其实际数值所处区间赋予1至3分，经加权求和与阈值映射后，最终生成绿码、黄码、红码三种风险等级，分别对应"血糖控制良好、可维持当前方案""部分指标偏离目标、需加强监测"和"多项指标严重超标、需紧急干预"三种临床含义。
+
+在每次评估完成后，TriageAgent将风险等级、评分值与触发预警的具体异常指标列表持久化至RiskRecord数据表，同时更新该患者在系统中的动态画像数据。动态患者画像以近30日为时间窗口，综合计算空腹血糖达标率（空腹血糖$<$7.0 mmol/L的天数占比）与血糖波动幅度（标准差），作为医生评估患者长期管理效果的辅助参考。
+
+在预警展示环节，医生工作台的风险预警看板以红、黄、绿三色分区列表形式实时呈现所有在管患者的风险状态。红码患者置顶显示并附带醒目标识，医生点击患者条目即可查看最新体征数据、异常指标详情及动态画像摘要，为后续干预决策提供充分的信息支撑。
+
+评估完成后，TriageAgent将风险等级写入SystemState并通知SchedulerAgent：若风险等级较上一次发生变更，则触发SchedulerAgent重新计算随访周期；若等级未变化，则仅更新DoctorAgent的看板展示数据，不产生额外调度动作。
+
+
+\subsection{随访调度管理模块}
+
+随访调度管理模块由SchedulerAgent驱动，承担随访周期动态计算、任务自动生成与导诊分流三项核心职责，是连接风险评估结果与医生实际随访行为的关键桥梁。
+
+SchedulerAgent在接收到TriageAgent的风险等级变更通知后启动调度流程。调度的核心逻辑围绕一套基于风险等级的周期映射规则展开，各等级对应的随访方式与周期天数详见4.2.4节SchedulerAgent详细设计中的随访周期规则表（表~\ref{tab:visit-schedule}）。绿码患者以线上轻问诊方式每30天随访一次，黄码患者缩短至14天，红码患者则由系统立即生成紧急随访任务并建议线下门诊或上门巡诊。这套规则的具体参数以集中配置的方式存储于系统设置中，社区医生可根据实际管理经验灵活调整，无需修改代码逻辑。
+
+在任务生成环节，SchedulerAgent首先查询该患者当前是否存在未完成的随访任务。若存在，则根据最新风险等级更新任务的截止日期与随访方式；若不存在，则以当前日期为起点，按照周期映射规则计算下次随访日期，创建新的VisitTask记录并指派给该患者的责任医生。任务创建完成后，SchedulerAgent通过SystemState将任务信息推送至DoctorAgent，DoctorAgent随即更新医生工作台的随访任务看板。
+
+在医生端的随访任务处理环节，社区医生可在任务看板中按紧急程度与截止日期排序查看待办任务，点击具体任务条目后可查阅该患者的近期健康数据摘要与系统自动生成的随访建议。随访完成后，医生在任务详情页填写随访备注并将任务标记为"已完成"，系统随即将该任务归档，同时SchedulerAgent根据患者当前最新风险等级自动规划下一随访周期，确保随访管理形成持续闭环。
+
+
+\subsection{用药管理模块}
+
+用药管理模块由MedicationAgent驱动，面向患者端提供用药提醒与打卡功能，面向医生端提供依从性统计与续方预警功能，是保障患者长期用药规范性的重要支撑模块。
+
+在用药提醒环节，MedicationAgent以独立定时任务的形式持续运行，按照每位患者用药方案中配置的服药时间节点向患者端推送提醒通知。通知内容包含当次应服药品名称、剂量规格与服药时间，确保患者获得明确的服药指引。患者收到提醒后可在打卡界面选择"已服药"或"跳过"以记录本次服药情况，系统将打卡状态与实际操作时间写入MedicationRecord数据表。
+
+在依从性统计环节，MedicationAgent根据每位患者在指定时间窗口内的打卡记录，按照"实际打卡次数除以应打卡总次数"的公式计算用药依从率，并统计漏服次数与漏服时间分布。医生在工作台选择目标患者后，可查看以图表形式呈现的依从性统计结果，包括依从率柱状图、漏服时段分布热力图以及近期打卡明细列表，为评估患者用药行为、判断是否需要调整治疗方案提供数据支撑。
+
+在续方预警环节，MedicationAgent在每次打卡完成后同步估算患者当前药品的剩余可用天数。估算逻辑以用药方案的处方总天数为基准，减去自方案起始日至当前日期的已用药天数。当剩余天数降至预设阈值及以下时（默认阈值为3天，具体参数详见4.2.4节MedicationAgent详细设计），系统同时向患者端推送续方提醒通知与向医生工作台生成续方待办条目。医生确认续方后，系统将该药品方案的起始日期重置，剩余天数恢复至处方总天数，续方待办自动关闭，整个续方流程形成完整闭环。
+
+
+\subsection{患者档案管理模块}
+
+患者档案管理模块面向社区医生，提供患者建档、信息维护与用药方案配置功能，是系统所有业务数据的基础来源。
+
+在患者建档环节，社区医生通过档案管理页面的新增表单录入患者的基础信息，包括姓名、年龄、性别、确诊年份、联系方式等字段，同时为患者指定责任医生并配置初始用药方案，填写药品名称、剂量规格、每日服药频次与提醒时间。表单提交后，系统在Patient数据表中创建患者记录并自动生成登录账号，将初始密码以短信形式发送至患者预留手机号，完成患者的系统入驻。建档完成的同时，MedicationAgent根据新建的用药方案自动初始化提醒任务配置，确保患者从入驻第一天起即可接收服药提醒。
+
+在信息维护环节，社区医生可在患者列表中选择目标患者，进入详情页修改基础信息或调整用药方案。用药方案的变更涉及药品增减、剂量调整或服药时间变更，保存后系统同步更新MedicationAgent的提醒配置，保证后续推送的提醒内容与最新方案一致。
+
+在患者归档环节，对于因转诊、迁出或其他原因不再纳入社区管理的患者，社区医生可将其标记为归档状态。归档后该患者的全部历史健康记录、评估记录与随访记录均予以保留，但系统不再为该患者执行风险评估与随访调度，MedicationAgent同步停止对该患者的用药提醒推送，释放相应的系统资源。
+
+该模块的核心操作（建档、信息维护、归档）均为基础CRUD操作，由Django View直接完成即可，未引入独立Agent，与模块职责简单、不涉及多步Agent协同的特点相符。
+
+
+\subsection{RAG知识辅助服务设计}
+
+RAG（Retrieval-Augmented Generation，检索增强生成）知识辅助服务是系统智能化能力的重要支撑组件，独立于各Agent之外，作为共享基础设施供PatientAgent与DoctorAgent按需调用。
+
+\subsubsection{服务定位与设计原则}
+
+在五个Agent的业务逻辑中，TriageAgent、SchedulerAgent与MedicationAgent的核心逻辑均由确定性规则驱动（加权评分、周期查表、打卡计数），无需引入外部知识检索。而PatientAgent在数据录入后需为患者生成基于指南的健康反馈建议，DoctorAgent在医生查看患者详情时需生成诊疗辅助摘要，这两个场景的输出质量直接依赖于对权威临床知识的准确引用，属于"规则搞不定、需要知识检索+LLM生成"的典型RAG应用场景。
+
+基于上述分析，系统遵循以下设计原则：知识库统一维护，避免各Agent重复管理知识索引；RAGService封装检索与生成逻辑，Agent专注于业务决策；知识库支持在线更新，新增文档只需导入向量库，无需修改Agent代码。
+
+\subsubsection{知识库结构设计}
+
+系统采用单一知识库、元数据分层的方案（方案A），所有知识文档统一存储于ChromaDB向量数据库中，通过\texttt{audience}元数据标签区分面向患者与面向医生的知识条目。知识库的文档来源与标签划分如表~\ref{tab:kb-structure}所示。
+
+\begin{table}[H]
+\centering
+\caption{知识库文档来源与标签划分}
+\label{tab:kb-structure}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{文档来源} & \textbf{audience标签} & \textbf{内容说明} \\
+\hline
+患者健康教育文档 & patient & 血糖控制目标科普、饮食运动建议、低血糖识别、足部护理等 \\
+\hline
+《中国2型糖尿病防治指南（2024版）》摘录 & doctor & 血糖控制目标分层、随访频率规范、用药方案、并发症筛查标准等 \\
+\hline
+药品说明书摘录 & both & 常用降糖药物的剂量、禁忌、相互作用信息 \\
+\hline
+\end{tabularx}
+\end{table}
+
+知识文档以段落为单位切分，每段经ChromaDB内置的文本嵌入模型（all-MiniLM-L6-v2）转化为语义向量后持久化存储。查询时，PatientAgent传入\texttt{audience="patient"}过滤条件，仅检索标签为patient或both的条目；DoctorAgent传入\texttt{audience="doctor"}，仅检索标签为doctor或both的条目，实现同一知识库内的知识隔离。
+
+\subsubsection{RAGService接口设计}
+
+RAGService对外提供两个核心方法：\texttt{retrieve()}负责语义检索，\texttt{generate\_with\_context()}负责将检索结果拼入LLM提示词并生成回答。在此基础上封装两个面向业务的高级接口，如表~\ref{tab:rag-api}所示。
+
+\begin{table}[H]
+\centering
+\caption{RAGService业务接口}
+\label{tab:rag-api}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{接口} & \textbf{调用方} & \textbf{功能说明} \\
+\hline
+\texttt{generate\_patient\_feedback()} & PatientAgent & 以体征数据+风险等级为上下文，检索患者教育知识，生成适老化健康反馈 \\
+\hline
+\texttt{generate\_doctor\_summary()} & DoctorAgent & 以风险等级+异常指标+近期数据+依从率为上下文，检索临床指南，生成诊疗辅助摘要 \\
+\hline
+\end{tabularx}
+\end{table}
+
+两个接口内部均遵循"查询构造$\rightarrow$向量检索Top-K$\rightarrow$上下文拼接$\rightarrow$LLM生成"的标准RAG链路，区别在于System Prompt的角色设定与输出风格：患者端采用通俗口语化风格并附加免责提示，医生端采用专业结构化风格并标注指南出处。
+
+
+\subsection{语音交互服务设计}
+
+语音交互服务是系统适老化无障碍交互能力的技术支撑模块，独立于各Agent之外，与RAG知识服务共同构成系统的共享基础设施层。该模块封装ASR（语音识别）与TTS（语音合成）两大能力，供健康数据管理模块在语音录入与反馈播报环节按需调用。
+
+\subsubsection{服务架构与供应商策略}
+
+语音交互服务采用策略模式（Strategy Pattern）设计，将ASR与TTS的业务调用接口与底层供应商实现解耦。系统通过配置文件中的\texttt{ASR\_PROVIDER}与\texttt{TTS\_PROVIDER}参数指定当前使用的供应商，服务模块在运行时根据配置动态分派至对应的供应商实现函数。当前支持的供应商及其适用场景如表~\ref{tab:speech-providers}所示。
+
+\begin{table}[H]
+\centering
+\caption{语音服务供应商支持}
+\label{tab:speech-providers}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{能力} & \textbf{供应商} & \textbf{配置值} & \textbf{特点} \\
+\hline
+ASR & OpenAI Whisper & \texttt{whisper\_api} & 多语言通用，中文准确率高 \\
+\hline
+ASR & 火山引擎（字节豆包） & \texttt{volcano} & 低延迟流式识别，国内部署 \\
+\hline
+ASR & 通义听悟（阿里云） & \texttt{dashscope} & Paraformer模型，医疗术语优化 \\
+\hline
+TTS & 微软Edge TTS & \texttt{edge\_tts} & 免费、无需Key、音色自然 \\
+\hline
+TTS & 火山引擎 & \texttt{volcano} & 情感化音色，国内低延迟 \\
+\hline
+TTS & 通义CosyVoice & \texttt{dashscope} & 高自然度，中文定制音色 \\
+\hline
+\end{tabularx}
+\end{table}
+
+这一设计使系统在不修改任何业务代码的前提下，仅通过变更配置即可完成底层语音服务的供应商迁移，降低了对单一供应商的技术锁定风险。
+
+\subsubsection{ASR处理链路}
+
+语音录入的完整处理链路为：前端录制音频（WebM格式）$\to$ 上传至后端 $\to$ 调用ASR供应商API转写 $\to$ 返回文本 $\to$ 患者确认后交由PatientAgent进行LLM语义解析。ASR与LLM解析分属两个独立环节，前者解决"语音到文字"的感知任务，后者解决"口语到结构化数据"的认知任务，职责划分清晰。
+
+\subsubsection{TTS处理链路与缓存机制}
+
+健康反馈播报的处理链路为：RAG生成反馈文本 $\to$ 调用TTS供应商API合成MP3音频 $\to$ 缓存至服务端文件系统 $\to$ 前端通过URL请求音频并播放。系统对TTS合成结果实施基于内容哈希的文件缓存策略，相同文本的重复播报请求直接返回缓存文件，避免重复调用TTS API带来的延迟与费用开销。
+
+
+\subsection{Agent交互日志设计}
+
+为确保系统所有AI辅助决策过程的可追溯性与可审计性，系统设计了统一的Agent交互日志（AgentLog）机制，以持久化方式记录每次AI参与处理的完整输入、输出与上下文信息。
+
+AgentLog作为系统的业务数据实体（而非运维级日志），面向患者、医生与系统审计三方可见：患者可在"AI交互历史"页面回顾系统为其生成的所有健康反馈建议与语音解析记录；医生可在患者详情页查看该患者的全部AI交互记录，了解系统曾为患者提供的建议内容；在系统审计层面，AgentLog为AI辅助决策提供了完整的"输入—输出—时间—耗时"证据链，满足医疗健康类系统对AI可解释性与可追溯性的合规要求。
+
+AgentLog支持七种日志类型：语音识别（asr）、语音解析（voice\_parse）、健康反馈（health\_feedback）、诊疗摘要（doctor\_summary）、风险评估（risk\_eval）、语音合成（tts）与流程流转（flow），覆盖系统全部AI交互场景。各Agent在完成核心处理逻辑后自动写入对应类型的日志记录，写入操作采用容错机制（try-except），确保日志写入失败不影响主业务流程的正常执行。AgentLog的数据表结构设计详见4.4节数据库设计。
+
+
+\subsection{设计类图}
+
+设计类是分析类向代码实现过渡的关键桥梁。相较于第三章用例分析中识别的分析类，设计类在保持边界类（Boundary）、控制类（Control）、实体类（Entity）三层逻辑分层不变的前提下，进一步细化了每个类的具体属性名称与数据类型、方法签名与参数列表，以及类间的依赖与关联关系，使其直接对应Django框架下的View函数、Agent模块与ORM数据模型，为第五章的代码实现提供精确的类职责划分依据。
+
+需要说明的是，各实体设计类中由Django ORM自动管理的时间戳字段（如通过\texttt{auto\_now\_add=True}配置的\texttt{created\_at}等）在设计类图中予以省略，以保持类图聚焦于业务属性与方法的表达；上述自动管理字段的完整定义详见4.4.2节数据表结构设计。
+
+本节选取健康数据管理模块、风险评估与预警模块、用药管理模块三个核心模块，分别绘制设计类图加以说明。
+
+
+\subsubsection{健康数据管理模块设计类图}
+
+健康数据管理模块的设计类图如图~\ref{fig:class-health-data}所示，涉及边界类\texttt{PatientDataInputView}、控制类\texttt{PatientAgent}与实体类\texttt{HealthRecord}三个核心设计类。
+
+% >>> 图：健康数据管理模块设计类图 <<<
+% 源文件：diagrams/ch04/class-health-data.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 健康数据管理模块设计类图 $\rightarrow$ diagrams/ch04/class-health-data.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.85\textwidth]{figures/ch04/class-health-data.png}
+\caption{健康数据管理模块设计类图}
+\label{fig:class-health-data}
+\end{figure}
+
+\texttt{PatientDataInputView}作为边界类，对应Django中处理\texttt{/patient/input/}路由的视图，\texttt{get()}方法负责渲染录入表单页面，\texttt{post()}方法接收前端提交的数据并完成初步格式校验，校验通过后将数据交由\texttt{PatientAgent}进行解析处理。\texttt{PatientAgent}作为核心控制类，其\texttt{run()}方法是LangGraph节点的标准入口，接收全局状态字典并返回更新后的状态；\texttt{parse\_voice\_text()}与\texttt{parse\_form\_data()}分别对应语音与文字两种录入方式的数据处理路径，前者通过\texttt{call\_llm\_api()}调用大语言模型完成口语化文本的结构化解析，后者则对表单键值对进行直接映射；\texttt{save\_health\_record()}在数据验证通过后调用\texttt{HealthRecord}的\texttt{save()}方法完成数据持久化。\texttt{HealthRecord}作为实体类，直接对应Django ORM中的同名数据模型，\texttt{get\_recent()}方法支持按时间窗口查询历史记录，为趋势图表展示提供数据来源。
+
+
+\subsubsection{风险评估与预警模块设计类图}
+
+风险评估与预警模块的设计类图如图~\ref{fig:class-risk-assessment}所示，涉及边界类\texttt{DoctorRiskDashboardView}、控制类\texttt{TriageAgent}与实体类\texttt{RiskRecord}、\texttt{HealthRecord}四个核心设计类。
+
+% >>> 图：风险评估与预警模块设计类图 <<<
+% 源文件：diagrams/ch04/class-risk-assessment.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 风险评估与预警模块设计类图 $\rightarrow$ diagrams/ch04/class-risk-assessment.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.85\textwidth]{figures/ch04/class-risk-assessment.png}
+\caption{风险评估与预警模块设计类图}
+\label{fig:class-risk-assessment}
+\end{figure}
+
+\texttt{DoctorRiskDashboardView}作为边界类，对应医生端风险预警看板页面的视图处理逻辑，\texttt{get()}方法通过调用\texttt{get\_risk\_list()}查询所有在管患者的最新风险记录并渲染看板页面，\texttt{get\_patient\_detail()}以\texttt{JsonResponse}格式返回指定患者的详细风险信息，供前端异步渲染患者详情弹窗。该边界类仅通过查询\texttt{RiskRecord}与\texttt{HealthRecord}已有数据完成渲染，不直接调用\texttt{TriageAgent}——\texttt{TriageAgent}的触发入口为PatientAgent数据录入后的链式调用，而非医生端看板页面。\texttt{TriageAgent}是本模块的核心控制类，\texttt{RISK\_WEIGHTS}与\texttt{THRESHOLDS}以类属性形式集中存储权重配置与阈值参数，支持在不修改业务逻辑代码的前提下灵活调整评估规则；\texttt{calculate\_weighted\_score()}实现加权评分的核心计算逻辑，\texttt{get\_trigger\_indicators()}识别并返回超出正常阈值的异常指标列表，\texttt{map\_score\_to\_level()}完成评分值到风险等级的映射；\texttt{notify\_scheduler()}在评估完成后更新SystemState并触发下游SchedulerAgent节点，实现多Agent之间的链式调用。\texttt{RiskRecord}的\texttt{get\_latest()}方法按患者ID查询最新评估记录，是看板页面展示实时风险状态的主要数据入口。
+
+
+\subsubsection{用药管理模块设计类图}
+
+用药管理模块的设计类图如图~\ref{fig:class-medication}所示，涉及边界类\texttt{PatientMedicationView}、控制类\texttt{MedicationAgent}与实体类\texttt{MedicationPlan}、\texttt{MedicationRecord}四个核心设计类。
+
+% >>> 图：用药管理模块设计类图 <<<
+% 源文件：diagrams/ch04/class-medication.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 用药管理模块设计类图 $\rightarrow$ diagrams/ch04/class-medication.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.85\textwidth]{figures/ch04/class-medication.png}
+\caption{用药管理模块设计类图}
+\label{fig:class-medication}
+\end{figure}
+
+\texttt{PatientMedicationView}作为边界类，\texttt{get()}方法通过\texttt{get\_today\_plans()}查询当日有效用药方案并渲染打卡界面，\texttt{handle\_checkin\_request()}接收前端传递的方案ID与打卡状态参数，委托\texttt{MedicationAgent}完成打卡业务处理并返回JSON响应。\texttt{MedicationAgent}的\texttt{run\_reminder\_task()}方法作为独立定时任务的执行入口，遍历所有活跃用药方案并在到达提醒时间时调用\texttt{push\_reminder()}推送通知；\texttt{handle\_checkin()}接收打卡操作后创建\texttt{MedicationRecord}记录，并同步调用\texttt{estimate\_remaining\_days()}重新估算剩余天数，若\texttt{check\_refill\_needed()}返回True则立即触发\texttt{trigger\_refill\_alert()}向医生端发送续方预警。\texttt{REFILL\_THRESHOLD}以类属性形式定义续方提醒阈值，默认值为3天，社区医生可通过修改配置文件调整该参数而无需改动业务逻辑。\texttt{MedicationPlan}与\texttt{MedicationRecord}之间通过\texttt{plan\_id}外键形成一对多聚合关系，\texttt{MedicationRecord}的\texttt{get\_missed\_count()}方法支持按天数范围统计漏服次数，是医生端依从性统计图表的底层数据计算入口。
+
+
+% ------------------------------------------------------------------
 \section{数据库设计}
 
-\textcolor{red}{[TODO: 基于七张核心数据表，绘制E-R图，描述各表结构与关联关系]}
+在正式进入表结构设计之前，有必要就系统的数据库技术选型作出说明。本系统的业务数据在结构特征上具有以下三个显著特点：其一，患者、医生、健康记录、随访任务等核心数据之间存在明确的外键约束关系，数据的完整性与一致性需要由数据库层面的关系约束加以保障；其二，各实体的字段结构固定，不存在动态扩展字段的业务需求；其三，系统涉及跨表的事务性操作（例如续方处理时需要同时更新MedicationPlan与MedicationRecord两张表），对ACID事务支持有明确要求。相较于MongoDB等文档型数据库在灵活模式与水平扩展方面的优势，本系统的数据结构稳定、关系明确，关系型数据库在强外键约束与事务一致性方面更能满足上述业务特点。因此，系统选用关系型数据库作为持久化存储方案，并通过Django ORM进行统一的数据访问管理，开发阶段使用SQLite以简化环境配置，系统上线后可通过修改Django的\texttt{DATABASES}配置项平滑迁移至MySQL，无需改动任何业务代码。
 
-\section{接口设计}
 
-\textcolor{red}{[TODO: 前后端接口设计、Agent间接口设计]}
+\subsection{E-R模型设计}
+
+基于第三章用例分析中识别的七个业务实体类以及本章新增的Agent交互日志实体，数据库设计以关系型数据库为基础，通过Django ORM进行实体建模与表结构映射。系统的实体关系（E-R）模型如图~\ref{fig:er-diagram}所示。
+
+% >>> 图：系统E-R图 <<<
+% 源文件：diagrams/ch04/er-diagram.puml
+\todofig{}
+\textcolor{red}{[TODO-FIGURE: 系统E-R图 $\rightarrow$ diagrams/ch04/er-diagram.puml]}
+\begin{figure}[H]
+\centering
+% \includegraphics[width=\textwidth]{figures/ch04/er-diagram.png}
+\caption{系统E-R图}
+\label{fig:er-diagram}
+\end{figure}
+
+系统共包含八个实体（七个核心业务实体与一个Agent交互日志实体），实体之间的关联关系如下：Doctor实体与Patient实体构成一对多的管辖关系，一位社区医生负责管理多位在管患者，建档时即指定责任医生。Patient实体处于模型的核心位置，与HealthRecord、RiskRecord、VisitTask、MedicationPlan及MedicationRecord五个实体均构成一对多关系，反映了一位患者在整个管理周期内持续产生多条健康记录、评估记录、随访任务与用药记录的业务实际。Doctor实体与VisitTask构成一对多关系，表达一位社区医生负责处理多条随访任务的职责分工。MedicationPlan与MedicationRecord之间为一对多关系，一份用药方案在执行周期内按服药频次持续生成打卡记录。HealthRecord与RiskRecord之间为一对零或一关系，每条健康记录在录入后由TriageAgent自动触发评估并生成对应的评估记录，正常业务流程下二者严格一一对应。
+
+
+\subsection{数据表结构设计}
+
+以下对各数据表的字段定义、数据类型、约束条件及业务含义进行详细说明。
+
+\subsubsection{Patient表（患者表）}
+
+\begin{table}[H]
+\centering
+\caption{Patient（患者表）}
+\label{tab:table-patient}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+patient\_id & INT & PK, AUTO\_INCREMENT & 患者唯一标识 \\
+\hline
+doctor\_id & INT & FK $\rightarrow$ Doctor, NOT NULL & 责任医生ID \\
+\hline
+name & VARCHAR(50) & NOT NULL & 患者姓名 \\
+\hline
+age & INT & NOT NULL & 患者年龄 \\
+\hline
+gender & VARCHAR(4) & NOT NULL & 性别（男/女） \\
+\hline
+diagnosis\_year & INT & NOT NULL & 确诊2型糖尿病年份 \\
+\hline
+phone & VARCHAR(20) & NOT NULL & 联系电话 \\
+\hline
+account & VARCHAR(50) & UNIQUE, NOT NULL & 登录账号 \\
+\hline
+password\_hash & VARCHAR(128) & NOT NULL & 密码哈希值 \\
+\hline
+is\_active & BOOLEAN & DEFAULT TRUE & 在管状态（TRUE在管/FALSE归档） \\
+\hline
+created\_at & DATETIME & AUTO\_NOW\_ADD & 建档时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+Patient表是系统的基础主表，存储所有在管与归档患者的基础信息。\texttt{doctor\_id}字段记录该患者的责任医生，建档时由操作医生指定，后续SchedulerAgent创建随访任务时依据此字段确定任务的负责医生。\texttt{is\_active}字段用于标识患者的管理状态，归档患者的\texttt{is\_active}值置为FALSE，系统在执行风险评估与随访调度时仅查询\texttt{is\_active}为TRUE的记录，确保已归档患者不再参与日常管理流程。\texttt{password\_hash}字段存储经过Django内置PBKDF2算法加密后的密码哈希值，系统任何环节均不存储明文密码。
+
+
+\subsubsection{Doctor表（医生表）}
+
+\begin{table}[H]
+\centering
+\caption{Doctor（医生表）}
+\label{tab:table-doctor}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+doctor\_id & INT & PK, AUTO\_INCREMENT & 医生唯一标识 \\
+\hline
+name & VARCHAR(50) & NOT NULL & 医生姓名 \\
+\hline
+phone & VARCHAR(20) & NOT NULL & 联系电话 \\
+\hline
+account & VARCHAR(50) & UNIQUE, NOT NULL & 登录账号 \\
+\hline
+password\_hash & VARCHAR(128) & NOT NULL & 密码哈希值 \\
+\hline
+created\_at & DATETIME & AUTO\_NOW\_ADD & 账号创建时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+Doctor表存储社区医生的基础信息与登录凭证，结构较为简洁。医生与患者之间的管辖归属关系通过Patient表中的\texttt{doctor\_id}外键体现，一位社区医生可管辖多位在管患者。
+
+
+\subsubsection{HealthRecord表（健康记录表）}
+
+\begin{table}[H]
+\centering
+\caption{HealthRecord（健康记录表）}
+\label{tab:table-healthrecord}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+record\_id & INT & PK, AUTO\_INCREMENT & 记录唯一标识 \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+fasting\_glucose & DECIMAL(4,1) & NULL & 空腹血糖（mmol/L） \\
+\hline
+postmeal\_glucose & DECIMAL(4,1) & NULL & 餐后2h血糖（mmol/L） \\
+\hline
+systolic\_bp & INT & NULL & 收缩压（mmHg） \\
+\hline
+diastolic\_bp & INT & NULL & 舒张压（mmHg） \\
+\hline
+weight & DECIMAL(4,1) & NULL & 体重（kg） \\
+\hline
+input\_type & VARCHAR(10) & NOT NULL & 录入方式（voice/text） \\
+\hline
+recorded\_at & DATETIME & NOT NULL & 数据录入时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+HealthRecord表存储患者每次录入的体征数据，是系统数据量增长最快的业务表。各体征字段允许为NULL，原因在于患者单次录入时可能仅测量部分指标（例如仅测量血糖而未测量血压），系统允许部分字段留空以降低录入门槛，TriageAgent在评估时自动跳过缺失字段，仅对有值指标进行评分。\texttt{input\_type}字段记录数据来源方式，便于后续分析语音录入与文字录入的使用比例。
+
+
+\subsubsection{RiskRecord表（风险评估记录表）}
+
+\begin{table}[H]
+\centering
+\caption{RiskRecord（风险评估记录表）}
+\label{tab:table-riskrecord}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+risk\_id & INT & PK, AUTO\_INCREMENT & 评估记录唯一标识 \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+health\_record\_id & INT & FK $\rightarrow$ HealthRecord, NOT NULL & 关联的健康记录ID \\
+\hline
+risk\_level & VARCHAR(10) & NOT NULL & 风险等级（green/yellow/red） \\
+\hline
+risk\_score & DECIMAL(3,2) & NOT NULL & 加权风险评分值 \\
+\hline
+trigger\_indicators & TEXT & NULL & 触发预警的异常指标JSON列表 \\
+\hline
+evaluated\_at & DATETIME & AUTO\_NOW\_ADD & 评估时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+RiskRecord表与HealthRecord表通过\texttt{health\_record\_id}外键形成一对一关联，确保每条评估结果均可溯源至具体的体征数据记录。\texttt{trigger\_indicators}字段以JSON字符串格式存储触发当前风险等级的异常指标名称与实际数值，例如\texttt{[\{"indicator": "fasting\_glucose", "value": 14.2, "threshold": 13.9\}]}，便于医生端在预警看板中直接展示预警成因而无需反复关联查询。
+
+
+\subsubsection{VisitTask表（随访任务表）}
+
+\begin{table}[H]
+\centering
+\caption{VisitTask（随访任务表）}
+\label{tab:table-visittask}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+task\_id & INT & PK, AUTO\_INCREMENT & 任务唯一标识 \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+doctor\_id & INT & FK $\rightarrow$ Doctor, NOT NULL & 负责医生ID \\
+\hline
+visit\_type & VARCHAR(20) & NOT NULL & 随访方式（online/offline/home） \\
+\hline
+priority & VARCHAR(10) & DEFAULT 'normal' & 优先级（normal/urgent） \\
+\hline
+due\_date & DATE & NOT NULL & 任务截止日期 \\
+\hline
+status & VARCHAR(20) & DEFAULT 'pending' & 任务状态（pending/completed/deferred） \\
+\hline
+remark & TEXT & NULL & 随访备注 \\
+\hline
+created\_at & DATETIME & AUTO\_NOW\_ADD & 任务创建时间 \\
+\hline
+completed\_at & DATETIME & NULL & 任务完成时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+VisitTask表存储由SchedulerAgent自动生成的随访任务信息。\texttt{visit\_type}字段记录系统建议的随访方式，对应导诊分流逻辑中"线上轻问诊""线下门诊""上门巡诊"三种模式。\texttt{priority}字段标识任务紧急程度，红码患者触发的随访任务自动标记为"urgent"，在医生工作台看板中置顶排序。\texttt{status}字段记录任务的生命周期状态，从创建时的"pending"到医生处理后的"completed"或"deferred"，SchedulerAgent在任务完成后根据患者当前风险等级自动创建下一周期任务，形成连续的随访管理闭环。
+
+
+\subsubsection{MedicationPlan表（用药方案表）}
+
+\begin{table}[H]
+\centering
+\caption{MedicationPlan（用药方案表）}
+\label{tab:table-medicationplan}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+plan\_id & INT & PK, AUTO\_INCREMENT & 方案唯一标识 \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+drug\_name & VARCHAR(100) & NOT NULL & 药品名称 \\
+\hline
+dosage & VARCHAR(50) & NOT NULL & 剂量规格（如"500mg"） \\
+\hline
+frequency & VARCHAR(20) & NOT NULL & 每日服药频次（如"每日2次"） \\
+\hline
+remind\_times & VARCHAR(100) & NOT NULL & 提醒时间点（如"08:00,20:00"） \\
+\hline
+total\_days & INT & NOT NULL & 处方总天数 \\
+\hline
+start\_date & DATE & NOT NULL & 方案起始日期 \\
+\hline
+is\_active & BOOLEAN & DEFAULT TRUE & 方案是否生效 \\
+\hline
+created\_at & DATETIME & AUTO\_NOW\_ADD & 方案创建时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+MedicationPlan表存储由社区医生为患者配置的用药方案，一位患者可同时拥有多条生效方案（例如同时服用二甲双胍与格列美脲）。\texttt{remind\_times}字段以逗号分隔的时间字符串形式存储每日提醒时间节点，MedicationAgent定时任务读取该字段后按时推送提醒通知。\texttt{start\_date}与\texttt{total\_days}共同用于计算剩余药量：剩余天数等于\texttt{start\_date}加\texttt{total\_days}所得终止日期与当前日期之差。医生续方后系统将\texttt{start\_date}重置为当日，\texttt{total\_days}恢复至处方总天数，实现续方周期的无缝衔接。
+
+
+\subsubsection{MedicationRecord表（用药打卡记录表）}
+
+\begin{table}[H]
+\centering
+\caption{MedicationRecord（用药打卡记录表）}
+\label{tab:table-medicationrecord}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+record\_id & INT & PK, AUTO\_INCREMENT & 打卡记录唯一标识 \\
+\hline
+plan\_id & INT & FK $\rightarrow$ MedicationPlan, NOT NULL & 所属用药方案ID \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+scheduled\_time & DATETIME & NOT NULL & 计划服药时间 \\
+\hline
+checked\_at & DATETIME & NULL & 实际打卡时间 \\
+\hline
+status & VARCHAR(10) & NOT NULL & 打卡状态（taken/missed/skipped） \\
+\hline
+\end{tabularx}
+\end{table}
+
+MedicationRecord表记录每次用药提醒对应的打卡结果，与MedicationPlan表通过\texttt{plan\_id}外键关联。\texttt{scheduled\_time}为该次提醒的计划时间，\texttt{checked\_at}为患者实际完成打卡的时间，两者之差可用于分析患者服药时间的准时程度。\texttt{status}字段设有三种状态值："taken"表示患者按时服药，"skipped"表示患者主动选择跳过，"missed"表示在设定的打卡有效窗口期内患者未做任何操作，由MedicationAgent自动标记。MedicationAgent以该表的记录为数据来源，计算依从率并识别高频漏服时段，为医生端的依从性统计提供底层数据支撑。
+
+
+\subsubsection{AgentLog表（Agent交互日志表）}
+
+\begin{table}[H]
+\centering
+\caption{AgentLog（Agent交互日志表）}
+\label{tab:table-agentlog}
+\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\hline
+\textbf{字段名} & \textbf{数据类型} & \textbf{约束} & \textbf{说明} \\
+\hline
+log\_id & INT & PK, AUTO\_INCREMENT & 日志唯一标识 \\
+\hline
+patient\_id & INT & FK $\rightarrow$ Patient, NOT NULL & 所属患者ID \\
+\hline
+log\_type & VARCHAR(20) & NOT NULL & 日志类型（asr/voice\_parse/health\_feedback/doctor\_summary/risk\_eval/tts/flow） \\
+\hline
+agent\_name & VARCHAR(30) & NOT NULL & Agent名称（如PatientAgent） \\
+\hline
+raw\_input & TEXT & DEFAULT '' & AI处理的原始输入 \\
+\hline
+raw\_output & TEXT & DEFAULT '' & AI处理的原始输出 \\
+\hline
+context\_snapshot & JSON & NULL & 可选上下文快照（如SystemState） \\
+\hline
+health\_record\_id & INT & FK $\rightarrow$ HealthRecord, NULL & 关联的健康记录ID \\
+\hline
+created\_by\_id & INT & FK $\rightarrow$ User, NULL & 触发该操作的用户ID \\
+\hline
+duration\_ms & INT & NULL & 处理耗时（毫秒） \\
+\hline
+created\_at & DATETIME & AUTO\_NOW\_ADD & 日志创建时间 \\
+\hline
+\end{tabularx}
+\end{table}
+
+AgentLog表记录系统中每次AI参与处理的完整输入与输出信息，是系统AI可追溯性设计的核心数据载体。\texttt{log\_type}字段区分七种交互类型，覆盖从语音识别到反馈生成的全部AI处理环节。\texttt{raw\_input}与\texttt{raw\_output}字段分别存储AI处理前的原始输入（如患者口述文本、体征数据JSON）与处理后的完整输出（如解析结果、健康反馈文本、诊疗摘要），为审计回查提供完整的证据链。\texttt{duration\_ms}字段记录单次AI处理的耗时，便于后续进行性能分析与优化。Patient实体与AgentLog构成一对多关系，一位患者在使用过程中持续产生多条AI交互记录。AgentLog与HealthRecord之间为可选的多对一关系，部分日志类型（如风险评估、健康反馈）可关联至具体的健康记录，便于按次录入追溯全链路AI处理过程。
+
+
+% ------------------------------------------------------------------
+% 4.5 界面设计（暂放）
+% \section{界面设计}
+% \textcolor{red}{[TODO: 界面设计暂放，后续补充]}

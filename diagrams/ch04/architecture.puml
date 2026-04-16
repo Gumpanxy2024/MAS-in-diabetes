@@ -1,0 +1,75 @@
+@startuml
+skinparam backgroundColor white
+skinparam ArrowColor #555555
+skinparam componentBorderColor #336699
+skinparam componentBackgroundColor #EEF4FF
+skinparam rectangleBorderColor #336699
+skinparam rectangleBackgroundColor #FAFAFA
+skinparam databaseBorderColor #336699
+skinparam databaseBackgroundColor #EEF4FF
+skinparam noteBorderColor #999999
+skinparam noteBackgroundColor #FFFBE6
+
+title 系统总体技术架构图
+
+rectangle "表现层 Presentation Layer" as PL {
+    component "患者端界面\n（录入 / 记录 / 打卡）" as PC
+    component "医生工作台界面\n（预警 / 随访 / 用药 / 档案）" as DC
+}
+
+rectangle "业务逻辑层 Business Logic Layer" as BL {
+    component "Django View\n（请求路由 / 参数校验 / 权限验证）" as DV
+    rectangle "多智能体系统（MAS）" as MAS {
+        component "Patient\nAgent" as PA
+        component "Triage\nAgent" as TA
+        component "Scheduler\nAgent" as SA
+        component "Doctor\nAgent" as DA
+        component "Medication\nAgent" as MA
+    }
+    component "LangGraph\nAgent状态流转编排" as LG
+    rectangle "共享基础设施" as INFRA {
+        component "RAGService\n（知识检索+生成）" as RAG
+        component "SpeechService\n（ASR / TTS）" as SS
+    }
+}
+
+rectangle "数据支撑层 Data Layer" as DL {
+    component "Django ORM" as ORM
+    database "关系型数据库\nSQLite / MySQL" as DB
+    database "ChromaDB\n向量知识库" as VDB
+}
+
+PC --> DV : HTTP请求
+DC --> DV : HTTP请求
+DV --> PC : HTTP响应
+DV --> DC : HTTP响应
+DV --> MAS : 调用Agent
+
+PA -right-> TA : 主流程
+TA -right-> SA : 主流程
+SA -right-> DA : 主流程
+MA ..> DA : 续方预警\n（独立定时任务）
+
+MAS ..> LG : 状态流转编排
+
+PA ..> RAG : 调用健康反馈
+DA ..> RAG : 调用诊疗摘要
+PA ..> SS : 语音识别/播报
+
+BL --> ORM : 数据读写
+ORM --> DB : SQL执行
+RAG --> VDB : 向量检索
+
+note bottom of MA
+  MedicationAgent以
+  独立定时任务运行，
+  不依赖主流程触发
+end note
+
+note bottom of INFRA
+  RAGService与SpeechService
+  作为共享基础设施，
+  不参与LangGraph状态流转
+end note
+
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor white
+skinparam ClassBorderColor #336699
+skinparam ClassBackgroundColor #EEF4FF
+skinparam ClassHeaderBackgroundColor #C5D9F1
+skinparam ClassAttributeIconSize 0
+skinparam classfontstyle bold
+skinparam linetype ortho
+
+title 风险评估与预警模块设计类图
+
+class "DoctorRiskDashboardView" <<Boundary>> {
+    - template_name : str
+    - request : HttpRequest
+    ==
+    + get(request : HttpRequest) : HttpResponse
+    + get_patient_detail(request : HttpRequest,\n  patient_id : int) : JsonResponse
+    - get_risk_list() : QuerySet
+    - format_dashboard_data(records : QuerySet) : list
+}
+
+class "TriageAgent" <<Control>> {
+    - RISK_WEIGHTS : dict
+    - THRESHOLDS : dict
+    - patient_id : int
+    ==
+    + run(state : dict) : dict
+    + evaluate(record : HealthRecord) : RiskRecord
+    + calculate_weighted_score(data : dict) : float
+    + get_trigger_indicators(data : dict) : list
+    + update_patient_profile(patient_id : int) : None
+    - map_score_to_level(score : float) : str
+    - notify_scheduler(state : dict) : dict
+}
+
+class "HealthRecord" <<Entity>> {
+    + record_id : int
+    + patient_id : int
+    + fasting_glucose : Decimal
+    + postmeal_glucose : Decimal
+    + systolic_bp : int
+    + diastolic_bp : int
+    + weight : Decimal
+    + input_type : str
+    + recorded_at : datetime
+    ==
+    + save() : None
+    + get_by_patient(patient_id : int) : QuerySet
+    + get_recent(patient_id : int, days : int) : QuerySet
+}
+
+class "RiskRecord" <<Entity>> {
+    + risk_id : int
+    + patient_id : int
+    + health_record_id : int
+    + risk_level : str
+    + risk_score : Decimal
+    + trigger_indicators : str
+    + evaluated_at : datetime
+    ==
+    + save() : None
+    + get_latest(patient_id : int) : RiskRecord
+    + get_history(patient_id : int) : QuerySet
+}
+
+DoctorRiskDashboardView ..> RiskRecord : <<query>>
+DoctorRiskDashboardView ..> HealthRecord : <<query>>
+TriageAgent ..> RiskRecord : <<create>>
+TriageAgent ..> HealthRecord : <<query>>
+
+@enduml

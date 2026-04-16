@@ -1,38 +1,191 @@
 % ==============================================================
 % 第5章 系统实现
+% 写作规范（参见 brainstorm/第五章结构.md）：
+%   - 技术亮点模块（5.3节各子节）：截图 → 核心代码片段（10~25行）→ 设计说明
+%   - 普通模块（5.4节各子节）：截图为主 + 简要文字
+%   - 代码片段统一加"代码X + 说明：xxx"标题
+%   - 数据模型节展示真实数据记录截图，证明第四章设计已落地
 % ==============================================================
 \chapter{系统实现}
 
-\textcolor{red}{[TODO: 系统开发完成后补充本章]}
+% ------------------------------------------------------------------
+\section{开发与运行环境}
 
-\section{开发环境与工具}
+\textcolor{red}{[TODO: 列出开发与运行环境，约1页]}
 
-\textcolor{red}{[TODO: 列出开发环境（Python版本、Django版本、数据库、IDE等）]}
+% 参考内容：
+% - 操作系统：Windows 11 / Ubuntu 22.04
+% - Python 3.11.5、Django 5.2.13
+% - 数据库：SQLite（开发）
+% - LLM API：GPT-4o-mini / 通义千问 / GLM-4（通过配置切换）
+% - 前端：Bootstrap 5 + HTML5/CSS3/JS + MediaRecorder API
+% - IDE：Cursor / VS Code
+% - 核心依赖：LangGraph 1.1.6、langchain 1.2.15、langchain-openai 1.1.13、chromadb 1.5.7、edge-tts 7.2.8
 
-\section{用户认证模块实现}
 
-\textcolor{red}{[TODO: 登录注册功能实现、角色路由]}
+% ------------------------------------------------------------------
+\section{数据模型实现}
+% 目标：展示3~4个关键Model代码片段，证明第四章数据库设计已落地
+% 篇幅：约1.5页，代码3~4段，无截图
 
-\section{患者健康数据采集模块实现}
+\textcolor{red}{[TODO: 展示关键Django Model代码片段，每段10~20行]}
 
-\textcolor{red}{[TODO: 语音录入功能实现、LLM解析调用、数据校验与入库]}
+% 建议展示：Patient、HealthRecord、RiskRecord、VisitTask 四个核心模型
+% 格式示例：
+% \begin{lstlisting}[language=Python, caption={代码1\quad 说明：Patient模型定义}]
+% class Patient(models.Model):
+%     ...
+% \end{lstlisting}
 
-\section{风险评估与预警模块实现}
 
-\textcolor{red}{[TODO: TriageAgent核心代码、加权评分实现、预警推送]}
+% ------------------------------------------------------------------
+\section{多智能体核心实现}
+% ⭐ 全文最大技术亮点，约9页，15~18段代码
 
-\section{随访调度模块实现}
+\subsection{SystemState与LangGraph图定义}
+% 目标：展示SystemState TypedDict定义 + graph.py有向图结构
+% 篇幅：约1.5页，代码2段
 
-\textcolor{red}{[TODO: SchedulerAgent核心代码、任务生成逻辑]}
+\textcolor{red}{[TODO: 展示SystemState定义代码 + LangGraph图编排核心代码]}
 
-\section{用药管理模块实现}
+% 代码1：SystemState定义（TypedDict，约15行）
+% 代码2：graph.py核心——节点注册、条件边定义、入口设置（约20行）
 
-\textcolor{red}{[TODO: MedicationAgent核心代码、定时任务实现]}
+\subsection{PatientAgent实现}
+% ⭐ 技术亮点：LLM语音解析调用
+% 节奏：运行效果截图 → LLM调用核心代码 → 设计说明
+% 篇幅：约2页，代码2~3段，截图1~2张
 
-\section{医生工作台模块实现}
+\textcolor{red}{[TODO: PatientAgent核心实现]}
 
-\textcolor{red}{[TODO: DoctorAgent核心代码、看板界面实现]}
+% 截图：语音录入页面 + LLM解析结果回显
+% 代码1：parse\_voice\_text() LLM调用片段（约15行）
+% 代码2：save\_health\_record() 数据入库片段（约15行）
 
-\section{LangGraph多智能体编排实现}
+\subsection{TriageAgent实现}
+% ⭐ 技术亮点：加权风险评分算法
+% 节奏：三色看板截图 → 评分核心代码 → 设计说明
+% 篇幅：约2页，代码2~3段，截图1~2张
 
-\textcolor{red}{[TODO: graph.py核心代码、状态流转演示]}
+\textcolor{red}{[TODO: TriageAgent核心实现]}
+
+% 截图：风险等级看板展示（红/黄/绿）
+% 代码1：calculate\_weighted\_score() 加权评分核心方法（约20行）
+% 代码2：map\_score\_to\_level() 等级映射 + trigger\_indicators提取（约15行）
+
+\subsection{SchedulerAgent实现}
+% 目标：随访周期计算与任务生成逻辑
+% 篇幅：约1页，代码1~2段，截图1张
+
+\textcolor{red}{[TODO: SchedulerAgent核心实现]}
+
+% 截图：医生端随访任务列表
+% 代码1：run() 随访周期判断与VisitTask创建逻辑（约20行）
+
+\subsection{MedicationAgent实现}
+% ⭐ 技术亮点：Celery/APScheduler定时任务
+% 篇幅：约1.5页，代码2段，截图1张
+
+\textcolor{red}{[TODO: MedicationAgent核心实现]}
+
+% 截图：用药打卡界面
+% 代码1：run\_reminder\_task() 定时任务入口（约15行）
+% 代码2：calculate\_adherence\_rate() 依从率计算（约10行）
+
+\subsection{DoctorAgent实现}
+% 目标：展示DoctorAgent工作台汇聚逻辑 + RAG智能摘要生成
+% 篇幅：约1.5页，代码2段，截图1张
+
+\textcolor{red}{[TODO: DoctorAgent核心实现]}
+
+% 截图：患者详情页（含AI辅助摘要卡片）
+% 代码1：run() 工作台数据汇聚逻辑（约15行）
+% 代码2：generate\_patient\_summary() RAG调用片段（约20行）
+
+\subsection{RAG知识服务实现}
+% ⭐ 技术亮点：检索增强生成
+% 节奏：知识库初始化 → 检索接口 → 生成接口 → 效果展示
+% 篇幅：约2页，代码3段，截图1~2张
+
+\textcolor{red}{[TODO: RAG知识服务核心实现]}
+
+% 代码1：init\_knowledge\_base() 知识库初始化与文档导入（约20行）
+% 代码2：retrieve() 向量检索核心方法（约15行）
+% 代码3：generate\_patient\_feedback() 患者端健康反馈生成（约20行）
+% 截图：患者评估结果页展示的健康反馈建议
+% 截图：医生患者详情页展示的AI辅助摘要
+
+
+\subsection{语音交互服务实现}
+% ⭐ 技术亮点：多供应商策略模式 + ASR/TTS 集成
+% 节奏：架构说明 → ASR调用核心代码 → TTS缓存机制代码 → 效果截图
+% 篇幅：约1.5页，代码2~3段，截图1~2张
+
+\textcolor{red}{[TODO: 语音交互服务核心实现]}
+
+% 代码1：transcribe\_audio() 策略分派 + Whisper API 调用（约15行）
+% 代码2：synthesize\_speech() + \_get\_cache\_path() 缓存机制（约15行）
+% 代码3（可选）：\_tts\_edge() async兼容处理（约10行）
+% 截图：患者语音录入界面（录音按钮 + ASR转写结果展示）
+% 截图：健康反馈播报界面（TTS播放按钮 + 音频控件）
+% 说明要点：策略模式实现供应商无关性、缓存命中机制、async兼容处理
+
+\subsection{Agent交互日志实现}
+% 目标：展示AgentLog模型 + 日志写入机制 + 查询展示
+% 篇幅：约1页，代码2段，截图1张
+
+\textcolor{red}{[TODO: Agent交互日志核心实现]}
+
+% 代码1：AgentLog 模型定义（约15行）
+% 代码2：\_write\_log() 通用日志写入工具函数（约12行）
+% 截图：Django Admin 中的 AgentLog 列表（展示不同类型日志记录）
+% 截图（可选）：患者端 AI 交互历史页面
+% 说明要点：容错写入（不影响主流程）、7种日志类型覆盖全部AI交互场景
+
+
+% ------------------------------------------------------------------
+\section{功能模块实现与展示}
+% 以截图为主，辅以简要文字说明，技术亮点子模块可附1段代码
+
+\subsection{用户认证模块}
+% 截图为主，约0.5页，截图2张（登录页、角色路由后跳转页）
+
+\textcolor{red}{[TODO: 登录/注册截图 + 简要说明（角色路由逻辑）]}
+
+\subsection{健康数据管理模块}
+% 约1.5页，截图3张 + 语音录入流程代码1段
+
+\textcolor{red}{[TODO: 数据录入页截图（含录音上传按钮 + ASR转写结果）、历史趋势图截图 + 语音转结构化数据链路说明]}
+% 补充截图：评估结果页中的RAG健康反馈建议 + TTS播报按钮
+% 补充截图（可选）：患者端AI交互历史页面
+
+\subsection{风险预警看板}
+% 约1页，截图2张 + 可选看板渲染逻辑代码1段
+
+\textcolor{red}{[TODO: 医生端三色预警看板截图 + 说明]}
+
+\subsection{随访调度管理}
+% 约0.5页，截图2张，纯截图+文字
+
+\textcolor{red}{[TODO: 随访任务列表截图、任务详情截图]}
+
+\subsection{用药管理模块}
+% 约1页，截图3张（提醒推送、打卡记录、依从率图表）+ 可选依从率图表渲染代码
+
+\textcolor{red}{[TODO: 用药打卡截图、依从率可视化截图]}
+
+\subsection{患者档案管理}
+% 约0.5页，截图2张，纯截图+文字
+
+\textcolor{red}{[TODO: 患者列表截图、建档表单截图]}
+
+
+% ------------------------------------------------------------------
+\section{接口实现说明}
+% 目标：URL路由表 + View调用Agent的入口逻辑 + LLM API封装
+% 篇幅：约0.5页，代码1段（URL路由表）
+
+\textcolor{red}{[TODO: 展示核心URL路由配置 + View层调用Agent的关键入口代码]}
+
+% 代码：urls.py 核心路由配置（约15行）
+% 可选：llm\_client.py 统一封装层（约15行，体现模型可替换性）

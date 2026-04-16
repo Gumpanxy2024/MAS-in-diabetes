@@ -1,0 +1,123 @@
+@startuml
+skinparam backgroundColor white
+skinparam linetype ortho
+skinparam EntityBorderColor #336699
+skinparam EntityBackgroundColor #EEF4FF
+
+title 系统E-R图
+
+entity "Doctor\n医生" as D {
+    * doctor_id : INT <<PK>>
+    --
+    name : VARCHAR(50)
+    phone : VARCHAR(20)
+    account : VARCHAR(50)
+    password_hash : VARCHAR(128)
+    created_at : DATETIME
+}
+
+entity "Patient\n患者" as P {
+    * patient_id : INT <<PK>>
+    --
+    doctor_id : INT <<FK>>
+    name : VARCHAR(50)
+    age : INT
+    gender : VARCHAR(4)
+    diagnosis_year : INT
+    phone : VARCHAR(20)
+    account : VARCHAR(50)
+    password_hash : VARCHAR(128)
+    is_active : BOOLEAN
+    created_at : DATETIME
+}
+
+entity "HealthRecord\n健康记录" as HR {
+    * record_id : INT <<PK>>
+    --
+    patient_id : INT <<FK>>
+    fasting_glucose : DECIMAL(4,1)
+    postmeal_glucose : DECIMAL(4,1)
+    systolic_bp : INT
+    diastolic_bp : INT
+    weight : DECIMAL(4,1)
+    input_type : VARCHAR(10)
+    recorded_at : DATETIME
+}
+
+entity "RiskRecord\n风险评估记录" as RR {
+    * risk_id : INT <<PK>>
+    --
+    patient_id : INT <<FK>>
+    health_record_id : INT <<FK>>
+    risk_level : VARCHAR(10)
+    risk_score : DECIMAL(3,2)
+    trigger_indicators : TEXT
+    evaluated_at : DATETIME
+}
+
+entity "VisitTask\n随访任务" as VT {
+    * task_id : INT <<PK>>
+    --
+    patient_id : INT <<FK>>
+    doctor_id : INT <<FK>>
+    visit_type : VARCHAR(20)
+    priority : VARCHAR(10)
+    due_date : DATE
+    status : VARCHAR(20)
+    remark : TEXT
+    created_at : DATETIME
+    completed_at : DATETIME
+}
+
+entity "MedicationPlan\n用药方案" as MP {
+    * plan_id : INT <<PK>>
+    --
+    patient_id : INT <<FK>>
+    drug_name : VARCHAR(100)
+    dosage : VARCHAR(50)
+    frequency : VARCHAR(20)
+    remind_times : VARCHAR(100)
+    total_days : INT
+    start_date : DATE
+    is_active : BOOLEAN
+    created_at : DATETIME
+}
+
+entity "MedicationRecord\n用药打卡记录" as MR {
+    * record_id : INT <<PK>>
+    --
+    plan_id : INT <<FK>>
+    patient_id : INT <<FK>>
+    scheduled_time : DATETIME
+    checked_at : DATETIME
+    status : VARCHAR(10)
+}
+
+entity "AgentLog\nAgent交互日志" as AL {
+    * log_id : INT <<PK>>
+    --
+    patient_id : INT <<FK>>
+    health_record_id : INT <<FK>>
+    log_type : VARCHAR(20)
+    agent_name : VARCHAR(30)
+    raw_input : TEXT
+    raw_output : TEXT
+    context_snapshot : JSON
+    created_by_id : INT <<FK>>
+    duration_ms : INT
+    created_at : DATETIME
+}
+
+D ||--o{ P : "管辖"
+P ||--o{ HR : "录入"
+P ||--o{ RR : "拥有"
+P ||--o{ VT : "关联"
+P ||--o{ MP : "配置"
+P ||--o{ MR : "产生"
+P ||--o{ AL : "产生"
+D ||--o{ VT : "负责"
+MP ||--o{ MR : "生成"
+HR ||--o| RR : "触发"
+HR ||--o{ AL : "关联"
+
+@enduml

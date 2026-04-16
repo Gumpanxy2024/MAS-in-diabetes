@@ -840,5 +840,3 @@ MedicationAgent → [条件：剩余药量≤阈值]
 ```
 
 ---
-
-以上就是完整的 `DESIGN_CONTEXT.md`，直接复制粘贴到Cursor即可。需要我再输出第五章骨架的纯markdown版本吗？

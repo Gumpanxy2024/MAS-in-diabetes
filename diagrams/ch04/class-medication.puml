@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor white
+skinparam ClassBorderColor #336699
+skinparam ClassBackgroundColor #EEF4FF
+skinparam ClassHeaderBackgroundColor #C5D9F1
+skinparam ClassAttributeIconSize 0
+skinparam classfontstyle bold
+skinparam linetype ortho
+
+title 用药管理模块设计类图
+
+class "PatientMedicationView" <<Boundary>> {
+    - template_name : str
+    - request : HttpRequest
+    ==
+    + get(request : HttpRequest) : HttpResponse
+    + post(request : HttpRequest) : HttpResponse
+    - get_today_plans(patient_id : int) : QuerySet
+    - handle_checkin_request(plan_id : int,\n  status : str) : JsonResponse
+}
+
+class "MedicationAgent" <<Control>> {
+    - REFILL_THRESHOLD : int
+    - patient_id : int
+    ==
+    + run_reminder_task() : None
+    + handle_checkin(plan_id : int,\n  status : str) : MedicationRecord
+    + calculate_adherence_rate(patient_id : int,\n  days : int) : float
+    + estimate_remaining_days(plan_id : int) : int
+    + check_refill_needed(plan_id : int) : bool
+    - push_reminder(plan : MedicationPlan) : None
+    - trigger_refill_alert(patient_id : int,\n  plan_id : int) : None
+}
+
+class "MedicationPlan" <<Entity>> {
+    + plan_id : int
+    + patient_id : int
+    + drug_name : str
+    + dosage : str
+    + frequency : str
+    + remind_times : str
+    + total_days : int
+    + start_date : date
+    + is_active : bool
+    ==
+    + save() : None
+    + get_active(patient_id : int) : QuerySet
+    + reset_start_date(new_date : date) : None
+}
+
+class "MedicationRecord" <<Entity>> {
+    + record_id : int
+    + plan_id : int
+    + patient_id : int
+    + scheduled_time : datetime
+    + checked_at : datetime
+    + status : str
+    ==
+    + save() : None
+    + get_by_plan(plan_id : int,\n  days : int) : QuerySet
+    + get_missed_count(plan_id : int,\n  days : int) : int
+}
+
+PatientMedicationView ..> MedicationAgent : <<use>>
+MedicationAgent ..> MedicationPlan : <<query/update>>
+MedicationAgent ..> MedicationRecord : <<create>>
+MedicationPlan "1" --o "0..*" MedicationRecord : 生成
+
+@enduml

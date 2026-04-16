@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor white
+skinparam ActivityBorderColor #336699
+skinparam ActivityBackgroundColor #EEF4FF
+skinparam ActivityDiamondBackgroundColor #FFF8E1
+skinparam ActivityDiamondBorderColor #F0A500
+
+title 用药管理定时任务Agent状态流转图
+
+start
+
+:MedicationAgent\n推送服药提醒\n记录打卡状态\n计算剩余药量;
+
+if (剩余药量 ≤ 阈值？) then (是)
+    :DoctorAgent\n推送续方待办通知;
+else (否)
+endif
+
+stop
+
+@enduml

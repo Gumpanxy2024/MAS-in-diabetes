@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor white
+skinparam ActivityBorderColor #336699
+skinparam ActivityBackgroundColor #EEF4FF
+skinparam ActivityDiamondBackgroundColor #FFF8E1
+skinparam ActivityDiamondBorderColor #F0A500
+
+title 主业务流程Agent状态流转图
+
+start
+
+:PatientAgent\n解析语音/文字输入\n存储健康记录;
+
+:TriageAgent\n执行加权风险评分\n生成红/黄/绿等级;
+
+if (风险等级较上次变更？) then (是)
+    :SchedulerAgent\n调整随访周期\n创建/更新随访任务;
+    :DoctorAgent\n更新预警看板\n推送医生通知;
+else (否)
+    :DoctorAgent\n仅更新患者\n风险状态展示;
+endif
+
+stop
+
+@enduml

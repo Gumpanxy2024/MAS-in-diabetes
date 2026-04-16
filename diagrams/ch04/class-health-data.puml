@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor white
+skinparam ClassBorderColor #336699
+skinparam ClassBackgroundColor #EEF4FF
+skinparam ClassHeaderBackgroundColor #C5D9F1
+skinparam ClassAttributeIconSize 0
+skinparam classfontstyle bold
+skinparam linetype ortho
+
+title 健康数据管理模块设计类图
+
+class "PatientDataInputView" <<Boundary>> {
+    - template_name : str
+    - request : HttpRequest
+    ==
+    + get(request : HttpRequest) : HttpResponse
+    + post(request : HttpRequest) : HttpResponse
+    - validate_input(data : dict) : tuple[bool, str]
+    - render_voice_panel() : HttpResponse
+    - render_text_form() : HttpResponse
+}
+
+class "PatientAgent" <<Control>> {
+    - patient_id : int
+    - llm_client : object
+    - state : dict
+    ==
+    + run(state : dict) : dict
+    + parse_voice_text(text : str) : dict
+    + parse_form_data(data : dict) : dict
+    + validate_health_data(data : dict) : bool
+    + save_health_record(data : dict) : HealthRecord
+    - build_llm_prompt(text : str) : str
+    - call_llm_api(prompt : str) : str
+}
+
+class "HealthRecord" <<Entity>> {
+    + record_id : int
+    + patient_id : int
+    + fasting_glucose : Decimal
+    + postmeal_glucose : Decimal
+    + systolic_bp : int
+    + diastolic_bp : int
+    + weight : Decimal
+    + input_type : str
+    + recorded_at : datetime
+    ==
+    + save() : None
+    + get_by_patient(patient_id : int) : QuerySet
+    + get_recent(patient_id : int, days : int) : QuerySet
+}
+
+PatientDataInputView ..> PatientAgent : <<use>>
+PatientAgent ..> HealthRecord : <<create>>
+
+@enduml

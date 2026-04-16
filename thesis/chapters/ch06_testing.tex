@@ -3,24 +3,211 @@
 % ==============================================================
 \chapter{系统测试}
 
-\textcolor{red}{[TODO: 系统开发完成后补充本章]}
+系统测试是保证系统后续正常运行的基础，本章将通过测试过程检查并解决社区老年糖尿病多智能体随访管理系统运行时存在的错误或问题。
+
+\section{测试目的}
+
+本系统的测试工作旨在通过多维度验证手段，全面评估系统在用户交互、AI智能服务、语音处理及数据管理等方面的实现质量。系统测试将模拟真实社区随访场景，检验系统是否正确完成健康数据录入、风险评估、语音交互、智能反馈等核心功能流程，确保各功能模块的输出结果符合预期设计。
+
+测试活动重点关注以下核心指标的验证：其一，多智能体协同流程的正确性，要求健康数据录入——语音解析——风险评估——健康反馈的全链路流转无逻辑错误；其二，语音交互服务的可用性，验证ASR语音转写与TTS语音播报功能在正常网络条件下的可用率；其三，Agent交互日志的完整性，验证每次AI参与的交互过程均完整记录至AgentLog表，确保AI辅助决策的可追溯性。
 
 \section{测试环境}
 
-\textcolor{red}{[TODO: 测试环境配置说明]}
+系统测试在如下环境中进行：
+
+\begin{table}[H]
+\centering
+\caption{测试环境配置}
+\label{tab:test-env}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{项目} & \textbf{配置} \\
+\hline
+操作系统 & Windows 11 \\
+\hline
+开发语言 & Python 3.11.5 \\
+\hline
+Web框架 & Django 5.2.13 \\
+\hline
+数据库 & SQLite（开发测试） \\
+\hline
+浏览器 & Microsoft Edge / Google Chrome（最新版） \\
+\hline
+LLM API & GPT-4o-mini（OpenAI兼容接口） \\
+\hline
+ASR服务 & Whisper API（OpenAI） \\
+\hline
+TTS服务 & Edge TTS（Microsoft） \\
+\hline
+核心依赖 & LangGraph 1.1.6、LangChain 1.2.15、ChromaDB 1.5.7、edge-tts 7.2.8 \\
+\hline
+\end{tabularx}
+\end{table}
 
 \section{功能测试}
 
-\textcolor{red}{[TODO: 各模块功能测试用例与结果]}
+\subsection{用户认证模块测试}
+
+\begin{table}[H]
+\centering
+\caption{用户认证模块测试用例}
+\label{tab:test-auth}
+\begin{tabularx}{\textwidth}{|c|l|X|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{输入/操作} & \textbf{预期结果} & \textbf{通过} \\
+\hline
+T-01 & 患者登录 & 输入正确的患者账号密码 & 跳转至患者首页仪表盘 & \textcolor{red}{[TODO]} \\
+\hline
+T-02 & 医生登录 & 输入正确的医生账号密码 & 跳转至医生管理面板 & \textcolor{red}{[TODO]} \\
+\hline
+T-03 & 登录失败 & 输入错误的密码 & 提示"用户名或密码错误" & \textcolor{red}{[TODO]} \\
+\hline
+T-04 & 权限隔离 & 患者尝试访问医生端URL & 返回403或重定向至登录页 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{健康数据录入模块测试}
+
+\begin{table}[H]
+\centering
+\caption{健康数据录入模块测试用例}
+\label{tab:test-health-input}
+\begin{tabularx}{\textwidth}{|c|l|X|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{输入/操作} & \textbf{预期结果} & \textbf{通过} \\
+\hline
+T-05 & 文字录入 & 手动输入空腹血糖7.2、餐后血糖10.5、收缩压135、舒张压85、体重68 & 数据成功保存，跳转至评估结果页 & \textcolor{red}{[TODO]} \\
+\hline
+T-06 & 数值校验 & 输入空腹血糖50.0（超出合理范围） & 前端提示数值异常 & \textcolor{red}{[TODO]} \\
+\hline
+T-07 & 语音录入——ASR转写 & 录制15秒语音"今天空腹血糖七点二" & ASR返回转写文本并显示于文本框 & \textcolor{red}{[TODO]} \\
+\hline
+T-08 & 语音录入——AI解析 & 对ASR转写文本点击"AI解析" & LLM返回JSON结构化数据，自动回填表单 & \textcolor{red}{[TODO]} \\
+\hline
+T-09 & AgentLog记录 & 完成语音录入全流程 & AgentLog表中新增asr、voice\_parse两条记录 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{风险评估与健康反馈模块测试}
+
+\begin{table}[H]
+\centering
+\caption{风险评估与健康反馈模块测试用例}
+\label{tab:test-risk}
+\begin{tabularx}{\textwidth}{|c|l|X|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{输入/操作} & \textbf{预期结果} & \textbf{通过} \\
+\hline
+T-10 & 正常数据评估 & 空腹血糖5.5、餐后8.0、血压120/80 & 风险等级为"绿码（正常）" & \textcolor{red}{[TODO]} \\
+\hline
+T-11 & 异常数据评估 & 空腹血糖12.0、餐后18.0、血压160/100 & 风险等级为"红码（危险）"，触发预警 & \textcolor{red}{[TODO]} \\
+\hline
+T-12 & RAG健康反馈 & 提交健康数据后查看反馈建议 & 系统生成基于知识库的个性化健康建议文本 & \textcolor{red}{[TODO]} \\
+\hline
+T-13 & TTS语音播报 & 点击健康反馈的"语音播报"按钮 & 浏览器播放合成语音，音频清晰可辨 & \textcolor{red}{[TODO]} \\
+\hline
+T-14 & AgentLog记录 & 完成风险评估全流程 & AgentLog表中新增risk\_eval、health\_feedback记录 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{医生端功能模块测试}
+
+\begin{table}[H]
+\centering
+\caption{医生端功能模块测试用例}
+\label{tab:test-doctor}
+\begin{tabularx}{\textwidth}{|c|l|X|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{输入/操作} & \textbf{预期结果} & \textbf{通过} \\
+\hline
+T-15 & 患者列表查看 & 登录医生账号，访问患者管理页 & 显示该医生名下所有在管患者列表 & \textcolor{red}{[TODO]} \\
+\hline
+T-16 & 患者详情与AI摘要 & 点击某患者查看详情 & 展示近期健康记录、风险趋势及AI生成的诊疗摘要 & \textcolor{red}{[TODO]} \\
+\hline
+T-17 & 随访任务管理 & 创建一条新随访任务 & 任务保存成功，出现在待处理列表 & \textcolor{red}{[TODO]} \\
+\hline
+T-18 & 用药方案管理 & 为患者添加用药方案 & 方案保存成功，患者端可见 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{AI交互历史模块测试}
+
+\begin{table}[H]
+\centering
+\caption{AI交互历史模块测试用例}
+\label{tab:test-ai-history}
+\begin{tabularx}{\textwidth}{|c|l|X|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{输入/操作} & \textbf{预期结果} & \textbf{通过} \\
+\hline
+T-19 & 患者查看交互历史 & 患者访问"AI交互历史"页 & 按时间倒序展示所有AgentLog记录 & \textcolor{red}{[TODO]} \\
+\hline
+T-20 & 医生查看交互记录 & 医生在患者详情页查看"AI交互记录"标签 & 展示该患者的所有Agent日志 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
 
 \section{性能测试}
 
-\textcolor{red}{[TODO: 响应时间、并发性能等测试]}
+\begin{table}[H]
+\centering
+\caption{性能测试结果}
+\label{tab:test-perf}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
+\hline
+\textbf{编号} & \textbf{测试场景} & \textbf{预期指标} & \textbf{实测结果} & \textbf{通过} \\
+\hline
+P-01 & 普通页面响应时间 & $\leq$ 3秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+P-02 & ASR语音转写延迟（15秒录音） & $\leq$ 3秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+P-03 & LLM语音解析响应时间 & $\leq$ 5秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+P-04 & TTS语音合成延迟（200字文本） & $\leq$ 3秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+P-05 & 风险评估计算时间 & $\leq$ 1秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+P-06 & RAG健康反馈生成时间 & $\leq$ 8秒 & \textcolor{red}{[TODO]} & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
 
 \section{兼容性测试}
 
-\textcolor{red}{[TODO: 不同浏览器、设备的兼容性测试]}
+\begin{table}[H]
+\centering
+\caption{兼容性测试结果}
+\label{tab:test-compat}
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{编号} & \textbf{测试项} & \textbf{通过} \\
+\hline
+C-01 & Microsoft Edge（最新版）页面渲染与交互 & \textcolor{red}{[TODO]} \\
+\hline
+C-02 & Google Chrome（最新版）页面渲染与交互 & \textcolor{red}{[TODO]} \\
+\hline
+C-03 & 移动端浏览器（Chrome Android）适老化布局 & \textcolor{red}{[TODO]} \\
+\hline
+C-04 & MediaRecorder API 音频录制兼容性 & \textcolor{red}{[TODO]} \\
+\hline
+\end{tabularx}
+\end{table}
 
 \section{测试结论}
 
-\textcolor{red}{[TODO: 测试总结]}
+\textcolor{red}{[TODO: 系统开发与测试完成后填写]}
+
+% 预期结论模板：
+% 在系统开发与测试阶段，各功能模块均实现了独立稳定运行。经验证，
+% 用户认证模块准确执行角色隔离，患者端与医生端功能互不干扰；
+% 健康数据录入模块支持文字录入与语音录入两种方式，ASR转写与LLM解析链路正常；
+% 风险评估模块正确计算风险等级，RAG健康反馈内容准确、有针对性；
+% TTS语音播报功能音质清晰，延迟在可接受范围内；
+% 所有AI交互过程均完整记录至AgentLog表，满足可追溯性要求。
+% 性能测试表明，各项延迟指标均达到ch03需求分析中设定的标准。
+% 可见，系统能够较为完整地实现本文所设计的各项功能，测试结果与预期设想一致，
+% 基本达到了系统开发设计的目标。
