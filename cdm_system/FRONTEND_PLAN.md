@@ -107,7 +107,7 @@
 | 项目 | 规范 |
 |------|------|
 | 响应式 | Bootstrap Grid，≥768px 双栏，<768px 单栏 |
-| 患者端导航 | 底部 Tab 导航（大图标 + 文字标签，60px 高） |
+| 患者端导航 | 顶部 Tab 导航（5项：AI助手/概览/记录/用药/随访，56px 高，浅色底 + 主色下划线选中态） |
 | 医生端导航 | 左侧 Sidebar（深棕木色背景 #3E2723） |
 | 模板继承 | `base.html` → `base_patient.html` / `base_doctor.html` |
 
@@ -118,18 +118,17 @@
 ```
 templates/
 ├── base.html                   # 全站基础（meta, Bootstrap CDN, 消息提示）
-├── base_patient.html           # 患者布局（底部Tab: 首页/录入/记录/用药/随访）
+├── base_patient.html           # 患者布局（顶部Tab: AI助手/概览/记录/用药/随访）
 ├── base_doctor.html            # 医生布局（左侧Sidebar + 顶部Header）
 ├── accounts/
 │   └── login.html              # 登录页
 ├── patients/
-│   ├── dashboard.html          # 患者首页
-│   ├── health_input.html       # 健康数据录入（含录音上传）
-│   ├── input_result.html       # 评估结果（含TTS播报）
-│   ├── health_records.html     # 健康记录 + 趋势图
-│   ├── medication.html         # 用药管理
-│   ├── my_visits.html          # 我的随访
-│   └── ai_history.html         # AI 交互历史
+│   ├── ai_assistant.html       # P-01 AI 健康助手（默认首页，对话式交互）
+│   ├── manual_input.html       # P-01a 手动录入（子页面）
+│   ├── overview.html           # P-02 健康概览
+│   ├── health_records.html     # P-03 健康记录 + 趋势图
+│   ├── medication.html         # P-04 用药管理
+│   └── my_visits.html          # P-05 我的随访
 └── doctors/
     ├── dashboard.html          # 医生工作台
     ├── patient_list.html       # 患者列表
@@ -157,47 +156,50 @@ templates/
 
 ---
 
-### 3.2 患者端页面（5个主页面）
+### 3.2 患者端页面（6个主页面 + 1个子页面）
 
-#### P-01 患者首页 (`/patient/`)
+> **设计原则**：系统的核心价值是「AI 多智能体健康管理」，患者登录后**第一个触达的就是 AI 助手**，
+> 直接上功能，而非先看仪表盘。健康概览降为第二 Tab。
+
+#### P-01 AI 健康助手 (`/patient/`，登录后默认首页)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
-| 功能       | 个人健康概览一览                                           |
-| 卡片区域   | ① 风险状态卡（绿/黄/红三色徽章 + 最近评估时间）            |
-|            | ② 最近一次体征摘要（空腹血糖、血压、体重）                 |
-|            | ③ 下次随访提醒卡（日期 + 随访方式 + 倒计时天数）           |
-|            | ④ 今日用药概览（方案数 + 今日已打卡/未打卡）               |
-| 快捷入口   | "录入数据" 大按钮（跳转 P-02）                             |
-| 后端依赖   | `GET /patient/`                                            |
+| 功能       | **患者端核心页面**：语音/文字与 AI 对话 + 体征录入 + RAG 健康问答 |
+| 页面布局   | 上：问候栏 + 风险状态条（简版，从 session/最新 RiskRecord 读取）|
+|            | 中：**对话式主区域**（聊天气泡流），包含以下交互类型：        |
+|            | · 用户语音/文字输入 → AI 回复（RAG 健康问答）               |
+|            | · 用户报告体征（语音或文字）→ AI 解析为结构化数据 → 预览确认卡片 |
+|            | · 用户确认提交 → Agent 流水线执行 → 评估结果内嵌显示         |
+|            |   （风险等级 + 异常指标 + RAG 健康建议 + TTS 播报按钮）     |
+|            | 下：**输入栏**（大号麦克风按钮 88px + 文字输入框 + 发送按钮）|
+| 语音录入   | 🎙️ 按住说话 → MediaRecorder 录音 → 松开 → POST `/patient/api/voice-upload/` → ASR 转写 → 文字显示在输入框 → 自动发送或用户确认发送 |
+| RAG 问答   | 用户可直接提问（如"我血糖高怎么办"），调用 `POST /patient/api/chat/` → RAG 检索 + LLM 生成 → 回复气泡 + TTS 按钮 |
+| 体征录入流程 | AI 识别到体征数据后 → 调用 `POST /patient/api/voice-parse/` → 返回结构化预览卡片（空腹血糖/餐后血糖/收缩压/舒张压/体重）→ 用户点击"确认提交" → `POST /patient/input/` → Agent 流水线 → 结果内嵌在对话流中（不跳转新页面） |
+| TTS 播报   | 每条 AI 回复旁 🔊 按钮 → `POST /patient/api/tts/` → 播放   |
+| 快捷操作   | 对话区上方悬浮："手动录入" 小入口（跳转 P-01a 子页面）      |
+| 后端依赖   | `GET /patient/`、`POST /patient/api/voice-upload/`、`POST /patient/api/voice-parse/`、`POST /patient/api/chat/`（**新增**）、`POST /patient/input/`、`POST /patient/api/tts/` |
 
-#### P-02 健康数据录入 (`/patient/input/`)
+#### P-01a 手动录入（子页面）(`/patient/input/manual/`)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
-| 功能       | 语音/表单双模式录入体征数据                                |
-| 语音模式   | 🎙️ 按住说话按钮 → MediaRecorder 录制音频                   |
-|            | → 松开后 POST 音频文件到 `/patient/api/voice-upload/`（服务端 ASR）|
-|            | → 返回文本显示在文本框 → 点击"AI解析"                      |
-|            | → 调用 `POST /patient/api/voice-parse/` 返回结构化预览     |
-|            | → 用户确认后提交                                           |
-| 表单模式   | 空腹血糖、餐后血糖、收缩压、舒张压、体重 五个输入框        |
+| 功能       | 传统表单模式录入体征数据（为不方便语音的场景提供备选）     |
+| 表单字段   | 空腹血糖、餐后血糖、收缩压、舒张压、体重 五个输入框        |
 |            | 每个字段带单位标签和合理范围提示                            |
-| Tab 切换   | "语音录入" / "手动录入" 两个 Tab                           |
-| 提交流程   | `POST /patient/input/` → Agent 流水线 → 跳转 P-03 结果页  |
-| 后端依赖   | `POST /patient/input/`、`POST /patient/api/voice-upload/`、`POST /patient/api/voice-parse/` |
+| 提交流程   | `POST /patient/input/` → Agent 流水线 → 返回 P-01 显示结果 |
+| 导航       | 顶部返回按钮 → 回到 P-01 AI 助手                          |
+| 后端依赖   | `POST /patient/input/`                                     |
 
-#### P-03 评估结果页 (`/patient/input/result/`)
+#### P-02 健康概览 (`/patient/overview/`)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
-| 功能       | 显示本次数据提交后的 Agent 评估结果                        |
-| 内容       | ① 风险等级徽章（绿/黄/红 + 分值）                         |
-|            | ② 异常指标列表（trigger_indicators 逐条展示）             |
-|            | ③ RAG 健康反馈建议（适老化排版 + 🔊 语音播报按钮）         |
-|            | ④ Agent 处理流程日志（flow_log 时间线展示）               |
-| TTS 播报   | 点击 🔊 → `POST /patient/api/tts/` → 返回音频 URL → 播放  |
-| 操作       | "返回首页" / "查看历史记录" / "查看 AI 历史"               |
-| 后端依赖   | 从 Session 中读取 `last_result`；TTS 调用 `/patient/api/tts/` |
+| 功能       | 个人健康数据概览（原 P-01，降为第二 Tab）                  |
+| 状态条     | 风险状态（绿/黄/红 + 最近评估时间），全宽浅色底 + 左侧色条 |
+| 数据区     | 最近一次体征摘要（空腹血糖、血压、餐后血糖、体重），大字直排 |
+| 信息卡片   | ① 下次随访提醒（日期 + 随访方式 + 倒计时天数）             |
+|            | ② 今日用药概览（方案数 + 今日已打卡/未打卡）               |
+| 后端依赖   | `GET /patient/overview/`                                   |
 
-#### P-04 健康记录 (`/patient/records/`)
+#### P-03 健康记录 (`/patient/records/`)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
 | 功能       | 历史体征数据 + 趋势折线图                                  |
@@ -208,32 +210,26 @@ templates/
 | 表格区域   | 日期、空腹血糖、餐后血糖、收缩压、舒张压、体重、录入方式   |
 | 后端依赖   | `GET /patient/records/`、`GET /patient/api/health-trend/`  |
 
-#### P-05 用药管理 (`/patient/medication/`)
+#### P-04 用药管理 (`/patient/medication/`)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
 | 功能       | 今日用药提醒 + 打卡 + 依从率                               |
-| 顶部统计   | 30天依从率进度环（如 85%）                                 |
+| 顶部统计   | 30天依从率进度条（如 85%）                                 |
 | 方案列表   | 每个活跃方案一张卡片：药名、剂量、频次、提醒时间           |
 |            | 卡片右侧：打卡按钮（已服药/跳过），续方预警标记            |
 | 打卡交互   | 点击 → `POST /patient/api/medication/checkin/` AJAX        |
 |            | → 按钮变为 ✓ 已打卡（禁用），若需续方弹出提示             |
 | 后端依赖   | `GET /patient/medication/`、`POST /patient/api/medication/checkin/` |
 
-#### P-06 我的随访 (`/patient/visits/`)
+#### P-05 我的随访 (`/patient/visits/`)
 | 要素       | 说明                                                       |
 | ---------- | ---------------------------------------------------------- |
 | 功能       | 查看自己的随访计划                                         |
 | 展示       | 时间线形式，每条：日期、随访方式、状态（待处理/已完成）     |
 | 后端依赖   | `GET /patient/visits/`                                     |
 
-#### P-07 AI 交互历史 (`/patient/ai-history/`)
-| 要素       | 说明                                                       |
-| ---------- | ---------------------------------------------------------- |
-| 功能       | 查看系统为自己生成的所有 AI 建议和语音解析记录              |
-| 展示       | 时间线卡片，每条：时间、类型标签（健康反馈/语音解析/ASR）  |
-|            | 展开可见完整的原始输入和 AI 输出                            |
-| TTS 播报   | 每条建议旁 🔊 按钮 → TTS 播报                              |
-| 后端依赖   | `GET /patient/ai-history/`                                 |
+> **说明**：原 P-03「评估结果页」和 P-07「AI 交互历史」不再作为独立页面。
+> 评估结果**内嵌在 P-01 对话流中**；AI 交互历史即为 P-01 的**对话历史滚动回看**（AgentLog 持久化保证数据不丢失）。
 
 ---
 
@@ -332,13 +328,13 @@ templates/
 | GET    | `/`                                      | `role_router`           | 角色跳转       |
 | GET/POST | `/accounts/login/`                     | `login`                 | 登录           |
 | GET    | `/accounts/logout/`                      | `logout`                | 登出           |
-| GET    | `/patient/`                              | `patient_dashboard`     | 患者首页       |
-| GET/POST | `/patient/input/`                      | `patient_input`         | 健康录入       |
-| GET    | `/patient/input/result/`                 | `patient_input_result`  | 评估结果       |
+| GET    | `/patient/`                              | `patient_ai_assistant`  | AI健康助手（默认首页）|
+| GET    | `/patient/input/manual/`                 | `patient_manual_input`  | 手动录入（子页面）|
+| POST   | `/patient/input/`                        | `patient_input`         | 健康数据提交   |
+| GET    | `/patient/overview/`                     | `patient_overview`      | 健康概览       |
 | GET    | `/patient/records/`                      | `patient_records`       | 健康记录       |
 | GET    | `/patient/medication/`                   | `patient_medication`    | 用药管理       |
 | GET    | `/patient/visits/`                       | `patient_visits`        | 我的随访       |
-| GET    | `/patient/ai-history/`                   | `patient_ai_history`    | AI交互历史     |
 | GET    | `/doctor/`                               | `doctor_dashboard`      | 医生工作台     |
 | GET    | `/doctor/patients/`                      | `doctor_patients`       | 患者列表       |
 | GET/POST | `/doctor/patients/create/`             | `doctor_patient_create` | 新增患者       |
@@ -356,6 +352,7 @@ templates/
 | ------ | ------------------------------------------------ | ------------------------- | ------------------ |
 | POST   | `/patient/api/voice-upload/`                     | `api_voice_upload`        | 音频上传→ASR转写   |
 | POST   | `/patient/api/voice-parse/`                      | `api_voice_parse`         | 文本→结构化数据    |
+| POST   | `/patient/api/chat/`                             | `api_chat`                | RAG健康问答（**新增**）|
 | POST   | `/patient/api/tts/`                              | `api_tts`                 | 文本→语音合成      |
 | GET    | `/patient/api/health-trend/?days=30`             | `api_health_trend`        | 患者自己的趋势     |
 | POST   | `/patient/api/medication/checkin/`               | `api_medication_checkin`  | 用药打卡           |
@@ -370,22 +367,29 @@ templates/
 
 ## 五、页面交互流程图（关键流程）
 
-### 5.1 患者录入→评估全流程
+### 5.1 患者 AI 助手交互全流程
 ```
-患者首页 → 点击"录入数据"
-  → 健康数据录入页（P-02）
-    ├─ [语音模式] 按住录音 → MediaRecorder 录制 WebM 音频
-    │   → 松开 → POST /patient/api/voice-upload/（音频文件上传）
-    │   → 服务端 DashScope Paraformer ASR 转写 → 返回文本 → 显示在文本框
-    │   → 点击"AI解析" → AJAX voice-parse → 预览结构化数据
-    │   → 点击"确认提交"
-    └─ [表单模式] 手动填写五项数据 → 点击"提交"
-  → POST /patient/input/
-  → Django View 调用 agent_app.invoke(initial_state)
+登录 → 进入 AI 健康助手（P-01，默认首页）
+
+流程 A：语音/文字录入体征
+  → 按住麦克风说话（或直接打字）
+  → 语音：POST /patient/api/voice-upload/ → ASR 转写 → 文字显示在输入框
+  → 发送消息 → AI 识别体征数据
+  → POST /patient/api/voice-parse/ → 结构化预览卡片（空腹血糖/血压/体重…）
+  → 用户点击"确认提交"
+  → POST /patient/input/ → Agent 流水线
     → PatientAgent → TriageAgent → [条件] → SchedulerAgent → DoctorAgent
     → 各 Agent 执行结果自动写入 AgentLog
-  → Session 存储结果 → Redirect
-  → 评估结果页（P-03）：风险等级 + 异常指标 + RAG 健康反馈 + 🔊 TTS 播报
+  → 评估结果内嵌在对话流中显示：风险等级 + 异常指标 + RAG 健康建议 + 🔊 TTS
+
+流程 B：RAG 健康问答
+  → 用户提问（如"我血糖高怎么办""降糖药可以和降压药一起吃吗"）
+  → POST /patient/api/chat/ → RAG 检索知识库 + LLM 生成
+  → 回复气泡显示在对话流中 + 🔊 TTS 播报按钮
+
+流程 C：手动录入（备选）
+  → 点击"手动录入"入口 → 进入 P-01a 子页面
+  → 填写五项数据 → 提交 → Agent 流水线 → 返回 P-01 显示结果
 ```
 
 ### 5.2 医生工作台→处理预警

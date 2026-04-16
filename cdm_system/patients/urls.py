@@ -14,6 +14,7 @@ urlpatterns = [
     # AJAX / JSON API
     path("api/voice-parse/", views.voice_parse_api, name="api_voice_parse"),
     path("api/voice-upload/", views.voice_upload_api, name="api_voice_upload"),
+    path("api/chat/", views.chat_api, name="api_chat"),
     path("api/tts/", views.tts_api, name="api_tts"),
     path("api/health-trend/", views.health_trend_api, name="api_health_trend"),
     path("api/medication/checkin/", views.medication_checkin_api, name="api_medication_checkin"),

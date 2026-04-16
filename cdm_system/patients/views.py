@@ -194,6 +194,45 @@ def tts_api(request):
         })
 
 
+@require_POST
+@patient_required
+def chat_api(request):
+    """AJAX接口：RAG 健康问答。患者提问 → 知识库检索 → LLM 生成回答。"""
+    body = json.loads(request.body)
+    question = body.get("question", "").strip()
+    if not question:
+        return JsonResponse({"success": False, "error": "问题不能为空"}, status=400)
+
+    patient = request.user.patient_profile
+
+    from agents.rag_service import retrieve, generate_with_context, PATIENT_SYSTEM_PROMPT
+
+    docs = retrieve(question, audience="patient", top_k=3)
+    if docs:
+        answer = generate_with_context(question, docs, PATIENT_SYSTEM_PROMPT, max_tokens=400)
+    else:
+        answer = ""
+
+    if not answer:
+        answer = "抱歉，我暂时无法回答这个问题，建议您咨询您的责任医生。"
+
+    from agents.patient_agent import _write_log
+    _write_log(
+        patient_id=patient.pk,
+        log_type="rag_chat",
+        agent_name="RAGService",
+        raw_input=question,
+        raw_output=answer,
+        user=request.user,
+    )
+
+    return JsonResponse({
+        "success": True,
+        "answer": answer,
+        "sources": [d["source"] for d in docs],
+    })
+
+
 @patient_required
 def health_records(request):
     """健康记录历史 + 趋势图。"""
