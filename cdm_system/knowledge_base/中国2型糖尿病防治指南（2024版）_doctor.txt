@@ -1,0 +1,1799 @@
+【概述】（第1页）
+北京大学医学出版社
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+中国2型糖尿病防治指南
+2010年版
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+北京大学医学出版社
+中华医学会糖尿病学分会
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+ZHONGGUO ER XING TANGNIAOBING FANGZHI ZHINAN
+图书在版编目（CIP）数据
+中国2型糖尿病防治指南/2010年版/中华医学会糖尿病学分会主编. -北京: 北京大学医
+学出版社, 2011.5
+ISBN 978-7-5659-0167-6
+Ⅰ. ①中… Ⅱ. ①中… Ⅲ. ①糖尿病-防治-指南
+Ⅳ. ①R587.1-62
+中国版本图书馆CIP数据核字(2011)第070846号
+中国2型糖尿病防治指南
+主    编：中华医学会糖尿病学分会
+出版发行：北京大学医学出版社（电话：010-82802230）
+地    址：（100191）北京市海淀区学院路38号  北京大学医学部院内
+网    址：http://www.pumpress.com.cn
+E - m a l l :  bookcale@bjmu.cbu.cn
+印    刷：中国人民大学出版社印刷厂
+经    销：新华书店
+责任编辑：李小云      责任校对：何  力     责任印制：张京生
+开    本：889毫米×1194毫米  1/16  印张：6.5  字数：145千字
+版    次：2011年9月第1版第1次印刷
+书    号：ISBN 978-7-5659-0167-6
+定    价：38.00元
+中国2型糖尿病防治指南制订委员会
+名誉主任委员: 杨文英
+主 任 委 员: 纪立农
+副主任委员: 陆菊明 翁建平 贾伟平 周智广 邹大进
+委员（以姓氏拼音为序）
+陈  丽  陈  伟  葛家璞  郭晓蕙  胡仁明  姬秋和  纪立农
+贾伟平  李启富  刘  静  柳  洁  陆菊明  冉兴无  单忠艳
+孙子林  田浩明  翁建平  萧建中  许樟荣  杨慧霞  杨立勇
+杨文英  杨玉芝  于德民  赵志刚  周智广  朱大龙  邹大进
+中国2型糖尿病防治指南学术委员会
+（以姓氏拼音为序）
+蔡德鸿  陈家伦  陈家伟  陈  丽  陈莉明  陈名道  陈  伟  程  桦  迟家敏
+冯  波  傅祖植  高  妍  高勇义  葛焕琦  葛家璞  巩纯秀  谷  卫  郭立新
+郭晓蕙  洪天配  胡仁明  姬秋和  纪立农  贾伟平  孔灵芝  匡洪宇  李彩萍
+李光伟  李  红（昆明）  李  红（浙江）  李江源  李启富  李小英  李秀钧
+李延兵  廖二元  林丽香  刘国良  刘建英  刘  静  刘  伟  柳  洁  陆菊明
+罗国春  吕肖锋  母义明  倪桂臣  宁  光  宁英远  潘长玉  钱荣立  冉兴无
+单忠艳  时立新  石勇铨  宋光耀  苏本利  孙  侃  孙子林  滕卫平  田成功
+田浩明  王长江  王家驰  王  立  翁建平  夏  宁  向红丁  项坤三  萧建中
+肖新华  徐焱成  徐  勇  许曼音  许樟荣  阎胜利  杨国庆  杨慧霞  杨  静
+杨丽辉  杨立勇  杨明功  杨叔禹  杨  涛  杨文英  杨玉芝  姚孝礼  于德民
+余学锋  袁  莉  曾龙驿  曾正陪  张惠莉  张家庆  张巾超  张如意  赵家军
+赵志刚  周智广  朱大龙  邹大进
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+
+
+【概述】（第8页）
+《中国2型糖尿病防治指南》于2003年发表，2007年进行了第一次修订。近3年来国内外2型糖尿病的临床
+和基础研究取得了很大进展，有成功的经验，也有失败的教训，有的研究甚至推翻了原有的认识和观念。不管
+是成功还是失败，都对2型糖尿病的诊断和治疗产生了巨大影响，对我国糖尿病的防治也有同样的作用。因此
+很有必要对我国2型糖尿病防治指南进行修订。同时考虑到我国糖尿病防治工作的具体情况，糖尿病学分会拟
+订了今后中国2型糖尿病防治指南修订的原则：根据国内外最新研究进展不定期修订指南，一般每2～3年修订
+一次，逐步过渡到每年一次，并在《中华糖尿病杂志》上发表或发行单行本，同时在中华医学会糖尿病学分会
+（CDS）网站上公布。为了使读者更好地了解这次修改的主要内容和依据，特作如下说明。
+
+
+【四、心血管危险因素的管理和综合治疗】（第8页）
+心血管疾病是2型糖尿病的主要致残和致死原因。大量的循证医学证据显示包括生活方式干预、降血糖、降
+血压、调脂和抗血小板等综合治疗（标准治疗）是显著减少糖尿病大、小血管并发症和死亡发生风险的最有效
+措施。本指南更加强调了综合治疗的重要性并为临床应用标准治疗措施提供了筛查和临床治疗决策的路线图。
+
+
+【十、下肢血管病变】（第10页）
+附录4  糖尿病常用降压药…………………………………………………………………………………(64)
+附录5  常用调脂药物……………………………………………………………………………………(66)
+附录6  口服葡萄糖耐量试验(OGTT)方法………………………………………………………………(67)
+附录7  常用体质指标……………………………………………………………………………………(67)
+附录8  常用化验数据及换算……………………………………………………………………………(68)
+参考文献…………………………………………………………………………………………………………(69)
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+本指南中常见英文缩略语释义
+国际糖尿病联盟（International Diabetes Federation，IDF）
+世界卫生组织（World Health Orgnization, WHO）
+美国糖尿病学会（American Diabetes Association, ADA）
+糖化血红蛋白（glycosylated hemoglobin A1c, HbA1c）
+噻唑烷二酮类（thiazolidinediones，TZDs）
+胰高血糖素样肽-1（glucagon-like peptide-1，GLP-1）
+踝肱指数（ankle-brachial index, ABI）
+空腹血糖受损（impaired fasting glucose，IFG）
+糖耐量减低（impaired glucose tolerance，IGT）
+糖调节受损（impaired glucose regulation，IGR，即糖尿病前期，包括空腹血糖受损和糖耐量减低）
+谷氨酸脱羧酶抗体（glutamic acid decarboxylase antibody，GAD-Ab）
+胰岛细胞抗体（islet cell antibody，ICA）
+人胰岛细胞抗原2抗体（human islet antigen-2 antibody，IA-2A）
+成人起病的青少年糖尿病(maturity-onset diabetes mellitus in youth，MODY)
+外周动脉疾病（peripheral artery disease, PAD）
+餐后2 h血糖（2-hours postprandial glucose, 2 hPG）
+持续性皮下胰岛素输注(continuous subcutaneous insulin infusion,CSII)
+糖尿病酮症酸中毒（diabetic ketoacidosis, DKA)
+（糖尿病）高血糖高渗透压综合征（hyperglycemia hyperosmolar state，HHS）
+预防糖尿病计划研究(Diabetes Prevention Program, DPP)
+糖尿病控制与并发症试验（Diabetes Control and Complications Trial，DCCT）
+英国前瞻性糖尿病研究（the United Kingdom Prospective Diabetes Study，UKPDS）
+高血压最佳治疗试验（Hypertension Optimal Treatment trial, HOT）
+英国心脏保护研究-糖尿病亚组试验（Heart Protection Study-Diabetes Mellitus, HPS-DM）
+糖尿病与血管疾病行动研究（Action in Diabetes and Vascular Disease: Preterax and Diamicron MR
+Controlled Evaluation，ADVANCE）
+（美国）退伍军人糖尿病研究（Veterans Affairs Diabetes Trial，VADT）
+
+
+【十、下肢血管病变】（第11页）
+控制糖尿病心血管风险行动研究（Action to Control Cardiovascular Risk in Diabetes，ACCORD）
+盎格鲁-斯堪的纳维亚心脏终点试验-降脂分支研究（Anglo-Scandinavian Cardiac Outcomes Trial-Lipid
+Lowering Arm，ASCOT-LLA)
+阿托伐他汀糖尿病协作研究（Collaborative Atorvastatin Diabetes Study，CARDs）
+自我血糖监测（self monitoring of blood glucose, SMBG）
+中国2型糖尿病及其并发症的流行病学
+
+
+【二、妊娠糖尿病的流行病学】（第13页）
+我国曾经进行过几次城市妊娠糖尿病的调
+查。一般先经过口服50g葡萄糖OGTT进行初次筛
+查，然后进行75g葡萄糖OGTT。天津城区通过
+对近1万名妊娠妇女进行筛查，显示妊娠糖尿病
+的患病率为2.31%（WHO诊断指标）。而2008年
+对中国18个城市16,286名妊娠女性的筛查结果表
+明，妊娠糖尿病的患病率为4.3%（按ADA诊断
+标准）。高龄妊娠、糖尿病家族史、超重（或）
+肥胖是妊娠糖尿病的危险因素。反复阴道真菌感
+染、自然流产、南方住民等与妊娠糖尿病也有
+关。但这些研究仅限于城市地区，只能代表城市
+的情况。
+
+
+【一、糖尿病的诊断】（第16页）
+糖尿病的临床诊断应依据静脉血浆血糖，而不
+是毛细血管血的血糖检测结果。若无特殊提示，文
+中所提到的血糖均为静脉血浆葡萄糖值。
+血糖的正常值和糖代谢异常的诊断切点主要
+依据血糖值与糖尿病并发症和糖尿病发生风险的
+关系来确定。目前常用的诊断标准和分类有WHO
+（1999年）标准和ADA（2003）年标准。我国目前
+采用WHO（1999年）糖尿病诊断标准、糖代谢状
+态分类标准（表2、表3）和糖尿病的分型体系，空
+腹血浆葡萄糖或75g葡萄糖OGTT后2hPG值可以单
+独用于流行病学调查或人群筛查。但我国资料显示
+仅查空腹血糖，糖尿病的漏诊率较高，理想的调查
+是同时检查空腹血糖及OGTT后2hPG值。
+建议已达到糖调节受损的人群，应行OGTT检
+查，以降低糖尿病的漏诊率。
+糖代谢分类
+静脉血浆葡萄糖（mmol/L）
+空腹血糖（FPG）
+糖负荷后2小时血糖（2hPPG）
+正常血糖（NGR）
+<6.1
+<7.8
+空腹血糖受损（IFG）
+6.1～<7.0
+<7.8
+糖耐量减低（IGT）
+<7.0
+7.8～<11.1
+糖尿病（DM）
+≥7.0
+≥11.1
+诊断标准
+静脉血浆葡萄糖水平mmol/La
+(1）糖尿病症状（高血糖所导致的多饮、多食、多尿、体重下降、皮肤瘙痒、视力模
+糊等急性代谢紊乱表现）加随机血糖
+≥11.1
+(2）空腹血糖（FPG）
+≥7.0
+(3）葡萄糖负荷后2 h血糖
+≥11.1
+无糖尿病症状者，需改日重复检查
+糖尿病诊断与分型
+表2 糖代谢状态分类（WHO 1999）
+表3 糖尿病的诊断标准
+注：空腹状态指至少8h没有进食热量；随机血糖指不考虑上次用餐时间，一天中任意时间的血糖，不能用来诊断空腹
+血糖受损（IFG）或糖耐量异常（IGT）；a只有相对应的2h毛细血管血糖值有所不同，糖尿病：2h血糖≥12.2mmol/L；IGT：2h
+血糖≥8.9mmol/L且<12.2mmol/L
+注：IFG和IGT统称为糖调节受损（IGR，即糖尿病前期）
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+
+
+【五、代谢手术的风险】（第38页）
+手术治疗肥胖症伴2型糖尿病亦有一定的短
+期和长期风险，该治疗方法的长期有效性和安全
+性，特别是在我国人群中的有效性和安全性尚
+有待评估。多项荟萃分析显示，RYGB术后30天
+死亡率为0.3%～0.5%，90天死亡率为0.35%。
+LAGB为的死亡率为0.1%。深静脉血栓形成和肺
+栓塞是手术引起死亡的重要原因。术后并发症还
+包括出血、吻合口瘘、消化道梗阻、溃疡等。远
+期并发症包括营养缺乏、胆石症、内疝形成等。
+建议卫生行政主管部门设立该类手术的资格准入
+制度以保证手术的有效性和安全性。我国应进行
+手术治疗与药物治疗的随机对照研究，特别是以
+并发症为终点的前瞻性研究。
+
+
+【五、糖尿病足】（第58页）
+【（一）妊娠糖尿病的筛查】
+1. 有高度糖尿病风险的妊娠妇女：有妊娠
+糖尿病、巨大儿分娩史，肥胖，多囊卵巢综合
+征，有糖尿病家族史，早孕期空腹尿糖阳性者，
+无明显原因的多次自然流产史、胎儿畸形史及
+死胎史、新生儿呼吸窘迫综合征分娩史者等，
+应尽早监测血糖，如果空腹血糖≥7.0mmol/L
+（126mg/dl）及（或）随机血糖≥11.1mmol/L
+（200mg/dl）应在2周内重复测定。如血糖仍然
+如此可诊断妊娠糖尿病。
+2. 所有妊娠妇女应在妊娠24～28周采取以下
+表12  妊娠糖尿病的诊断标准
+75gOGTT
+血糖（mmol/L）
+血糖（mg/dl）
+空腹
+5.3
+服糖后1h
+10.0
+服糖后2h
+8.6
+服糖后3h
+7.8
+糖尿病的
+特殊情况
+注：1 mmol/L=18mg/dl；OGTT：葡萄糖耐量试验；2个以上时间点高于上述标准可确定诊断
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+两种方法之一测定血糖：
+
+【（1）一步法：进行75gOGTT检测(表12)。】
+
+【（2）两步法：先行50gOGTT进行初筛，服】
+糖后1h血糖高于7.2mmol/L（130mg/dl）者进
+行75gOGTT。
+3. 妊娠糖尿病的分级：
+
+【（1）A1级：空腹血糖＜5.8mmol/L，经饮】
+食控制，餐后2hPG＜6.7mmol/L；
+
+【（2）A2级：空腹血糖≥5.8mmol/L或经饮】
+食控制餐后2hPG≥6.7mmol/L者，需使用胰岛
+素控制血糖。
+
+【（二）计划妊娠的糖尿病妇女妊娠前的准备】
+1.	糖尿病妇女应计划妊娠，在糖尿病未得到
+满意控制之前应采取避孕措施。应告知已妊娠的
+糖尿病妇女在妊娠期间强化血糖控制的重要性以
+及高血糖可能对母婴带来的危险。
+2.	在计划妊娠之前，应认真地回顾如下病
+史：
+
+【（1）糖尿病的病程；】
+
+
+【五、糖尿病足】（第73页）
+Glimepiride
+1，2
+1～8
+消渴丸(含格列本
+Xiaoke Pill
+0.25mg格列本脲 5～30粒（含1.25～
+脲)
+/粒
+7.5mg格列本脲）
+二甲双胍
+Metformin
+250、500、850
+500～2000
+5～6
+1.5～1.8
+二甲双胍缓释片
+Metformin-XR
+500～2000
+6.2
+阿卡波糖
+Acarbose
+100～300
+伏格列波糖
+Voglibose
+0.2
+0.2～0.9
+米格列醇
+Miglitol
+100～300
+瑞格列奈
+Repaglinide
+0.5、1、2
+1～16
+4～6
+那格列奈
+Nateglinide
+120～360
+1.3
+米格列奈钙片
+Mitiglinide calcium
+30～60
+0.23～0.28(峰浓度
+1.2
+时间)
+罗格列酮
+Rosiglitazone
+4～8
+3～4
+二甲双胍+罗格
+Metformin+
+500/2
+列酮
+Rosiglitazone
+吡格列酮
+Pioglitazone
+15～45
+2(达峰时间)
+3～7
+西格列汀
+Sitagliptin
+12.4
+沙格列汀
+Saxagliptin
+2.5
+维格列汀
+Vildagliptin
+艾塞那肽
+Exenatide
+0.3/1.2ml
+0.6/2.4ml
+0.01～0.02
+2.4
+利拉鲁肽
+Liraglutide
+18mg/3ml
+0.6～1.8
+附  录
+附录3  常用胰岛素及其作用特点
+胰岛素制剂
+起效时间
+峰值时间
+作用持续时间
+短效胰岛素（RI）
+15～60min
+2～4h
+5～8h
+速效胰岛素类似物
+（门冬胰岛素）
+10～15min
+1～2h
+4～6h
+速效胰岛素类似物
+（赖脯胰岛素）
+10～15min
+1.0～1.5h
+4～5h
+中效胰岛素（NPH）
+2.5～3h
+5～7h
+13～16h
+长效胰岛素（PZI）
+3～4h
+8～10h
+长达20h
+长效胰岛素类似物
+(甘精胰岛素)
+2～3h
+无峰
+长达30h
+长效胰岛素类似物
+（地特胰岛素）
+3～4h
+3～14h
+长达24h
+预混胰岛素
+（HI 30R, HI 70/30）
+0.5h
+2～12h
+14～24h
+预混胰岛素（50R）
+0.5h
+2～3h
+10～24h
+预混胰岛素类似物
+(预混门冬胰岛素 30)
+10～20min
+1～4h
+14～24h
+预混胰岛素类似物
+(预混赖脯胰岛素 25)
+15min
+30～70min
+16～24h
+预混胰岛素类似物
+(预混赖脯胰岛素 50)
+15min
+30～70min
+16～24h
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+化学名
+英文名
+单剂量(mg)	 常用剂量(mg/d)
+主要不良反应
+卡托普利
+Catopril
+12.5
+25～100
+咳嗽，血钾升高，血管性水肿
+苯那普利
+Benazepril
+5～40
+咳嗽，血钾升高，血管性水肿
+依那普利
+Enalapril
+5～40
+咳嗽，血钾升高，血管性水肿
+西拉普利
+Cilazapril
+2.5
+2.5～5.0
+咳嗽，血钾升高，血管性水肿
+福辛普利
+Fosinopril
+10～40
+咳嗽，血钾升高，血管性水肿
+培哚普利
+Perindopril
+4～8
+咳嗽，血钾升高，血管性水肿
+雷米普利
+Ramipril
+2.5
+1.25～20.00
+咳嗽，血钾升高，血管性水肿
+赖诺普利
+Lisinopril
+5～40
+咳嗽，血钾升高，血管性水肿
+喹那普利
+Quinapril
+10～40
+咳嗽，血钾升高，血管性水肿
+群多普利
+Trandolapril
+0.5～4.0
+咳嗽，血钾升高，血管性水肿
+地拉普利
+Delapril
+15～60
+咳嗽，血钾升高，血管性水肿
+咪哒普利
+Imidapril
+2.5～10.0
+咳嗽，血钾升高，血管性水肿
+
+
+【五、糖尿病足】（第75页）
+氯沙坦
+Losartan
+25～100
+血钾升高，血管性水肿（罕见）
+缬沙坦
+Valsartan
+80～160
+血钾升高，血管性水肿（罕见）
+厄贝沙坦
+Irbesartan
+150～300
+血钾升高，血管性水肿（罕见）
+坎地沙坦
+Candesartan
+8～32
+血钾升高，血管性水肿（罕见）
+替米沙坦
+Micardis
+20～80
+血钾升高，血管性水肿（罕见）
+奥美沙坦
+Olmesartan
+20～40
+血钾升高，血管性水肿（罕见）
+硝苯地平缓释片
+Nifedipine
+10～20
+水肿，头痛，潮红
+硝苯地平控释片
+Nifedipine
+30～60
+水肿，头痛，潮红
+苯磺酸氨氯地平
+Amlodipine besylate
+2.5～10.0
+水肿，头痛，潮红
+非洛地平
+Felodipine
+2.5～20.0
+水肿，头痛，潮红
+拉西地平
+Lacidipine
+4～6
+水肿，头痛，潮红
+尼卡地平
+Perdipine
+60～90
+水肿，头痛，潮红
+尼群地平
+Nitrendipine
+20～60
+水肿，头痛，潮红
+附录4  糖尿病常用降压药
+附  录
+化学名
+英文名
+单剂量(mg)	常用剂量(mg/d)
+主要不良反应
+乐卡地平
+Lercanidipine
+10～20
+水肿，头痛，潮红
+维拉帕米缓释片
+Verapamil
+120～240
+房室传导阻滞，心功能抑制，便秘
+美托洛尔
+Metoprolol
+25、50
+50～100
+支气管痉挛，心功能抑制
+比索洛尔
+Bisoprolol
+2.5～10.0
+支气管痉挛，心功能抑制
+阿替洛尔
+Atenolol
+12.5～50.0
+支气管痉挛，心功能抑制
+普奈洛尔
+Propranolol
+30～90
+支气管痉挛，心功能抑制
+倍他洛尔
+Betaxolol
+5～20
+支气管痉挛，心功能抑制
+拉贝洛尔
+Labetalol
+200～400
+体位性低血压，支气管痉挛
+卡维地洛
+Carvedilol
+12.5～50.0
+体位性低血压，支气管痉挛
+阿罗洛尔
+Arotinolol
+10～20
+体位性低血压，支气管痉挛
+呋塞米
+Furosemide
+20～80
+血钾降低
+双氢氯噻嗪
+Hydrochlorothiazide
+6.25～25.00
+血钾减低，血钠减低，血尿酸升高
+氯噻酮
+Chlortralidone
+12.5～25.00
+血钾减低，血钠减低，血尿酸升高
+吲哒帕胺
+Indapamide
+2.5
+0.625～2.500
+血钾减低，血钠减低，血尿酸升高
+吲哒帕胺缓释片
+Indapamide
+1.5
+1.5
+血钾减低，血钠减低，血尿酸升高
+阿米洛利
+Amiloride
+2.5
+5～10
+血钾增高
+氨苯蝶啶
+Triamterene
+25～100
+血钾增高
+螺内酯
+Spironolactone
+25～50
+血钾增高
+特拉唑嗪
+Terazosin
+1～20
+体位性低血压
+多沙唑嗪
+Doxazosin
+1～16
+体位性低血压
+哌唑嗪
+Prazosin
+2～20
+体位性低血压
+乌拉地尔
+Urapidil
+体位性低血压
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+附录5  常用调脂药物
+化学名
+英文名
+常用剂量(mg)
+主要副作用
+非诺贝特
+Fenofibrate
+消化不良，胆石症，肝血清酶升高和肌病
+吉非贝齐
+Gemfibrozil
+消化不良，胆石症，肝血清酶升高和肌病
+苯扎贝特
+Bezafibrate
+消化不良，胆石症，肝血清酶升高和肌病
+洛伐他汀
+Lovastatin
+头痛、失眠、抑郁，腹泻、腹痛、恶心、消化不良，肝转氨酶
+升高，肌病
+辛伐他汀
+Simvastatin
+20～40
+头痛、失眠、抑郁，腹泻、腹痛、恶心、消化不良，肝转氨酶
+升高，肌病
+普伐他汀
+Pravastatin
+头痛、失眠、抑郁，腹泻、腹痛、恶心、消化不良，肝转氨酶
+
+
+【五、糖尿病足】（第79页）
+50～62vol%
+2.226
+0.4492
+收缩压（SBP）
+12.0～18.7kPa
+90～140mmHg
+7.5
+0.133
+舒张压（DBP）
+8.0～12.0kPa
+60～90mmHg
+7.5
+0.133
+总胆红素（T-Bil）
+3.4～20μmol/L
+0.2～1.2mg/dl
+0.05847
+17.1
+直接胆红素（D-Bil）
+0～7μmol/L
+0～0.4mg/dl
+0.05847
+17.1
+血清总蛋白（TP）
+60～80g/L
+6.0～8.0g/dl
+0.1
+血清白蛋白（ALB）
+40～55g/L
+4.0～5.5g/dl
+0.1
+血清球蛋白（GLO）
+20～30g/L
+2.0～3.0g/dl
+0.1
+谷丙转氨酶（ALT, GPT）
+0～40U/L
+<120U(改良金氏法)
+谷草转氨酶（AST, GOT）
+0～40U/L
+<120U(改良金氏法)
+碱性磷酸酶（ALP ,AKP）
+40～160U/L
+胰岛素
+27.9～83.6pmol/L
+4～12μU/ml
+0.144
+6.965
+C-肽
+0.3～1.3nmol/L
+0.9～3.9ng/ml
+3.000
+0.333
+附录8  常用化验数据及换算
+参考文献
+参考文献
+1. 中华医学会糖尿病学分会. 中国2型糖尿病
+防治指南. 2007.
+2. International Diabetes Federation Clinical
+Guidelines Task Force. Global Guideline on Type 2
+diabetes. 2005.
+3. American Diabetes Association. Standards
+of Medical Care in Diabetes-2010. Diabetes Care，
+2010，33：s11-s61.
+4. National Institute for Health and Clinical
+Excellence Type 2 diabetes: the management of
+type 2 diabetes. NICE clinical guideline 66. 2008
+Available from www. nice. org. uk/CG66.
+5. Asian-Paciﬁc Type 2 Diabetes Policy Group.
+Type 2 Diabetes Practice targets and treatments
+(Fourth Edition). 2005.
+6. International Diabetes Federation Clinical
+Guidelines Task Force. Global Guideline on
+Pregnancy and Diabetes. 2009.
+7. International Diabetes Federation Clinical
+Guidelines Task Force. Guideline on Self-Monitoring
+of Blood Glucose in Non-Insulin Treated Type 2
+Diabetes. 2009.
+8. Diabetes Australia Guideline Development
+Consortium. Evidence Based Guideline for the
+Primary Prevention of Type 2 Diabetes. 2008.
+9. Canadian Diabetes Association Clinical
+Practice Guidelines Expert Committee. Clinical
+Practice Guidelines for the Prevention and
+
+
+【五、糖尿病足】（第80页）
+Management of Diabetes in Canada. Can J of diabetes
+2003，27：S113-116.
+10. International Working Group on the Diabetic
+Foot: International Consensus on the Diabetic foot
+and Practical Guidelines on the Management and
+Prevention of the Diabetic Foot. IDF，2007.
+11. American Academy of Ophthalmology
+Retina Panel. Preferred Practice Pattern® Guidelines.
+Diabetic Retinopathy. San Francisco，CA: American
+Academy of Ophthalmology. 2008. Available at: http:
+//www.aao.org/ppp.
+12. KDOQI. Clinical Practice Guidelines and
+Clinical Practice Recommendations for Diabetes and
+Chronic Kidney Disease. Am J Kidney Dis，2007，
+49:S12-154.
+13. Levey AS，Coresh J，Balk E，et al. National
+Kidney Foundation. National Kidney Foundation
+practice guidelines for chronic kidney disease:
+evaluation，classification，and stratification. Ann
+Intern Med，2003，139：137-147.
+14. 中华医学会糖尿病学分会. 中国血糖监测
+临床应用指南. 中华糖尿病杂志，2011，1：13-21.
+15. 中华医学会糖尿病学分会，中国医师协会
+营养医师专业委员会. 中国糖尿病医学营养治疗指
+南. 2010.
+16. 中华医学会糖尿病学分会. 中国糖尿病药
+物注射技术指南. 2011.
+17. 全国糖尿病研究协作组调查研究组. 全国
+14省市30万人口中糖尿病调查报告. 中华内科杂
+志，1981，20：678-683.
+18. 李立明，饶克勤，孔灵芝，等. 中国居民
+2002年营养与健康状况调查. 中华流行病学杂志，
+2005，26：478-484.
+19. Yang WY，Lu JM，Weng JP，et al . Prevalence
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+of Diabetes among Men and Women in China. N Engl
+J Med，2010，362：1090-1101.
+20. Yang X，Hsu-Hage B，Zhang H，et al.
+Gestational diabetes mellitus in women of single
+gravidity in Tianjin City，China. Diabetes Care，
+2002，25：847-851.
+21. Yang H，Wei Y，Gao X，et al. Risk factors
+for gestational diabetes mellitus in Chinese women:
+a prospective study of 16,286 pregnant women in
+China. Diabet Med，2009，26：1099-1104.
+
+
+【五、糖尿病足】（第81页）
+Group. Reduction in the incidence of type 2 diabetes
+with lifestyle intervention or metformin. N Engl J
+Med，2002，346：393–403.
+34. Tuomilehto J，Lindstrom J，Eriksson
+JG，et al. Finnish Diabetes Prevention Study G.
+Prevention of type 2 diabetes mellitus by changes
+in lifestyle among subjects with impaired glucose
+tolerance. N Engl J Med，2001，344：1343-1350.
+35. Chiasson JL，Josse RG，Gomis R，et al.
+STOP-NIDDM Trial Research Group. Acarbose for
+prevention of type 2 diabetes mellitus：the STOPNIDDM randomised trial. Lancet，2002，359：
+2072-2077.
+36. The DREAM Trial Investigators. Effect of
+rosiglitazone on the frequency of diabetes in patients
+with impaired glucose tolerance or impaired fasting
+glucose：a randomised controlled trial. Lancet，
+参考文献
+2006，368：1096-1105.
+37. DeFronzo RA，Tripathy D，Schwenke
+DC，et al. Pioglitazone for Diabetes Prevention in
+Impaired Glucose Tolerance. N Engl J Med，2011，
+364：1104-1115.
+38. Zinman B，Harris SB，Neuman J，et al.
+Low-dose combination therapy with rosiglitazone
+and metformin to prevent type 2 diabetes mellitus
+(CANOE trial)：a double-blind randomised
+controlled study. Lancet，2010，376：103 - 111.
+39. Ramachandran A，Snehalatha C，Mary S，
+et al. Indian Diabetes Prevention Programme(IDPP).
+The Indian Diabetes Prevention Programme shows
+that lifestyle modiﬁcation and metformin prevent type
+
+
+【2 diabetes in Asian Indian subjects with impaired】（第82页）
+glucose tolerance (IDPP-1). Diabetologia, 2006，
+49：289-297.
+40. Torgerson JS，Hauptman J，BoldrinMN，
+et al. XENical in the prevention of diabetes in obese
+subjects (XENDOS) study：a randomized study
+of orlistat as an adjunct to lifestyle changes for the
+prevention of type 2 diabetes in obese patients.
+Diabetes Care，2004，27：155-161.
+41. Li GW，Zhang P，Wang J，et al. The
+long-term effect of lifestyle interventions to prevent
+diabetes in the China Da Qing Diabetes Prevention
+Study：a 20-year follow-up study. Lancet，2008，
+371：1783-1789.
+42. Gillies CL，Abrams KR，Lambert PC，
+et al. Pharmacological and lifestyle interventions
+to prevent or delay type 2 diabetes in people with
+impaired glucose tolerance：systematic review and
+meta-analysis. BMJ，2007，334：299-308.
+43. Renders CM，Valk GD，Griffin SJ，et al.
+Interventions to improve the management of diabetes
+in primary care，outpatient，and community
+settings：a systematic review. Diabetes Care，
+2001， 24：1821-1833.
+44. Brown SA. Effects of educational
+interventions in diabetes care：a meta-analysis of
+ﬁndings. Nurs Res，1988，37：223-230.
+45. Brown SA. Meta-analysis of diabetes patient
+education research：variations in intervention effects
+across studies. Res Nurs Health，1992，15：409-419.
+46. Guerci B，Drouin P，Grangé V，et al. Selfmonitoring of blood glucose significantly improves
+metabolic control in patients with type 2 diabetes
+mellitus：the Auto-Surveillance Intervention Active
+(ASIA) study. Diabetes Metab，2003，29：587-594.
+47. Skyler JS，Bergenstal R，Bonow RO，et
+al. Intensive glycemic control and the prevention of
+cardiovascular events: implications of the ACCORD，
+
+
+【2 diabetes in Asian Indian subjects with impaired】（第82页）
+ADVANCE，and VA diabetes trials：a position
+statement of the American Diabetes Association
+and a scientific statement of the American College
+of Cardiology Foundation and the American Heart
+Association. Diabetes Care，2009，32：187-192.
+48. Greenfield S，Billimek J，Pellegrini F，
+et al. Comorbidity affects the relationship between
+glycemic control and cardiovascular outcomes in
+diabetes: a cohort study. Ann Intern Med，2009，
+151：854-860.
+49. 纪立农. 消化和吸收糖尿病研究的成果、
+2010，18：1-3.
+50. UK Prospective Diabetes Study Group. UK
+prospective diabetes study 16. Overview of 6 years’
+therapy of type II diabetes：a progressive disease.
+Diabetes，1995，44：1249-1258.
+51. The Diabetes Control and Complications
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+Trial Research Group. The effect of intensive
+treatment of diabetes on the development and
+progression of long-term complications in
+insulindependent diabetes mellitus. N Engl J Med，
+1993，329：977-986.
+52. Holman RR，Paul SK，Bethel MA，et al.
+10-year follow-up of intensive glucose control in type
+
+
+【2 diabetes. N Engl J Med，2008，359：1577-1589.】（第83页）
+53. Shichiri M，Kishikawa H，Ohkubo Y，
+et al. Long-term results of the Kumamoto Study on
+optimal diabetes control in type 2 diabetic patients.
+Diabetes Care，2000，23 Suppl 2：B21-B29.
+54. Bailey CJ，Turner RC. Metformin. N Engl J
+Med，1996，334：574–583.
+55. Nathan DM，Buse JB，Davidson MB，
+et al. Medical management of hyperglycemia in type
+
+
+【2 diabetes：a consensus algorithm for the initiation】（第83页）
+different modes of exercise training on glucose
+control and risk factors for complications in type 2
+diabetic patients：a meta-analysis. Diabetes Care，
+2006，29：2518-2527.
+66. Bolen S，Feldman L，Vassy J，et al.
+Systematic review：comparative effectiveness and
+safety of oral medications for type 2 diabetes mellitus.
+Ann Intern Med，2007，147：386-399.
+67. Sherifali D，Nerenberg K，Pullenayegum
+E，et al. The Effect of Oral Antidiabetic Agents on
+A1C Levels-A systematic review and meta-analysis.
+参考文献
+Diabetes Care，2010，33：1859–1864.
+68. DeFronzo R，Goodman A，the Multicenter
+Metformin Study Group. Efficacy of metforminin
+patients with non-insulin-dependent diabetes mellitus.
+N Engl J Med，1995，333：541–549.
+69. Saenz A，Fernandez-Esteban I，Mataix
+A，et al. Metformin monotherapy for type 2 diabetes
+mellitus. Cochrane Database of Syst Rev，2005，
+3：CD002966.
+70. UK Prospective Diabetes Study Group. Effect
+of intensive blood glucose control with metformin
+on complications in overweight patients with type 2
+diabetes (UKPDS 34). Lancet，1998，352：854-865.
+71. Salpeter S，Greyber E，Pasternak G，
+et al. Risk of fatal and nonfatal lactic acidosis with
+metformin use in type 2 diabetes mellitus. Cochrane
+Database Syst Rev，2006，1：CD002967.
+72. Groop L. Sulfonylureas in NIDDM. Diabetes
+Care，1992，15：737–747.
+73. Kahn SE，Haffner SM，Heise MA，et al.
+Glycemic durability of rosiglitazone，metformin, or
+glyburide monotherapy. N Engl J Med，2006，355 ：
+2427–2443.
+74. Nissen SE，Wolski K. Effect of rosiglitazone
+on the risk of myocardial infarction and death from
+cardiovascular causes. N Engl J Med，2007，356：
+2457-2471.
+75. Singh S，Loke YK，Furberg CD. Longterm risk of cardiovascular events with rosiglitazone:
+
+
+【2 diabetes：a consensus algorithm for the initiation】（第84页）
+a meta-analysis. JAMA，2007，298：1189-1195.
+76. Lago RM，Singh PP，Nesto RW.  Congestive
+heart failure and cardiovascular death in patients
+with prediabetes and type 2 diabetes given
+thiazolidinediones：a meta-analysis of randomised
+clinical trials. Lancet，2007，370：1129-1136.
+77. Diamond GA，Bax L，Kaul S. Uncertain
+effects of rosiglitazone on the risk for myocardial
+infarction and cardiovascular death. Ann Intern
+Med，2007，147：578-581.
+78. Watts NB，D'Alessio DA. Type 2 diabetes，
+thiazolidinediones：bad to the bone? J Clin Endocrinol
+Metab，2006，91：3276-3278.
+79. UK Prospective Diabetes Study(UKPDS)
+Group. Intensive blood glucose control with
+sulphonylureas or insulin compared with conventional
+treatment and risk of complications in patients with
+type 2 diabetes (UKPDS 33). Lancet，1998，352：
+837-853.
+80. Marre M，Van GL，Usadel KH，et al.
+Nateglinide improves glycaemic control when added
+to metformin monotherapy：results of a randomized
+trial with type 2 diabetes patients. Diabetes Obes
+Metab，2002，4:177–186.
+81. Malaisse WJ. Pharmacology of the meglitinide
+analogs：new treatment options for type 2 diabetes
+mellitus. Treat Endocrinol，2003，2：401– 414.
+82. Moses RG，Gomis R，Frandsen KB，
+et al. Flexible meal-related dosing with repaglinide
+facilitates glycemic control in therapy-naive type 2
+diabetes. Diabetes Care，2001，24：11–15.
+83. Raskin P，Klaff L，McGill J，et al.
+Efficacy and safety of combination therapy：
+repaglinide plus metformin versus nateglinide plus
+metformin. Diabetes Care，2003，26：2063–2068.
+84. Fonseca V，Grunberger G，Gupta S，et al.
+Addition of nateglinide to rosiglitazone monotherapy
+
+
+【2 diabetes：a consensus algorithm for the initiation】（第84页）
+suppresses mealtime hyperglycemia and improves
+overall glycemic control. Diabetes Care，2003，
+26：1685-1690.
+85. Gerich J，Raskin P，Jean-Louis L，et
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+al. PRESERVE-beta：two-year efficacy and safety
+of initial combination therapy with nateglinide or
+glyburide plus metformin. Diabetes Care，2005，
+28：2093-2099.
+86. Chan JC，Chan KW，Ho LL，et al. An
+Asian multicenter clinical trial to assess the efﬁcacy
+and tolerability of acarbose compared with placebo
+in type 2 diabetic patients previously treated with
+diet. Asian Acarbose Study Group. Diabetes Care，
+1998，21：1058-1061.
+87. Van de Laar FA，Lucassen PL，Akkermans
+RP，et al. Alpha-glucosidase inhibitors for type 2
+diabetes mellitus. Cochrane Database Syst Rev，
+2005，2：CD003639.
+88. Baggio LL，Drucker DJ. Biology of
+incretions：GLP-1 and GIP. Gastroenterology，
+2007，132：2131-2157.
+89. Drucker DJ，Nauck MA. The incretin
+system：glucagon-like peptide-1 receptor agonists
+and dipeptidyl peptidase-4 inhibitors in type 2
+diabetes. Lancet，2006，368：1696–1705.
+90. Hermansen K，Kipnes M，Luo E，et al.
+Efficacy and safety of the dipeptidyl peptidase-4
+inhibitor，sitagliptin，in patients with type 2
+diabetes mellitus inadequately controlled on
+glimepiride alone or on glimepiride and metformin.
+Diabetes Obes Metab，2007，9：733-745.
+91. Amori RE，Lau J，Pittas AG. Efficacy
+and safety of incretin therapy in type 2 diabetes:
+systematic review and meta-analysis. JAMA，
+2007，298：194–206.
+92. Nauck MA，Vilsbøll T，Gallwitz B，et al.
+Incretin-based therapies：viewpoints to the way to
+consensus. Diabetes Care，2009，32：S223-S231.
+93. DeFronzo RA，Ratner RE，Han J，et al.
+
+
+【2 diabetes：a consensus algorithm for the initiation】（第85页）
+Effects of exenatide (exendin-4) on glycemic control
+and weight over 30 weeks in metformin-treated
+patients with type 2 diabetes. Diabetes Care，2005，
+28：1092-1100.
+94. Mohan V，Yang W，Son HY，et al.
+Efficacy and safety of sitagliptin in the treatment of
+patients with type 2 diabetes in China，India，and
+Korea. Diabetes Res Clin Pract，2009，83：106-116.
+95. Dhillon S，Weber J. Saxagliptin. Drugs，
+2009，69：2103-2114.
+96. Kendall DM，Riddle MC，Rosenstock J，
+et al. Effects of exenatide (exendin-4) on glycemic
+control over 30 weeks in patients with type 2 diabetes
+treated with metformin and a sulfonylurea. Diabetes
+Care，2005，28：1083-1091.
+97. Gao Y，Yoon KH，Chuang LM，et al.
+Efﬁcacy and safety of exenatide in patients of Asian
+descent with type 2 diabetes inadequately controlled
+with metformin or metformin and a sulphonylurea.
+Diabetes Res Clin Pract，2009，83：69-76.
+98. YangW，Chen L，Ji Q，et al. Liraglutide
+provides similar glycemic control as glimepiride
+(both in combination with metformin) and reduces
+body weight and systolic blood pressure in Asian
+population with type 2 diabetes from China，South
+Korea and India：a 16-week，randomized，doubleblind，active control trial. Diabetes ObesMetab，
+2011，13：81-88.
+99. Horvath K，Jeitler K，Berghold A. et al.
+Long-acting insulin analogues versus NPH insulin
+(human isophane insulin) for type 2 diabetes mellitus.
+Cochrane Database of Syst Rev，2007，2：CD005613.
+100.McEwan P，Poole CD，Tetlow T. et al.
+Evaluation of the cost-effectiveness of insulin
+glargine versus NPH insulin for the treatment of type
+参考文献
+
+
+【2 diabetes in the UK. Curr Med Res Opin，2007，】（第86页）
+23：S21-S31.
+101.Oliveira JH，Ji LN，Landry J，et al.
+Initiation and Intensification with 75% Insulin
+Lispro Protamine Suspension，25% Insulin Lispro
+(LM75/25) is noninferior to Glargine plus Lispro
+(G+L) in patients with type 2 Diabetes (T2D): Results
+of the PARADIGM Study. Diabetes，2010，628.
+102.Richter B，Neises G. 'Human' insulin
+versus animal insulin in people with diabetes
+mellitus. Cochrane Database of Syst Rev，2005，
+1：CD003816.
+103.Pan CY, Sinnassamy P，Chung KD. et al.
+Insulin glargine versus NPH insulin therapy in Asian
+Type 2 diabetes patients. Diabetes Res Clin Pr，
+2007，76：111-118.
+104.Horvath K，Jeitler K，Berghold A，et al.
+Long-acting insulin analogues versus NPH insulin
+(human isophane insulin) for type 2 diabetes mellitus.
+Cochrane Database of Syst Rev，2007，2：CD005613.
+105.Siebenhofer A，Plank J，Berghold A，et al.
+Short acting insulin analogues versus regular human
+insulin in patients with diabetes mellitus. Cochrane
+Database of Syst  Rev，2006，2：CD003287.
+106.Goudswaard AN，Furlong NJ，Valk GD，
+et al. Insulin monotherapy versus combinations of
+insulin with oral hypoglycaemic agents in patients
+with type 2 diabetes mellitus. Cochrane Database of
+Syst Rev，2004，4：CD003418.
+107.Raskin P，Matﬁn G，Schwartz SL，et al.
+Addition of biphasic insulin aspart 30 to optimized
+metformin and pioglitazone treatment of type 2
+diabetes mellitus：The ACTION Study (Achieving
+Control Through Insulin plus Oral agents). Diabetes
+ObesMetab，2009，11：27-32.
+108.Misso ML，Egberts KJ，Page M，et al.
+Continuous subcutaneous insulin infusion (CSII)
+versus multiple insulin injections for type 1 diabetes
+mellitus. Cochrane Database of Syst Rev，2010，
+
+
+【2 diabetes in the UK. Curr Med Res Opin，2007，】（第86页）
+1：CD005103.
+109.Pickup JC，Renard E. Long-acting insulin
+analogs versus insulin pump therapy for the treatment
+of type 1 and type 2 diabetes. Diabetes Care，2008，
+Suppl 2：S140-S145.
+110.Jeitler K，Horvath K，Berghold A，et
+al. Continuous subcutaneous insulin infusion versus
+multiple daily insulin injections in patients with
+diabetes mellitus：systematic review and metaanalysis. Diabetologia，2008，51：941-951.
+111.Garber AJ，Wahlen J，Wahl T，et al.
+Attainment of glycaemic goals in type 2 diabetes with
+once-，twice-，or thrice-daily dosing with biphasic
+insulin aspart 70/30 (The 1-2-3 study). Diabetes Obes
+Metab，2006，8：58-66.
+112.Yang W，Ji Q，Zhu D，et al. Biphasic
+insulin aspart 30 three times daily is more effective
+than a twice-daily regimen，without increasing
+hypoglycemia，in Chinese subjects with type 2
+diabetes inadequately controlled on oral antidiabetes
+drugs. Diabetes Care，2008，31：852-856.
+113.Holman RR，Thorne KI，Farmer AJ，et
+al. Addition of biphasic，prandial，or basal insulin
+to oral therapy in type 2 diabetes. N Engl J Med，
+2007，357：1716-1730.
+114.邹大进. 肥胖症伴2型糖尿病的手术与药
+物治疗. 中华胃肠外科杂志，2009，12：543-544.
+115.Dixon JB，Zimmet P，Alberti KG，et al.
+Bariatric surgery：an IDF statement for obese Type 2
+diabetes. Diabet Med，2011，28：628-642.
+116.中华医学会糖尿病学分会，中华医学会
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+外科学分会. 手术治疗糖尿病专家共识. 中华糖尿
+病杂志 ，2011，3：205-208.
+117.Arterburn D，Schauer DP，Wise RE，et
+al. Change in predicted 10-year cardiovascular risk
+following laparoscopic Roux-en-Y gastric bypass
+surgery. Obes Surg，2009，19：184-189.
+118.Ramos AC，Galva NetoMP，et al.
+Laparoscopic duodenal-jejunal exclusion in the
+
+
+【2 diabetes in the UK. Curr Med Res Opin，2007，】（第87页）
+treatment of type 2 diabetes mellitus in patients with
+BMI<30kg/m2(LBMI).Obes Surg，2009，19：307312.
+119.Flum DR，Belle SH，King WC，et al.
+Perioperative safety in the longitudinal assessment of
+bariatric surgery. N Engl J Med，2009，361：445-454.
+120.Kamaua AM，Grady D，Barrett-Connor
+E. Explaining the sex difference in coronary heart
+disease mortality among patients with type 2 diabetes
+mellitus：a meta-analysis. Arch Intern Med，
+2002，162：1737-1745.
+121.Buse JB，Ginsberg HN，Bakris GL，et
+al. Primary prevention of cardiovascular diseases in
+people with diabetes mellitus：a scientiﬁc statement
+from the American Heart Association and the
+American Diabetes Association. Diabetes Care，
+2007，30：162–172.
+122.Morrish NJ，Wang SL，Stevens LK，
+et al. Mortality and causes of death in the WHO
+Multinational Study of Vascular Disease in Diabetes.
+Diabetologia，2001，44：S14-S21.
+123.Nakagami T. DECODA Study Group.
+Hyperglycaemia and mortality from all causes and
+from cardiovascular disease in five populations of
+Asian origin. Diabetologia，2004，47：385-394.
+124.Gæde P，Lund-Andersen H，Parving
+H，et al. Effect of a Multifactorial Intervention on
+Mortality in Type 2 Diabetes. N Engl J Med，2008，
+358：580-591.
+125.Lawes CM，Parag V，Bennett DA，et al.
+Blood glucose and risk of cardiovascular disease in
+the Asia Paciﬁc region. Diabetes care，2004，27：
+2836-2842.
+126.Action to Control Cardiovascular Risk in
+Diabetes Study Group. Gerstein HC，Miller ME，
+Byington RP，et al. Effects of intensive glucose
+lowering in type 2 diabetes. N Engl J Med，2008，
+358：2545–2559.
+127.Duckworth W，Abraira C，Moritz T，
+et al. Glucose control and vascular complications in
+
+
+【2 diabetes in the UK. Curr Med Res Opin，2007，】（第87页）
+veterans with type 2 diabetes. N Engl J Med，2009，
+360：129–139.
+128.The ADVANCE Collaborative Group. Patel
+A，MacMahon S，Chalmers J，et al. Intensive
+Blood Glucose Control and Vascular Outcomes in
+Patients with Type 2 Diabetes. N Engl J Med，
+2008，358：2560-2572.
+129.Hypertension in Diabetes Study Group.
+HDS I：prevalence of hypertension in newly
+presenting type 2 diabetic patients and the association
+with risk factors for cardio-vascular and diabetic
+complications. J Hypertens，1993，11:309-317.
+130.Heart Outcomes Prevention Evaluation Study
+Investigators. Effects of ramipril on cardiovascular
+and microvascular outcomes in people with diabetes
+mellitus: results of the HOPE study and MICROHOPE substudy. Lancet，2000，355：253-259.
+131.UK Prospective Diabetes Study Group.
+Efficacy of atenolol and captopril in reducing risk of
+macrovascular and microvascular complications in type
+
+
+【2 diabetes：UKPDS 39. BMJ，1998，317：713-720.】（第87页）
+132.UK Prospective Diabetes Study Group.
+参考文献
+UKPDS：Tight blood pressure control and risk of
+macrovascular and microvascular complications in type
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第88页）
+133.Hansson L，Zanchetti A，Carruthers SG，
+et al. Effects of intensive blood-pressure lowering
+and low-dose aspirin in patients with hypertension:
+principal results of the Hypertension Optimal
+Treatment (HOT) randomized trial. Lancet，1998，
+351：1755-1762.
+134.Sacks FM，Svetkey LP，Vollmer WM，et
+al. Effects on blood pressure of reduced dietary sodium
+and the Dietary Approaches to Stop Hypertension
+(DASH) diet. DASH-Sodium Collaborative Research
+Group. N Engl J Med，2001，344：3–10.
+135.Siragy HM. Major outcomes in high-risk
+hypertensive patients randomized to angiotensinconverting enzyme inhibitor or calcium channel
+blocker vs diuretic. The Antihypertensive and LipidLowering Treatment to Prevent Heart Attack Trial
+(ALLHAT). Curr Hypettens Rep，2003，5：293-294.
+136.Pepine CJ，Handberg EM，CooperDeHoff RM，et al. A calcium antagonist vs a
+non-calcium antagonist hypertension treatment
+strategy for patients with coronary artery disease.
+The International Verapamil-Trandolapril study
+(INVEST)：a randomized controlled trial. JAMA，
+2003，290：2805-2816.
+137.Chobanian AV，Bakris GL，Black HR，
+et al. The Seventh Report of the Joint National
+Committee on Prevention，Detection，Evaluation，
+and Treatment of High Blood Pressure：the JNC 7
+report. JAMA，2003，289：2560–2572.
+138.Hansson L，Zanchetti A，Carruthers SG，
+et al. Effects of intensive blood-pressure lowering
+and low-dose aspirin in patients with hypertension:
+principal results of the Hypertension Optimal
+Treatment (HOT) randomized trial. HOT Study
+Group. Lancet，1998，351：1755–1762.
+139.PsatyBM，Smith NL，Siscovick DS，et
+al. Health outcomes associated with antihypertensive
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第88页）
+therapies used as ﬁrst-line agents. A systematic review
+and meta-analysis. JAMA，1997，277：739–745.
+140.Cooper-DeHoff RM，Gong Y，Handberg
+EM，et al. Tight blood pressure control and
+cardiovascular outcomes among hypertensive patients
+with diabetes and coronary artery disease. JAMA，
+2010，304：61–68.
+141.Giuseppe M，Ste' phane L，Enrico AR，
+et al. Reappraisal of European guidelines on
+hypertension management：a European Society of
+Hypertension Task Force document. J Hypertens，
+2009，27：2121-2158.
+142.Floras JS，Notarius CF，Harvey PJ.
+Exercise training-not a class effect：blood pressure
+more buoyant after swimming than walking. J
+Hypertens，2006，24：269-272.
+143.Lawrence JA，Michael WB，Stephen
+RD，et al. Dietary Approaches to Prevent and Treat
+Hypertension：A Scientific Statement From the
+American Heart Association. Hypertension，2006，
+47：296-308.
+144.Raj SP，Brenda RH，Finlay AM，
+et al. The 2007 Canadian Hypertension Education
+Program recommendations for the management of
+hypertension：Part 1 – blood pressure measurement，
+diagnosis and assessment of risk. Can J Cardiol，
+2007，23：529-538.
+145.Law MR，Morris JK，Wald NJ. Use of
+blood pressure lowering drugs in the prevention of
+cardiovascular disease：meta-analysis of 147 randomised
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+trials in the context of expectations from prospective
+epidemiological studies. BMJ，2009，338：b1665.
+146.Alastair JSW，Urs F，Ziyah M，
+et al. Effects of antihypertensive-drug class on
+interindividual variation in blood pressure and risk
+of stroke：a systematic review and meta-analysis.
+Lancet，2010，375：906–915.
+147.Gradman AH，Basile JN，Carter BL，
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第89页）
+et al. Combination therapy in hypertension. J Am Soc
+Hypertens，2010，4：42–50.
+148.Baigent C，Keech A，Kearney PM，
+et al. Efficacy and safety of cholesterol-lowering
+treatment：prospective meta-analysis of data from
+90,056 participants in 14 randomized trials of statins.
+Lancet，2005，366：1267–1278.
+149.Kearney PM，Blackwell L，Collins R，et
+al. Efﬁcacy of cholesterol-lowering therapy in 18, 686
+people with diabetes in 14 randomised trials of statins：
+a meta-analysis. Lancet，2008，371：117–125.
+150.ColhounHM，Betteridge DJ，Durrington
+PN，et al. Primary prevention of cardiovascular
+disease with atorvastatin in type 2 diabetes inthe
+Collaborative Atorvastatin DiabetesStudy (CARDS)：
+multicentre randomized placebo-controlled trial.
+Lancet，2004，364：685–696.
+151.Collins R，Armitage J，Parish S，et al. Heart
+Protection Study Collaborative Group：MRC/BHF Heart
+Protection Study of cholesterol-lowering with simvastatin
+in 5963 people with diabetes：a randomized placebocontrolled trial. Lancet，2003，361：2005–2016.
+152.PyoralaK，Pedersen TR，Kjekshus J，et al.
+Cholesterol lowering with simvastatin improves
+prognosis of diabetic patients with coronary heart
+disease：a subgroup analysis of the Scandinavian
+Simvastatin Survival Study (4S). Diabetes Care，
+1997，20：614–620.
+153.Goldberg RB，Mellies MJ，Sacks FM，
+et al. Cardiovascular events and their reduction
+with pravastatin in diabetic and glucose-intolerant
+myocardial infarction survivors with average
+cholesterol levels: subgroup analyses in the cholesterol
+and recurrent events (CARE) trial. Circulation，
+1998，98：2513–2519.
+154.Shepherd J，Barter P，Carmena R，et
+al. Effect of lowering LDL cholesterol substantially
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第89页）
+below currently recommended levels in patients with
+coronary heart disease and diabetes：the Treating to
+New Targets (TNT) study. Diabetes Care，2006，
+29：1220–1226.
+155.Sever PS，Poulter NR，Dahlo FB，
+et al. Reduction in cardiovascular events with
+atorvastatin in 2,532 patients with type 2 diabetes：
+Anglo-Scandinavian Cardiac Outcomes Trial–lipid
+loweringarm (ASCOT-LLA). Diabetes Care，2005，
+28：1151–1157.
+156.ACCORD Study Group. Ginsberg HN，
+Elam MB，Lovato LC，et al. Effects of combination
+lipid therapy in type 2 diabetes mellitus. N Engl J
+Med. 2010，362：1563-1574.
+157.Ogawa H，Nakayama M，Morimoto
+T，et al. Low-dose aspirin for primary prevention
+of atherosclerotic events in patients with type 2
+diabetes：a randomized controlled trial. JAMA，
+2008，300：2134–2141.
+158.Antithrombotic Trialists’(ATT)
+Collaboration. Aspirin in the primary and secondary
+prevention of vascular disease：collaborative
+meta-analysis of individual participant data from
+randomised trials. Lancet，2009，373：1849–1860.
+159.Antithrombotic Trialists' Collaboration.
+参考文献
+Collaborative meta-analysis of randomized trials
+of antiplatelet therapy for prevention of death，
+myocardial infarction，and stroke in high risk
+patients. BMJ，2002，324：71-86.
+160.Wolff T，Miller T，Stephen K. Aspirin for
+the Primary Prevention of Cardiovascular Events：An
+Update of the Evidence for the U.S. Preventive Services
+Task Force. Ann Intern Med，2009，150：405-410.
+161.U.S. Preventive Services Task Force.
+Aspirin for the prevention of cardiovascular disease：
+U.S. Preventive Services Task Force recommendation
+statement. Ann Intern Med，2009，150：396-404.
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第90页）
+162.Pignone M，Alberts MJ，Colwell JA，et
+al. Aspirin for primary prevention of cardiovascular
+events in people with diabetes：a position statement
+of the American Diabetes Association，a scientific
+statement of the American Heart Association，and an
+expert consensus document of the American College
+of Cardiology Foundation. Diabetes Care，2010，
+33：1395–1402.
+163.Bhatt DL，Marso SP，Hirsch AT，et al.
+Ampliﬁed beneﬁt of clopidogrel versus aspirin in
+patients with diabetes mellitus. Am J Cardiol，2002，
+90：625–628.
+164.Harvey DW，Michael G，Jan F，
+et al. Comparison of Outcomes Among Patients
+Randomized to warfarin therapy according to
+anticoagulant control. Results From SPORTIF III and
+V. Arch Intern Med，2007，167：239-245.
+165.中国医师协会心血管内科医师分会.《中
+华内科杂志》编辑委员会. 心血管疾病一级预防中
+国专家共识. 中华内科杂志，2010，49：174-185.
+166.De Abajo FJ，Garcfa Rodrtgu LA. Risk
+of upper gastrointestinal bleeding and perforation
+associated with low-dose aspirin as plain and entericcoated formulations. BMC Clin Pharmacol，2001，1：1.
+167.McquaidKR，Laine L. Systematic review
+and meta-analysis of adverse events of low-dose
+aspirin and clopidogrel in randomized controlled
+trials.Am J Med，2006，119：624-638.
+168.SerebruanyVL，Steinhubl SR，BergerPB，
+et al. Analysis of risk of bleeding complications after
+different doses of aspirin in 192,036 patients enrolled
+in 31 randomized controlled trials. Am J Cardiol，
+2005，95：1218-1222.
+169.抗血小板药物消化道损伤的预防和治疗
+中国专家共识组. 抗血小板药物消化道损伤的预防
+和治疗中国专家共识. 中华内科杂志，2009，48：
+607-611.
+170.Gaede P，Lund-Andersen H，Parving HH，et
+al. Effect of a multifactorial intervention on mortality in
+type 2 diabetes. N Engl J Med，2008，358：580–591.
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第90页）
+171.Stephen JS，Paul AN，James MG，et al.
+Management of Type 2 Diabetes in the Primary Care
+Setting：A Practice-Based Research Network Study.
+Ann Fam Med，2006，4：23-31.
+172.George LJ，David E，Morris W.
+Simultaneous Control of Intermediate Diabetes
+Outcomes Among Veterans Affairs Primary Care
+Patients. J Gen Intern Med，2006，21：1050–1056.
+173.Caroline SF, Sean C, Paul DS, et al. Trends
+in Cardiovascular Complications of Diabetes. JAMA,
+2004,292:2495-2499.
+174.Solomon T, Nish C, Simon EME, et al.
+Vascular Risk Factors and Diabetic Neuropathy. N
+Engl J Med, 2005,352:341-350.
+175.American Diabetes Association Workgroup
+on hypoglycemia. Defining and Reporting
+Hypoglycemia in Diabetes：A report from the American
+DiabetesAssociation Workgroup on Hypoglycemia.
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+Diabetes Care，2005，28：1245-1249.
+176.Denise EB，Michael EM，Richard MB，
+et al. The association between symptomatic，severe
+hypoglycaemia and mortality in type 2 diabetes：
+retrospective epidemiological analysis of the
+ACCORD study. BMJ，2009，339：b4909.
+177.潘长玉主译. Joslin糖尿病学. 14th版. 北
+京：人民卫生出版社. 2007.
+178.廖二元. 内分泌学. 北京：人民卫生出版
+社. 2007，1306－1566.
+179.Lu B，Wen J，Song XY，et al. High prevalence
+of albuminuria in population-based patients diagnosed
+with type 2 diabetes in the Shanghai downtown. Diabetes
+Res ClinPract，2007，75：184-192.
+180.Mogensen CE. Microalbuminuria as a
+predictor of clinical diabetic nephropathy Kidney
+International，1987，31：673-589.
+181.Lu B，Song X，Dong X，et al. High
+prevalence of chronic kidney disease in populationbased patients diagnosed with type 2 diabetes in
+downtown Shanghai. J Diabetes Complicat，2008，
+
+
+【2 diabetes：UKPDS 38. BMJ，1998，317：703–713.】（第91页）
+22：96-103.
+182.Lu B，Gong W, Yang Z，et al. An evaluation
+of the diabetic kidney disease definition in chinese
+patients diagnosed with type 2 diabetes mellitus. J Int
+Med Res，2009，37：1493-1500.
+183.Tervaert TW，Mooyaart AL，Amann K，et
+al. Renal Pathology Society. Pathologic classification
+of diabetic nephropathy. J Am Soc Nephrol，2010，
+21：556-563.
+184.Ma YC，Zuo L，Chen JH，et al. Modiﬁed
+glomerular filtration rate estimating equation for
+Chinese patients with chronic kidney disease. J Am
+Soc Nephrol，2006，17：2937-2944.
+185.Dong X，He M，Song X，et al. Performance
+and comparison of the Cockcroft-Gault and simplified
+Modification of Diet in Renal Disease formulae in
+estimating glomerular filtration rate in a Chinese Type
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第92页）
+survey. Circulation，2007，116：2086-2094.
+210.Hasimu B，Li J，Yu J，et al. Evaluation of
+Medical Treatment for Peripheral Arterial Disease in
+Chinese High-Risk Patient. Circulation J，2007，71：
+95-99.
+211.Welten GM，Schouten O，Hoeks SE，et al.
+Long-term prognosis of patients with peripheral arterial
+disease：a comparison in patients with coronary artery
+disease. J Am Coll Cardiol，2008，51：1588-1596.
+212.Brevetti G，Oliva G，Silvestro A，et al.
+Peripheral Arteriopathy and Cardiovascular Events
+(PACE) Study Group. Prevalence，risk factors
+and cardiovascular comorbidity of symptomatic
+peripheral arterial disease in Italy. Atherosclerosis，
+2004，175：131-138.
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+213.Belch J，MacCuish A，Campbell I，et al.
+The prevention of progression of arterial disease and
+diabetes (POPADAD) trial：factorial randomised
+placebo controlled trial of aspirin and antioxidants in
+patients with diabetes and asymptomatic peripheral
+arterial disease. BMJ，2008，337：a1840.
+214.Hiatt WR. Medical treatment of peripheral
+arterial disease and claudication. N Engl J Med，
+2001，344：1608-1621.
+215.Norgren L，Hiatt WR，Dormandy JA，
+et al. Inter-Society Consensus for the Management of
+Peripheral Arterial Disease (TASC II). J Vasc Surg，
+2007，45：S5-S67.
+216.Bendermacher BLW，Willigendael EM，
+Teijink JAW，et al. Supervised exercise therapy
+versus non-supervised exercise therapy for intermittent
+claudication. Cochrane Syst Rev，2006，2：CD005263.
+217.Kessel DO，Berridge DC，Robertson I.
+Infusion techniques for peripheral arterial thrombolysis.
+Cochrane Syst Rev，2006，1：CD000985.
+218.M Reiter，RA Bucek，A Stümpﬂen，et al.
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第93页）
+Prostanoids for intermittent claudication. Cochrane
+Syst Rev，2004，1：CD000986.
+219.Lièvre M，Morand S，Besse B，et al. Oral
+Beraprost sodium，a prostaglandin I(2) analogue，
+for intermittent claudication：a double-blind，
+randomized，multicenter controlled trial. Beraprost
+et Claudication Intermittente (BERCI) Research
+Group.Circulation，2000，102：426-431.
+220.Thompson PD，Zimet R，Forbes WP，
+et al. Meta-analysis of results from eight randomized,
+placebo-controlled trials on the effect of cilostazol
+on patients with intermittent claudication. Am J
+Cardiol，2002，90：1314-1319.
+221.Moher D，Pham B，Ausejo M，et al.
+Pharmacological management of intermittent
+claudication：a meta-analysis of randomised trials.
+Drugs，2000，59：1057-1070.
+222.Fowkes FGR，Gillespie IN. Angioplasty
+(versus non surgical management) for intermittent
+claudication. Cochrane Syst Rev，1996，3：CD000017.
+223.Trocciola SM，Chaer R，Dayal R，et al.
+Comparison of results in endovascular interventions
+for infrainguinal lesions：claudication versus critical
+limb ischemia. Am Surg，2005，71：474-480.
+224.Schillinger M，Sabeti S，Loewe C，et al.
+Balloon angioplasty versus implantation of nitinol
+stents in the superficial femoral artery. N Engl J
+Med，2006，354：1879-1888.
+225.Leng GC，Davis M，Baker D. Bypass
+surgery for chronic lower limb ischaemia. Cochrane
+Syst Rev，2000， 3：CD002000.
+226.American Diabetes Association. Preventive
+Foot Care in Diabetes. Diabetes Care，2004，27：
+S63-S64.
+227.国际糖尿病足工作组. 糖尿病足国际临
+床指南. 许樟荣，敬华，译. 北京：人民军医出版
+社，2004.
+228.International Diabetes Federation,
+International Working Group on the Diabetic Foot.
+Diabetes and Foot Care. Brussels，2005.
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第93页）
+229.Schaper NC. Diabetic foot ulcer classiﬁcation
+system for research purposes：a progress report on
+criteria for including patients in research studies.
+Diabetes Metab Res Rev，2004，20：S90-S95.
+230.Metzger BE，Gabbe SG，Persson B，et
+al. International association of diabetes and pregnancy
+study groups recommendations on the diagnosis and
+classiﬁcation of hyperglycemia in pregnancy. Diabetes
+Care，2010，33：676-682.
+参考文献
+231.中华医学会妇产科学分会产科学组. 妊娠
+合并糖尿病临床诊断与治疗推荐指南. 中华妇产科
+杂志，2007，42：426-428.
+232.Sibai BM. Treatment of hypertension in
+pregnant women. N Engl J Med，1996，335：257-265.
+233.付萍，满青青，等. 中国5～17岁儿童青
+少年糖尿病流行情况分析. 卫生研究，2007，36：
+722-724.
+234.Gloyn AL，Pearson ER，Antcliff JF，
+et al. Activating mutations in the gene encoding the
+ATP-sensitive potassium-channel subunit Kir6. 2 and
+permanent neonatal diabetes. N Engl J Med，2004，
+350：1838-1849.
+235.陈树新. 儿童及青少年糖尿病的诊断与治
+疗. 中国医刊，2006，7：9-11.
+236.Hooqwerf BJ. Postoperative management
+of the diabetic patient. Med Clin North Am，2001，
+85：1213-1228.
+237.Hooqwerf BJ. Perioperative management of
+diabetes mellitus：how should we act on the limited
+evidence. Cleve Clin J Med，2006，73：s95-99.
+238.Marks JB. Perioperative management of
+diabetes. Am Fam Physician，2003，67：93-100.
+239.Berqman SA. Perioperative management of
+the diabetic patient. Oral Surg Oral Med Oral Pathol
+Oral Radiol Endod，2007，103：731-737.
+240.Gill GV，Alberti KGMM. The care of the
+diabetic patient during surgery. In：DeFronzo RA，
+Ferranini E，Keen H，Zimmet P. International
+Textbook of Diabetes Mellitus (3rd )：Jone Wiley &
+Sons，Ltd.，2004，1741-1754.
+241.Thomas DJ，Platt HS，Alberti KG.
+Insulin-dependent diabetes during the peri-operative
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第94页）
+period. An assessment of continuous glucoseinsulin-potassium infusion, and traditional treatment.
+Anaesthesia，1984，39：629-637.
+242.van den Berghe G，Wouters P，Weekers
+F，et al. Intensive insulin therapy in critically ill
+patients. N Engl J Med，2001，345：1359-1367.
+243.Pozzilli P，Leslie RD. Infection and
+diabetes：mechanisms and prospects for prevention.
+Diabet Med，1994，11：935-941.
+244.Guillausseau PJ，Farah R，Laloi-Michelin
+M，et al. Urinary tract infections and diabetes
+mellitus. Rev Prat，2003，53：1790-1796.
+245.Patterson JE，Andriole VT. Bacterial urinary
+tract infections in diabetes. Infect Dis Clin North Am，
+1997，11：735-750.
+246.Merta M，Rysava R，Tesar V. Urinary tract
+infection in patients with diabetes mellitus. Vnitr Lek，
+2006，52：423-425.
+247.Boyko EJ，Fihn SD，Scholes D，et al. Risk
+of urinary tract infection and asymptomatic bacteriuria
+among diabetic and nondiabetic postmenopausal woman.
+Am J Epidemiol，2005，161：557-564.
+248.Falguera M，Pifarre R，Martin A，et
+al. Etiology and outcome of community-acquired
+pneumonia in patients with diabetes mellitus. Chest，
+2005，128：3233-3239.
+249.Koziel H，Koziel MJ. Pulmonary
+complications of diabetes mellitus. Pneumonia. Infect
+Dis Clin North Am，1995，9：65-96.
+250.Ponce-De-Leon A，Garcia-Garcia MdMde
+L，Garcia-Sancho MC，et al. Tuberculosis and
+diabetes in Southern Mexico. Diabetes Care，2004，
+27：1584-1590.
+251.Arrieta-Blanco JJ，Bartolomé-Villar B，
+Jiménez-Martinez E，et al. Dental problems in
+patients with diabetes mellitus(II)：gingival index and
+periodontal disease. Med Oral，2003，8：233-247.
+中国2 型糖尿病防治指南
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+252.Banac S，Persic M，Cvijovic K. Steroid
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第95页）
+diabetes in children with Crohn disease. Acta Med
+Croatica，2002，56：35-38.
+253.Black DM，Filak AT. Hyperglycemia
+with non-insulin-dependent diabetes following
+intraarticular steroid injection. J Fam Pract，1989，
+28：462-463.
+254.Museteanu P，Fica S，Gudovan E. New
+insights in steroid diabetes. Endocrinology 1991，
+29：105-109.
+255.Arner P，Gunnarsson R，Blomdahl S，et
+al. Some characteristics of steroid diabetes：a study
+in renal-transplant recipients receiving high-dose
+corticosteroid therapy. Diabetes Care，1983，6：23-25.
+256.Carolan J. Insulin versus oral agents for
+‘steroid-induced’diabetes. Postgrad Med，1999，
+105：36.
+257.Oyer DS，Shah A，Bettenhausen S. How
+to manage steroid diabetes in the patient with cancer.
+J Support Oncol，2006，4：479-483.
+258.NICE-SUGAR Study Investigators. Intensive
+versus conventional glucose control in critically ill
+patients. N Engl J Med，2009，360：1283-1297.
+259.Griesdale DE，de Souza RJ，van Dam RM，
+et al. Intensive insulin therapy and mortality among
+critically ill patients：a meta-analysis including NICESUGAR study data. CMAJ，2009，180：821-827.
+260.Donihi AC，Raval D，Saul M，et al.
+Prevalence and predictors of corticosteroid-related
+hyperglycemia in hospitalized patients. Endocr Pract，
+2006，12：358-362.
+261.Schubert S，Heesemann J. Infections in
+diabetes mellitus. Immun Infekt，1995，23：200-204.
+262.Gin H. Infection and diabetes. Rev Med
+Interne，1993，14：32-38.
+263.Yan Bi，Dalong Zhu，Jinluo Cheng.The
+Status of Glycemic Control：A Cross-Sectional Study
+of Outpatients With Type 2 Diabetes Mellitus Across
+Primary，Secondary，and Tertiary Hospitals in the
+Jiangsu Province of China.Clinical Therapeutics，
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第95页）
+2010，32：973-982.
+264.IMPACT Investigators. The Effectiveness
+of Depression Care Management on Diabetes-Related
+Outcomes in Older Patients. Ann Intern Med， 2004，
+140：1015-1024.
+265.De Hert MA，Van Winkel R，Van Eyck
+D. et al. Prevalence of the metabolic syndrome in
+patients with schizophrenia treated with antipsychotic
+medication. Schizophr Res，2006，83：87–93.
+266.Gabriela B，Stewart TD，Whitehead R，et
+al. Metabolic Adverse Events in Patients With Mental
+Illness Treated With Antipsychotics：A Primary Care
+Perspective. Prim Care Companion J Clin Psychiatry，
+2008，10：15-24.
+267.American Diabetes Association，American
+Psychiatric Association，American Association of
+Clinical Endocrinologists，North American Association
+for the Study of Obesity. Consensus development
+conference on antipsychotic drugs and obesity and
+diabetes. Diabetes Care，2004，27：596-601.
+268.McNeill AM，Rosamond WD. The metabolic
+syndrome and 11-year risk of incident cardiovascular
+disease in the atherosclerosis risk in communities study.
+Diabetes Care，2005，28：385-390.
+269.Gu D，Gupta A，Muntner P，et al.
+Prevalence of cardiovascular disease risk factor
+clustering among the adult population of China:
+results from the International Collaborative Study
+of Cardiovascular Disease in Asia (InterAsia).
+Circulation，2005，112：658-665.
+参考文献
+270.Grundy SM. Metabolic syndrome：
+connecting and reconciling cardiovascular and diabetes
+worlds. J Am Coll Cardiol，2006，47：1093-1100.
+271.Grundy SM，Cleeman JI，Daniels SR，
+et al. Diagnosis and management of the metabolic
+syndrome：an American Heart Association/National
+Heart，Lung，and Blood Institute Scientiﬁc Statement.
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第96页）
+Circulation，2005，112：2735-2752.
+272.Alberti KG，Zimmet P，Shaw J. IDF
+Epidemiology Task Force Consensus Group. The
+metabolic syndrome-a new worldwide definition.
+Lancet，2005，366：1059-1062.
+273.The IDF consensus worldwide deﬁnition of
+the metabolic syndrome, Part 1. http://www.pitt.edu/SUPER1/metabolic/IDF1. pdf.
+274.中华医学会糖尿病学分会代谢综合征研
+究协作组. 中华医学会糖尿病学分会关于代谢综合
+征的建议. 中华糖尿病杂志，2004，12：156-161.
+275.Li ZY，Xu GB，Xia TA. Prevalence rate
+of metabolic syndrome and dyslipidemia in a large
+professional population in Beijing. Atherosclerosis，
+2006，184：188-192.
+276.卢伟，刘美霞，李锐，等. 上海15-74岁
+居民代谢综合征的流行特征. 中华预防医学杂志，
+2006，40：262-268.
+277.李岩，赵冬，王薇，等. 中国11省市35-64
+岁人群应用不同代谢综合征诊断标准的比较. 中华
+流行病学杂志，2007，28：83-86.
+278.刘佩文，陈璐璐，孙晖，等. 武汉地区成
+人代谢综合征患病率及相关因素. 中华内分泌代谢
+杂志，2006，22：462-463.
+279.Bao Y，Lu J，Wang C，et al. Optimal waist
+circumference cutoffs for abdominal obesity in Chinese.
+Atherosclerosis，2008，201：378-384.
+280.Ye Y，Bao Y，Hou X，et al. Identiﬁcation
+of waist circumference cutoffs for abdominal obesity
+in the Chinese population: a 7.8-year follow-up study
+in the Shanghai urban area. Int J Obes (Lond)，2009，
+33：1058-1062.
+281.《中国成人血脂异常防治指南》制定联
+合委员会. 代谢综合征. 中国成人血脂异常防治指
+南. 第1版. 北京：人民卫生出版社，2007：16-17.
+282.中国高血压防治指南修订委员会. 中国高
+血压防治指南2010版. 中华心血管病杂志，2011，
+39：579-616.
+283.Wang C，Hou X，Bao Y，et al.The metabolic
+syndrome increased risk of cardiovascular events in
+Chinese-a community based study. Int J Cardiol，
+2010，139：159-165.
+284.邹晓璇，李莹，张红菊，等. 社区中老年
+人群代谢综合征与颈动脉粥样硬化的关系. 中华流
+行病学杂志，2010，31：361-365.
+285.马晓静，胡承，周健，等. 2型糖尿病家系
+一级亲人群代谢综合征患病情况及与肥胖相关指
+标的关系. 中华内分泌代谢杂志，2009，25：286290.
+286.Bakris GL，Sowers JR. American Society
+
+
+【2 diabetic population. Diabet Med，2007，24：14821486.】（第96页）
+of Hypertension Writing Group. ASH position paper：
+treatment of hypertension in patients with diabetes-an
+update. J Clin Hypertens (Greenwich) ，2008，10：
+707-713.
+287.中国肥胖问题工作组数据汇总分析协作
+组. 我国成人体重指数和腰围对相关疾病危险因素
+异常的预测价值：适宜体重指数和腰围切点的研
+究. 中华流行病学杂志，2002，23：5- 10.
+中华医学会糖尿病学分会
+地址：北京市东城区东四西大街42号
+责任编辑：
+LET＇S TAKE CONTROL OF DIABETES. NOW.
+责任编辑：李小云
+CHINA GUIDELINE FOR TYPE 2 DIABETES
+控制糖尿病刻不容缓
+定价:38.00元
